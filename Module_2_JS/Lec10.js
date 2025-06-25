@@ -9,7 +9,7 @@
 //  This works similarly but with objects.It lets you extract properties from an object and assign them to variables.For example, if you have a user object with properties like name and age, you can quickly create variables for those properties.
 
 //a short and clean way to extract value from object and array.
-//help in writing maintable and readable code
+//help in writing maintable and readable code so that other developer can easily understand
 
 //?Example-1
 
