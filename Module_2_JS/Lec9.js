@@ -15,6 +15,8 @@
 
 //?Optional Chaining Example:
 
+//- use when you are not sure if a property is exist or maybe undefiend and null
+
 //?-------------------------------Example-A--------------------------------------
 
 /*
@@ -53,11 +55,14 @@ const User = {
 }
 */
 
+//- when sometime the we dont know if there is this property is in object or not so to rid of error we use this and if not get undefiend 
+
 // console.log(User.address?.city); //? undefined
 // console.log(User.getName?.()); //? undefined
 
 
 //?Nullish Coalescing Operator(??):
+//- use when you want fallback if property is null or undefiend  
 
 //?-------------------------------Example-c--------------------------------------
 
