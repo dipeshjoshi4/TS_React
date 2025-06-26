@@ -40,9 +40,9 @@ console.log(deepCopy.address.city) //delhi
 console.log(shallowCopy.address.city) //Mumbai
 
 
-//?little ecplaintion on deepcopy cloned object
+//?little explaintion on deepcopy cloned object
 
-//? 2. JSON.stringify(originalObject)
+//? JSON.stringify(originalObject)
 /*
  Purpose: Converts the object into a JSON - formatted string.
  Result: A string like:
@@ -52,7 +52,7 @@ console.log(shallowCopy.address.city) //Mumbai
  This step serializes the object — turns it into a plain text representation.
 */
 
-3. JSON.parse(...)
+//? JSON.parse(...)
 /*
 Purpose: Parses the JSON string back into a new JavaScript object.
 Input: The string from JSON.stringify(...).
