@@ -40,3 +40,36 @@ console.log(deepCopy.address.city) //delhi
 console.log(shallowCopy.address.city) //Mumbai
 
 
+//?little ecplaintion on deepcopy cloned object
+
+//? 2. JSON.stringify(originalObject)
+/*
+ Purpose: Converts the object into a JSON - formatted string.
+ Result: A string like:
+ CODE
+'{"name":"Dipesh","age":25,"address":{"city":"Surat","state":"Gujarat"}}'
+ Type: String
+ This step serializes the object — turns it into a plain text representation.
+*/
+
+3. JSON.parse(...)
+/*
+Purpose: Parses the JSON string back into a new JavaScript object.
+Input: The string from JSON.stringify(...).
+Output: A new object with the same structure and values as the original.
+CODE
+JSON.parse(JSON.stringify(originalObject))
+Return a new deeply clone object
+
+*/
+
+//?This Method Drawbacks
+
+/*
+| ❌ Limitation                     | 💬 Explanation                                   |
+| ---------------------------------- | -------------------------------------------------  |
+| ❌ Functions are lost             | Functions inside the object are not preserved.    |
+| ❌ Dates become strings           | `Date` objects turn into strings.                 |
+| ❌ `undefined`, `Infinity`, `NaN` | These are lost or misrepresented.                 |
+| ❌ Circular references break it   | If object refers to itself, this throws an error. |
+*/
