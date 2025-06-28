@@ -110,6 +110,12 @@ const users = [
 //?OUTPUT
 // JOHN DOE,EMMA STONE,MAX,OLIVA SMITH]
 
+// //?Example-2- map,filter and join
+// const nameArray = users.filter(user => user.age > 20).map(user => user.name.toUpperCase()).join(",");
+// console.log(nameArray);
+//?OUTPUT
+//JOHN DOE, EMMA STONE, OLIVA SMITH
+
 //?----------------------------split()----------------------------
 //- Splits a string into an array of substrings.
 
@@ -124,9 +130,9 @@ const users = [
 
 
 
-//!SHORTHAND ERROR
-// const nameArray = users.filter(user => user.age > 20).map(user => user.name.toUpperCase()).join(users.join(","));
-// console.log(nameArray);
+
+
+
 
 
 
