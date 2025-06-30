@@ -14,6 +14,7 @@
 
 //?- Lexical scope means that a function remembers the environment in which it was defined, including all the variables in that scope.
 
+/*
 function createCounter() {
     let count = 0;
     return function () {
@@ -25,5 +26,6 @@ const counter = createCounter();
 console.log(counter()); // 1st call => 0+1 = 1
 console.log(counter()); // 2nd call => 1+1 = 2      
 console.log(counter()); // 3rd call => 2+1 = 3
+*/
 
 //?-----------Explanation-----------

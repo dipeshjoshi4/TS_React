@@ -75,16 +75,16 @@ const User = {
     }
 }
 
-const pref = User.preferences;
-console.log(pref); //? null
+// const pref = User.preferences;
+// console.log(pref); //? null
 
 //so when there is left hand side is null or undefined then we can use nullish coalescing operator to provide default value:
 
-const userPref = User.preferences ?? "default preference";
-console.log(userPref); //? "default preference"
+// const userPref = User.preferences ?? "default preference";
+// console.log(userPref); //? "default preference"
 
-const City = User.address?.city ?? "Mumbai";
-console.log(City); //? "Mumbai"
+// const City = User.address?.city ?? "Mumbai";
+// console.log(City); //? "Mumbai"
 
 //?Logical OR Operator(||):
 
@@ -92,9 +92,9 @@ console.log(City); //? "Mumbai"
 
 //?-------------------------------Example-D--------------------------------------
 
-const quantity = 0;
-const result = quantity || 10;
-console.log(result); //? 10
+// const quantity = 0;
+// const result = quantity || 10;
+// console.log(result); //? 10
 
 //? example of logical OR operator with optional chaining and nullish coalescing operator:
 
@@ -105,14 +105,14 @@ const User2 = {
         return this.name;
     }
 }
-const address = User2.address?.city || "Mumbai";
-console.log(address); //? "Mumbai"
+// const address = User2.address?.city || "Mumbai";
+// console.log(address); //? "Mumbai"
 
 //- in this case, if address is undefined then it will return Mumbai.
 //- but if address is empty object then it will return empty object not Mumbai
 
-const address2 = User2.address?.city ?? "Mumbai";
-console.log(address2); //? "Mumbai"
+// const address2 = User2.address?.city ?? "Mumbai";
+// console.log(address2); //? "Mumbai"
 
 //- here address is undefined so it will return Mumbai
 //- but if address is empty object then it will return empty object not Mumbai

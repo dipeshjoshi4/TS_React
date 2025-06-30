@@ -43,7 +43,7 @@ const originalObject = {
 // const shallowCopy = Object.assign({}, originalObject);
 
 //?2nd Way
-const shallowCopy = { ...originalObject };
+// const shallowCopy = { ...originalObject };
 
 // const deepCopy = JSON.stringify(originalObject) //make object into string
 const deepCopy = JSON.parse(JSON.stringify(originalObject)) //make string into copy object
@@ -52,8 +52,8 @@ const deepCopy = JSON.parse(JSON.stringify(originalObject)) //make string into c
 originalObject.address.city = "Mumbai";
 
 
-console.log(deepCopy.address.city) //delhi
-console.log(shallowCopy.address.city) //Mumbai
+// console.log(deepCopy.address.city) //?delhi
+// console.log(shallowCopy.address.city) //?Mumbai
 
 
 //?little explaintion on deepcopy cloned object

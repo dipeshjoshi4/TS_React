@@ -39,6 +39,7 @@
 //- This means that the function is not available before its declaration
 
 //? function expression with let
+/*
 try {
     sayHello(); // TypeError: sayHello is not a function
 } catch (e) {
@@ -47,4 +48,4 @@ try {
 let sayHello = function () {
     console.log("Hello World")
 }
-
+*/

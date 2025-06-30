@@ -60,13 +60,13 @@ const Person = {
     }
 }
 
-console.log(Object.entries(Person));
-// Output: [ [ 'name', 'Dipesh' ], [ 'age', 25 ], [ 'getName', [Function: getName] ] ]
+// console.log(Object.entries(Person));
+//? Output: [ [ 'name', 'Dipesh' ], [ 'age', 25 ], [ 'getName', [Function: getName] ] ]
 
-for (const [key, value] of Object.entries(Person)) {
-    console.log(key, value)
-}
-//Output:name Dipesh age 25 getName function() { return this.name; }
+// for (const [key, value] of Object.entries(Person)) {
+//     console.log(key, value)
+// }
+//?Output:name Dipesh age 25 getName function() { return this.name; }
 
 //so here Object.entries give array containing multiple array.which stored key and value
 //so to get rid of array we use destructing of array in for..of loop
