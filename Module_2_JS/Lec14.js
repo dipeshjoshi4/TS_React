@@ -1,5 +1,19 @@
 //! #### Slice and Splice
 
+//? Lecture Summary 🚀
+
+//?slice() -
+// It is used to take out a portion of an array.
+// It does not change the original array.
+// It takes two values: start position and end position.
+// It returns a new array from the given start to end(end is not included).
+
+//?splice() - It is used to add or remove elements in an array.
+// It changes the original array.
+// It can remove elements from any position.
+// It can also insert new elements at any position.
+// Used when you want to modify the array.
+
 //?slice()
 //-gives a portion of an array  as a new  array without changing the original
 
