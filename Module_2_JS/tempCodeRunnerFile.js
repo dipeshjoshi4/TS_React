@@ -1,3 +1,4 @@
-const age = 28;
-const category = age >= 18 ? "Adult" : "Minor";
-console.log(category); //?Adult
+functionVaraible()
+// var functionVaraible = function () {
+//     console.log("let with anyonyumus function")
+// };
