@@ -24,3 +24,6 @@
 // ● Use event.target to determine which child triggered the event.
 // ● Improves performance and maintainability.
 
+// Source of Docs - https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events
+
+console.log("start")
