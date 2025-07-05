@@ -7,6 +7,25 @@
 </head>
 <body>
     <h1>Event Delegation for Performance Optimization & Event Bubbling</h1>
+
+    <!-- Event Bubbling -->
+    <div id="grandParents" style="background-color: lightgray; padding: 30px;">
+        grandParents
+        <div id="Parents" style="background-color: lightblue; padding: 20px;">
+            Parents
+            <div id="Child" style="background-color: lightpink; padding: 10px;">
+                Child
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Delegation -->
+     <ul id="menu" >
+        <li style="padding:10px;">Home</li>
+        <li style="padding:10px;">About Us</li>
+        <li style="padding:10px;">Contact Us<li>
+    </ul>
+
     <script src="Lec20.js"></script>
 </body>
 </html>

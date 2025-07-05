@@ -2,6 +2,7 @@
 //!Event Delegation for Performance Optimization & Event Bubbling
 
 
+
 //?Event Bubbling in JavaScript
 
 // - event flows from its target element to its parent
@@ -27,3 +28,29 @@
 // Source of Docs - https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events
 
 console.log("start")
+
+document.getElementById("grandParents").addEventListener("click", () => {
+    console.log("grandParent Clicked")
+})
+
+document.getElementById("Parents").addEventListener("click", () => {
+    console.log("Parents Clicked")
+})
+
+document.getElementById("Child").addEventListener("click", () => {
+    console.log("Child Clicked")
+})
+
+//-here when we click on child and parent and grandparent also occur the event .thats called the event Bubbling
+//from target to its parent .here child to grandparent
+
+const menu = document.getElementById("menu");
+
+menu.addEventListener("click", function (e) {
+    if (e.target.tagName === "LI") {
+
+        console.log("Clicked", e.target.textContent);
+    }
+})
+
+//interviewer can ask that apply event on all the 15-20 elements .so u can apply on parent we can get output in all child
