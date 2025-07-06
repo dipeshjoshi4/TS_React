@@ -42,3 +42,54 @@ myPromise.then((result) => {
 // catch  =>  if result not came then we use which we given in reject
 //finally =>  if all good then we use
 
+
+//?Example-1
+
+/*
+function foodOrder(isResturantOpen) {
+    return new Promise((resolve,reject) => {
+        console.log("placeing Order....")
+        setTimeout(() => {
+            if (isResturantOpen) {
+                resolve("Order Recevied")
+            } else {
+                reject("Resrurant is Closed!")
+            }
+        },2000)
+    })
+}
+
+foodOrder(false).then((res) => {
+    console.log(res);
+    return "Preparing Food!!1"
+}).then((res) => {
+    console.log(res);
+    return "Out For Delievery"
+}).then((res) => {
+    console.log(res)
+}).catch((error) => {
+    console.log("Error!",error)
+}).finally(() => {
+    console.log("Thank You For Using Our Service")
+})
+
+
+*/
+
+//?Example-2
+
+fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
+    return response.json();
+}).then((data) => {
+    console.log(data)
+}).catch((error) => {
+    console.log(error)
+}).finally(() => {
+    console.log("promise in fetch ")
+})
+
+//? ON RESOLVE => {userId:1,id:1,title:"delectus aut autem",completed:false}
+
+//? ON REJECT => typeeror : invalid url(if url erase)
+
+//?here fetch function it self using behind the scene promise so that we get resolve and reject and you can use finally too
