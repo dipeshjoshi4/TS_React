@@ -1,4 +1,6 @@
-functionVaraible()
-// var functionVaraible = function () {
-//     console.log("let with anyonyumus function")
-// };
+var name = "Dipesh Joshi";
+const sayHello = () => {
+    var name = "xyz"
+    console.log("Hi from arrow function", name);
+}
+sayHello()

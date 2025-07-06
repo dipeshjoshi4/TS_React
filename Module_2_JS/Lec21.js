@@ -78,6 +78,8 @@ foodOrder(false).then((res) => {
 
 //?Example-2
 
+/*
+
 fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
     return response.json();
 }).then((data) => {
@@ -87,6 +89,8 @@ fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
 }).finally(() => {
     console.log("promise in fetch ")
 })
+    
+*/
 
 //? ON RESOLVE => {userId:1,id:1,title:"delectus aut autem",completed:false}
 
