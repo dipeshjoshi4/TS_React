@@ -18,7 +18,7 @@
 //? Please Note:
 //- Primitive Types(like number, string, boolean, null, undefined, symbol, bigint) are not objects.
 
-//?One Way to Create an Object
+//?One Way to Create an Object =>Using object literal (preferred)
 
 const Person = {
     name: "Dipesh",
@@ -35,30 +35,30 @@ const Person = {
 
 // console.log("professional" in Person) //? Output: false
 
-// console.log("toString" in Person) //? Output: true //-here toString is a method of the Object prototype, which is inherited by all objects.so that we see as true.
+// console.log("toString" in Person)
+// //? Output: true //-here toString is a method of the Object prototype, which is inherited by all objects.so that we see as true.
 
 // console.log(Person.hasOwnProperty("toString")); //? Output: false //-hasOwnProperty() checks if the property is directly on the object, not inherited from
 
-//? key and value print at same time [NOT IN ARRAY FORM]
+//! key and value print at same time [NOT IN ARRAY FORM]
 
 //?WITH FOR IN LOOP
 // for (let key in Person) {
 //     console.log(key + " " + Person[key])
 // }
-
-//?Output:
-// name Dipesh  age 25 getName function() { return this.name; }
+// //?Output: name Dipesh  age 25 getName function() { return this.name; }
 
 //?WITH FOR OF LOOP(We do destructuring here to get key and value at same time)
 // for (const [key, value] of Object.entries(Person)) {
 //     console.log(key, value)
 // }
-//?Output:
-// name Dipesh age 25 getName function() { return this.name; }
+// //?Output: name Dipesh age 25 getName function() { return this.name; }
+
+//! key and value print at same time [IN ARRAY FORM]
 
 //?what should Object.entries()do ?
 // console.log(Object.entries(Person)); //? Output: [ [ 'name', 'Dipesh' ], [ 'age', 25 ], [ 'getName', [Function: getName] ] ]
-//it gives us key and value in array form .and we can use it with for of loop to get key and value at same time.
+// - it gives us key and value in array form .and we can use it with for of loop to get key and value at same time.
 
 //?FOR THE GET KEY but in array form
 // console.log(Object.keys(Person)); //? Output: [ 'name', 'age', 'getName]
@@ -70,11 +70,13 @@ const Person = {
 
 
 
-//? Second Way to Create an Object
+//! Second Way to Create an Object => Object Constructor way
 
-// const Person = new Object();
-// Person.name = "Ajay";
-// console.log(Person); // Output: { name: 'Ajay'}
+/*
+const Person = new Object();
+Person.name = "Ajay";
+console.log(Person); // Output: { name: 'Ajay'}
+*/
 
 // console.log(Person instanceof Object);// Output: true
 // console.log(typeof Person); // Output: object

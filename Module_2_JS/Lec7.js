@@ -23,11 +23,11 @@
 /*
 
 class Person {
-    constructor(name) {                // The constructor method is called when a new object is created
-        this._name = name              // The constructor initializes the name property //here "_" is used to indicate that this property is privite
+    constructor(name) {                //? The constructor method is called when a new object is created
+        this._name = name              //? The constructor initializes the name property //here "_" is used to indicate that this property is priv
     }
 }
-const person = new Person("Ajay");     //object creation using the Person class
+const person = new Person("Ajay");     //?object creation using the Person class
 console.log(person.name);
 // Output: Ajay
 
@@ -67,11 +67,14 @@ class Person {
     }
 }
 
-const person = new Person("Ajay");         //making an object using the Person class
+const person = new Person("Ajay");         //?making an object using the Person class
 
-console.log(person.name);           // Accessing the name property using the getter
+console.log(person.name);           //? Accessing the name property using the getter
 
-person.name = "Vijay";             // Attempting to set a new name using the setter
-console.log(person.name);          // Accessing the updated name property using the getter
+person.name = "Vijay";             //? Attempting to set a new name using the setter
+console.log(person.name);          //? Accessing the updated name property using the getter
 
 */
+
+
+

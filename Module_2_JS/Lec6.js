@@ -29,3 +29,7 @@ console.log(counter()); // 3rd call => 2+1 = 3
 */
 
 //?-----------Explanation-----------
+
+//- so here outer function "createCounter()" called once and then it gives his inner function to counter
+//- now inner function is scope its outer but outer function is executing alredy then lexical scope and closure comes in picture
+// - here on 2nd and 3rd time call inner function remember it outer function scope so that we can answer on 2nd and 3rd call

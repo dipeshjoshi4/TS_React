@@ -55,7 +55,11 @@ const User = {
 }
 */
 
-//- when sometime the we dont know if there is this property is in object or not so to rid of error we use this and if not get undefiend 
+//- when sometime the we dont know if there is this property(address and function) is in object or not so to rid of error we use this and if not get undefiend
+
+//?SYNTAX
+//? in "User.getData()" we use "User.getData?.()"     //- while function ?.
+//? in  "User.name.rollno" we use "User.name?.rollno" //- for other ?
 
 // console.log(User.address?.city); //? undefined
 // console.log(User.getName?.()); //? undefined

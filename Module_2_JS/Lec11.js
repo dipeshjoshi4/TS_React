@@ -37,6 +37,7 @@ const originalObject = {
     address: { city: "delhi" },
 };
 
+
 //? point is to make copy of this object there is total two way to copy object
 
 //?1st Way
@@ -76,6 +77,31 @@ Output: A new object with the same structure and values as the original.
 CODE
 JSON.parse(JSON.stringify(originalObject))
 Return a new deeply clone object
+
+*/
+
+//?top level in shallow copy => copy by value not reference
+
+//?CODE
+/*
+const copy = { ...originalObject };
+originalObject.name = "chnage"
+console.log(copy);
+*/
+
+//?Explaination
+/*
+Top-level properties (name, address) are copied by value if they're primitives, or by reference if they're obj
+ 2. name is a primitive string
+
+originalObject.name = "chnage";
+This updates the original object’s name, but the copy.name still points to the original "ajay" because it's a primitive value — copied by value.
+
+3. address is an object:
+The nested address object is copied by reference, not value.
+So if you do:
+originalObject.address.city = "mumbai";
+Then copy.address.city will also be "mumbai" — because both originalObject.address and copy.address refer to the same object in memory.
 
 */
 
