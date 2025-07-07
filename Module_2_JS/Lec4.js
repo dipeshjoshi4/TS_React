@@ -102,3 +102,12 @@
 // The loop creates a new scope for each iteration, so 'i' retains its value for each timeout.
 //- here the last value of 'i' is 3, so it prints 1, 2, 3 three times.
 //- every time for iteration new block scope created with each value of 'i'.
+
+///------------------------------------MIX Example-----------------------------
+
+// let x = 1;
+// function func() {
+//     console.log(x);
+//      var x = 2;
+// }
+// func(); //?Undefiend

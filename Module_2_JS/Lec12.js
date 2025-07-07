@@ -57,7 +57,7 @@ const users = [
 //OUTPUT = -1
 
 
-//?map()
+//?--------------------------------------map()----------------------------------------
 //- Applies a function to each element and returns a new array.
 //- create a new array by applying a function to each elements
 
@@ -126,10 +126,6 @@ const users = [
 // console.log(nameArray);
 //?OUTPUT
 // ["JOHN DOE","EMMA STONE","MAX","OLIVA SMITH"]
-
-
-
-
 
 
 

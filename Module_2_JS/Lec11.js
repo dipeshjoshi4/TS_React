@@ -56,8 +56,22 @@ originalObject.address.city = "Mumbai";
 // console.log(deepCopy.address.city) //?delhi
 // console.log(shallowCopy.address.city) //?Mumbai
 
+//!----------------------------------------------------------------------------------------------------------------------------------
 
-//?little explaintion on deepcopy cloned object
+
+//! 1-This Method Drawbacks
+
+/*
+| ❌ Limitation                     | 💬 Explanation                                   |
+| ---------------------------------- | -------------------------------------------------  |
+| ❌ Functions are lost             | Functions inside the object are not preserved.    |
+| ❌ Dates become strings           | `Date` objects turn into strings.                 |
+| ❌ `undefined`, `Infinity`, `NaN` | These are lost or misrepresented.                 |
+| ❌ Circular references break it   | If object refers to itself, this throws an error. |
+*/
+
+
+//! 2-little explaintion on deepcopy cloned object
 
 //? JSON.stringify(originalObject)
 /*
@@ -80,13 +94,13 @@ Return a new deeply clone object
 
 */
 
-//?top level in shallow copy => copy by value not reference
+//!3-top level in shallow copy => copy by value not reference
 
 //?CODE
 /*
 const copy = { ...originalObject };
-originalObject.name = "chnage"
-console.log(copy);
+originalObject.name = "vijay"
+console.log(copy); //?Nothing Chnage
 */
 
 //?Explaination
@@ -105,13 +119,47 @@ Then copy.address.city will also be "mumbai" — because both originalObject.add
 
 */
 
-//?This Method Drawbacks
 
-/*
-| ❌ Limitation                     | 💬 Explanation                                   |
-| ---------------------------------- | -------------------------------------------------  |
-| ❌ Functions are lost             | Functions inside the object are not preserved.    |
-| ❌ Dates become strings           | `Date` objects turn into strings.                 |
-| ❌ `undefined`, `Infinity`, `NaN` | These are lost or misrepresented.                 |
-| ❌ Circular references break it   | If object refers to itself, this throws an error. |
-*/
+//!4- what happen when object made Behind the scene
+
+//?CODE
+
+// const originObj = {
+//     fname: "Dipesh",
+//     address: {
+//         city: "delhi",
+//         pincode: 110011,
+//     },
+// }
+
+//?Expalin
+//- whenever a object made it need memory space
+
+
+//?stack
+//- the variable obj store in stack memory.but it doesn't contain full object - it stores a reference(memory address) point to the actual object in the heap memory
+
+//?Heap
+//- the actual object {name,address} stores in the heap.
+//- {name:"ajay"} is primitive,stored directly inside the object in the heap
+//- address is another object, so its stored separately in the heap,and the main object holds the refenrce of it
+
+//?Notes
+// - inside the address object
+// - city:"Delhi" and pincode:110011 are both primitives values
+// - these primitives are stored directly inside the object
+// - they do not have their own seprated refernces
+
+//?So there is separate refernce for city and pincode
+// - no there is one refernce for entire address object
+// - Both city and pincode are part of that object - they are not stored separately and dont have indvidual reference
+
+// let name = "Ajay";
+//- since ajay is primitive datatype and not part of any object---itsjust a varaible--->  directly store in stack memory
+
+// - name = "Vijay"
+// - then a new primitive "vijay" is created and store in the stack
+// - name now point to a vijay
+// - 'Ajay' Variable is garbage if no variable is pointing to it
+
+

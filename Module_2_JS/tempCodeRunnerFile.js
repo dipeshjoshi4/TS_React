@@ -1,6 +1,6 @@
-var name = "Dipesh Joshi";
-const sayHello = () => {
-    var name = "xyz"
-    console.log("Hi from arrow function", name);
+let x = 1;
+function func() {
+    console.log(x);
+    var x = 2;
 }
-sayHello()
+func(); //?Undefiend
