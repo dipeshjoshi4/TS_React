@@ -18,12 +18,15 @@
 //?Windows vs Global Object
 
 //? Browser :
-//- In a browser, the global object is the window object, which contains properties and methods that are globally accessible.
-//- varible declare with var will be attached to the window object, making it accessible globally. while those declared with let or const will not be attached to the window object and will not be globally accessible.
+//- In a browser, the global object is the window object,
+//- varible declare with var in the global scope become properties of the window .
+//- while those declared with let or const will not be attached to the window object and will not be globally accessible.
 
 //?Node.js:
 //- In Node.js, the global object is simply called global, and it serves a similar purpose.
-//- Variables declared with var in Node.js will be attached to the global object, while those declared with let or const will not be attached to the global object and will not be globally accessible.
+//- Variables declared with var in Node.js will be not attached to the global object,
+//- while those declared with let or const will not be attached to the global object and will not be globally accessible.
+//- only var delcared Varaibles will be part of window in browser
 
 
 //?questions : arrow function look clean but they always behave same as normal function
