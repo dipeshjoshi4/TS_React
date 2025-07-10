@@ -24,7 +24,7 @@
 
 //- so here sayHello() is find in prototype but could not met and error comes
 
-//? let add sayHello() in array Prototype
+//! let add sayHello() in array Prototype
 
 // const arr = [1, 2, 3];
 // Array.prototype.sayHello = function () {
@@ -36,12 +36,12 @@
 
 //console.log(arr.__proto__) //?OUTPUT - we can see in browser console array proto had sayHello() and that's Why we get Answer
 
-//? Prototype chaining
+//! Prototype chaining
 // => Array =>Array.prototype => Object.prototype => null
 
 //- so js first check in file your method then check in array prototype.so how we can add the method in array prototype ?
 
-//? find last element of array
+//! find last element of array
 
 // const arr = [1, 2, 3];
 // Array.prototype.last = function () {
@@ -50,7 +50,7 @@
 // }
 // console.log(arr.last()); //?OUTPUT - 3
 
-//?When the constructor not have and we have to make object prototype
+//! When the constructor not have and we have to make object prototype like this
 
 //- this below Person() work as constructor(special function) means when the object create the constructor execute by getting value
 
@@ -63,5 +63,71 @@
 // const user = new Person("Ajay");
 // console.log(user.greet()) //?OUTPUT - Hello Ajay
 
-//? Using Object.create() for in heritance
+//! Using Object.create() for in heritance
 
+//- either you make shallow copy and use or use prototype magic
+
+// const userModule = {
+//     sayHi: function () {
+//         return `Hi ${this.name}`
+//     }
+// }
+// const user2 = Object.create(userModule);
+// user2.name = "Dipesh";
+// console.log(user2.sayHi())
+
+//- so here you inherit property from userModule and use for particular task . you dont copy or not have permanately sayHi()
+
+// const user3 = Object.assign({}, userModule);
+// user3.name = "Ajay From Assign"
+// console.log(user3.sayHi());
+
+//- so here the copy object have in user3 and he had both property of name and sayHi() (shallow Copy)
+
+//!Traditional Way - Inheritance
+
+// //?create function who work as constructor for Animal
+// function Animal(name) {
+//     this.name = name
+// }
+
+// //?mak proto of animal
+// Animal.prototype.walk = function () {
+//     return `${this.name} is walking`
+// }
+
+// //?create function who work as constructor for Dog
+// function Dog(name) {
+//     this.name = name
+// }
+
+// //?inherit Animal prototype so when object create Animal() execute and walk property we get it
+// Dog.prototype = Object.create(Animal.prototype);
+// Dog.prototype.bark = function () {
+//     return `${this.name} is barking`;
+// }
+
+// const dog = new Dog("Tommy") //?creating object
+
+// console.log(dog.bark()); //?Tommy is Barking
+// console.log(dog.walk()); //?Tommy is Walking
+
+//! Transition to ES6 Classes
+
+class Animal {
+    constructor(name) {
+        this.name = name
+    }
+    walk() {
+        return `${this.name} is walking`
+    }
+}
+class Dog extends Animal {
+    bark() {
+        return `${this.name} is barking`
+    }
+}
+
+const dog = new Dog("Lalu");
+console.log(dog.bark()); //?Lalu is barking
+console.log(dog.walk()); //? Lalu is Walking
