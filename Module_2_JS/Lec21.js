@@ -97,3 +97,4 @@ fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
 //? ON REJECT => typeeror : invalid url(if url erase)
 
 //?here fetch function it self using behind the scene promise so that we get resolve and reject and you can use finally too
+
