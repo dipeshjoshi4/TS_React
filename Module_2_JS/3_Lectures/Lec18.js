@@ -114,6 +114,7 @@
 
 //! Transition to ES6 Classes
 
+/*
 class Animal {
     constructor(name) {
         this.name = name
@@ -131,3 +132,4 @@ class Dog extends Animal {
 const dog = new Dog("Lalu");
 console.log(dog.bark()); //?Lalu is barking
 console.log(dog.walk()); //? Lalu is Walking
+*/

@@ -1,5 +1,9 @@
 //! Promise
 
+
+// - now days we are not using promise direct we use libraray framwork but we can know that how promise bheind work
+// - Promise is a way to handle asynchronous operation in javascript
+
 //? What is a Promise in JavaScript ?
 
 // ● A Promise is an object representing the eventual completion(or failure) of an asynchronous operation.
@@ -82,6 +86,7 @@ foodOrder(false).then((res) => {
 
 fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
     return response.json();
+
 }).then((data) => {
     console.log(data)
 }).catch((error) => {
@@ -98,3 +103,34 @@ fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
 
 //?here fetch function it self using behind the scene promise so that we get resolve and reject and you can use finally too
 
+//?Example-3
+/*
+function Shop(isShopOpen) {
+    return new Promise((resolve, reject) => {
+
+        console.log("Taking Grocery Order....")
+        setTimeout(() => {
+            if (isShopOpen) {
+                resolve("Grocery Reserved")
+            } else {
+                reject("Shop Is Close")
+            }
+        }, 3000)
+
+    })
+}
+
+Shop(true).then((res) => {
+    console.log(res);
+    return "Packing Grocery"
+}).then((res) => {
+    console.log(res);
+    return "Grocery Out For Delivery"
+}).then((res) => {
+    console.log(res)
+}).catch((error) => {
+    console.log("Error!", error)
+}).finally(() => {
+    console.log("Thank You For Using Our Service")
+})
+    */
