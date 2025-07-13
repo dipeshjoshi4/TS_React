@@ -1,6 +1,5 @@
 //! Promise
 
-
 // - now days we are not using promise direct we use libraray framwork but we can know that how promise bheind work
 // - Promise is a way to handle asynchronous operation in javascript
 
@@ -45,7 +44,6 @@ myPromise.then((result) => {
 //result  =>  which we given in resolve
 // catch  =>  if result not came then we use which we given in reject
 //finally =>  if all good then we use
-
 
 //?Example-1
 
@@ -134,3 +132,41 @@ Shop(true).then((res) => {
     console.log("Thank You For Using Our Service")
 })
     */
+
+//?Example-4
+
+//- Promise.all is method that take array pof promise and return new promise that resolves when all promises in the array resolve or rejects if any one promise in the array rejects.
+
+// Assume 2 fetch function means 2 api calls and wait for both to resolve or reject
+
+const fetchUser1 =
+  fetch(
+    'https://jsonplaceholder.typicode.com/todos/1'
+  ).then(
+    (response) =>
+      response.json()
+  );
+const fetchUser2 =
+  fetch(
+    'https://jsonplaceholder.typicode.com/todos/2'
+  ).then(
+    (response) =>
+      response.json()
+  );
+const fetchUser3 =
+  fetch(
+    'https://jsonplaceholder.typicode.com/todos/3'
+  ).then(
+    (response) =>
+      response.json()
+  );
+
+Promise.all([fetchUser1, fetchUser2, fetchUser3,]).then((users) => {
+  console.log("All Users Loaded");
+  users.forEach((user) => console.log(user.name, user.email));
+})
+  .catch((error) => {
+    console.log("Error Fectching Users Information", error)
+  })
+
+
