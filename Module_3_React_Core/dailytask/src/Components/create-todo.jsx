@@ -1,12 +1,25 @@
-// import React from "react"
-
 const CreateTodo = () => {
+
+    const task = 8;
+
+    // const countTask = () => {
+    //     if (task === 0) {
+    //         return "No Task Is Available!!!"
+    //     } else {
+    //         return `Total Task is ${task}`;
+    //     }
+    //     return task === 0 ? "No Task Is Available!!!" : `Total Task is ${task}`
+    // }
+
+    const countTask = () => {
+        return task === 0 ? "No Task Is Available!!!" : `Total Task is ${task}`
+    }
+
     return (
-        <div>
-            <h1>Hello CreateTodo</h1>
-        </div>
+        <>
+            <h1>{countTask()}</h1>
+            <button>Add Task</button>
+        </>
     )
-
 }
-
 export default CreateTodo;

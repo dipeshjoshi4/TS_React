@@ -1,3 +1,10 @@
+
+
+//!-----------------------------------------------------------------------------------------------------------
+                                        //MODULE-3-NOTES
+//!-----------------------------------------------------------------------------------------------------------
+
+
 //! React Basics
 // - Building Components
 // - JSX & Babel
@@ -156,4 +163,58 @@
 
 //? - here in vite through we make react project and here babel not use here vite use esbuild for work as convert jsx into js as transpile
 //? - you can search esbuild in file and you found at dependecy
-//? - you can modify and use any transpiler which are famouse 
+//? - you can modify and use any transpiler which are famouse
+
+//!45 Lecture-5-React Fragments: Adding Elements Seamlessly
+
+// - we see babel transpile in js code .but if you see then you will notice the code which converted its not pure js there many things which is not js
+//- so at end of the day the many bundle(webpacks) which we use either is rollup,parcel..... are cpnverted them in js and putit on server
+
+//? Moving to react fragment
+//- when we write jsx there is one rule we have to put multiple things then it must be in parent element means
+const greet = () => {
+    return (
+        <div>
+            <h1>hello</h1>
+            <button>Childrean</button>
+        </div>
+    )
+}
+// -so when we transpile this code with babel it convert in js and js make object and accept make childrean thats why we have one parent required
+
+//- Now react internally gives us <React.Fragment></React.Fragment> or <></>. we can simply use it as parent and get rido unnecessary div
+
+//!46 Lecture-6-Using JavaScript Expressions Inside JSX
+
+//- js code writes inside jsx
+//- in js you can {2*3}, you make function ,variable all the things you do here same but above return which want declare
+
+//?------------------------------------------------------------------CODE-----------------------------------------------------
+
+/*
+const CreateTodo = () => {
+    const task = 8;
+
+    // const countTask = () => {
+    //     if (task === 0) {
+    //         return "No Task Is Available!!!"
+    //     } else {
+    //         return `Total Task is ${task}`;
+    //     }
+    //     return task === 0 ? "No Task Is Available!!!" : `Total Task is ${task}`
+    // }
+
+    const countTask = () => {
+        return task === 0 ? "No Task Is Available!!!" : `Total Task is ${task}`
+    }
+
+    return (
+        <>
+            <h1>{countTask()}</h1>
+            <button>Add Task</button>
+        </>
+    )
+}
+export default CreateTodo;
+
+*/
