@@ -227,4 +227,52 @@ export default CreateTodo;
 
 //- Attrivutes provide supporting role for any Tag/element
 
+//?---------------------------------------Example-1-------------------------------------------
+//?Button Diabled and apply inline style
 
+/*
+const isDisable = true;
+return (
+    <>
+        <h1 style={{ color: "red", fontSize: "80px" }} className="btn">{countTask()}</h1>
+        <button disabled={isDisable} value="add some value">Add Task</button>
+    </>
+)
+*/
+
+//?---------------------------------------Example-2-------------------------------------------
+//?apply object style in inline
+
+/*
+const style = {
+    color: "pink",
+    fontSize: "18px"
+}
+return (
+    <>
+        <h1 style={style} className="btn">{countTask()}</h1>
+        <button disabled={isDisable} value="add some value">Add Task</button>
+    </>
+)
+*/
+
+//!48 Lecture-8-Handling Events in React Like a Pro
+
+/*
+const CreateTodo = () => {
+
+    let task = 0;
+    const handleClick = () => {
+        task++;
+        console.log("Button Clicked", task)
+    }
+    return (
+        <>
+            <h1 style={{ color: "red", fontSize: "80px" }} className="btn" >{task}</h1>
+            <button disabled={isDisable} value="add some value" onClick={handleClick}>Add Task</button>
+        </>
+    )
+}
+*/
+
+//so here we see handlclcik work very weell but it cant change on Ui .and thats where our concept of state who can handle UI 
