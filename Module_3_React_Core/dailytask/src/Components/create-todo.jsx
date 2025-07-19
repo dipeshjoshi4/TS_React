@@ -17,7 +17,7 @@ const CreateTodo = () => {
 
     return (
         <>
-            <h1>{countTask()}</h1>
+            <h1 className="btn">{countTask()}</h1>
             <button>Add Task</button>
         </>
     )
