@@ -218,3 +218,13 @@ const CreateTodo = () => {
 export default CreateTodo;
 
 */
+
+//- if you want cvalue in string then you have to use `-----${}` and $ for js expression before curly bracket
+
+//!47 Lecture-7-Setting Attributes Dynamically in JSX
+
+//- in html element if we want to pass attributes
+
+//- Attrivutes provide supporting role for any Tag/element
+
+
