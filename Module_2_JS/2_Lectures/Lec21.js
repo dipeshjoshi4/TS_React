@@ -133,40 +133,35 @@ Shop(true).then((res) => {
 })
     */
 
+//?Extra Example:
+
+// fetch('https://dummyjson.com/test').then((response) => {
+//     return response.json();
+// }).then((data) => {
+//     console.log(data)
+// }).catch((error) => {
+//     console.log(error)
+// })
+
 //?Example-4
 
-//- Promise.all is method that take array pof promise and return new promise that resolves when all promises in the array resolve or rejects if any one promise in the array rejects.
+//?Promise.all
+//- Promise.all is method that take array of promise and return new promise that resolves when all promises in the array resolve
+//- or rejects if any one promise in the array rejects.
 
-// Assume 2 fetch function means 2 api calls and wait for both to resolve or reject
+//?Situation :
+//- 2 promise / 2 netweokr api u call and if both succes then requirement acheived
 
-const fetchUser1 =
-  fetch(
-    'https://jsonplaceholder.typicode.com/todos/1'
-  ).then(
-    (response) =>
-      response.json()
-  );
-const fetchUser2 =
-  fetch(
-    'https://jsonplaceholder.typicode.com/todos/2'
-  ).then(
-    (response) =>
-      response.json()
-  );
-const fetchUser3 =
-  fetch(
-    'https://jsonplaceholder.typicode.com/todos/3'
-  ).then(
-    (response) =>
-      response.json()
-  );
+//?Example-1
 
-Promise.all([fetchUser1, fetchUser2, fetchUser3,]).then((users) => {
-  console.log("All Users Loaded");
-  users.forEach((user) => console.log(user.name, user.email));
-})
-  .catch((error) => {
-    console.log("Error Fectching Users Information", error)
-  })
+// const fetchUser1 = fetch('https://jsonplaceholder.typicode.com/users/1').then(res => res.json())
+// const fetchUser2 = fetch('https://jsonplaceholder.typicode.com/users/2').then(res => res.json())
+// const fetchUser3 = fetch('https://jsonplaceholder.typicode.com/users/3').then(res => res.json())
 
+// Promise.all([fetchUser1, fetchUser2, fetchUser3]).then((users) => {
+//     console.log("users are loaded!!")
+//     users.forEach(user => console.log(user.name,user.email))
+// }).catch((err) => {
+//     console.log("Users Failed To Fetch", err)
+// })
 
