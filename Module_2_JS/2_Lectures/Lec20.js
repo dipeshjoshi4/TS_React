@@ -27,22 +27,35 @@
 
 // Source of Docs - https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events
 
-console.log("start")
+//?Example-1
 
+console.log("start")
 document.getElementById("grandParents").addEventListener("click", () => {
     console.log("grandParent Clicked")
 })
-
 document.getElementById("Parents").addEventListener("click", () => {
+    console.log("Parents Clicked")
+})
+document.getElementById("Child").addEventListener("click", () => {
+    console.log("Child Clicked")
+})
+
+
+//-here when we click on child -> parent and grandparent also occur the event .thats called the event Bubbling from target to its parent
+//-here child to grandparent
+
+//?Example-2
+//?But if you wanna stop event bubbling
+/*
+document.getElementById("Parents").addEventListener("click", (e) => {
+    e.stopPropagation()
     console.log("Parents Clicked")
 })
 
 document.getElementById("Child").addEventListener("click", () => {
     console.log("Child Clicked")
 })
-
-//-here when we click on child and parent and grandparent also occur the event .thats called the event Bubbling
-//from target to its parent .here child to grandparent
+*/
 
 const menu = document.getElementById("menu");
 

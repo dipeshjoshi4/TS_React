@@ -275,4 +275,13 @@ const CreateTodo = () => {
 }
 */
 
-//so here we see handlclcik work very weell but it cant change on Ui .and thats where our concept of state who can handle UI 
+//so here we see handlclcik work very weell but it cant change on Ui .and thats where our concept of state who can handle UI
+
+//!49 Lecture-9-Understanding State in React (with Examples)
+
+// - in react nothing chnage directly in dom
+// - first virtual dom made - actual dom copy => virtal dom
+//- what chnage you made it happen in copy of virtual dom which is call new virtual dom
+
+//- diffing algorithm see what is chnage between VDOM and New V DOM and that chnage made in Original DOM(BrowserDOM)
+//- that Process called Reconciliation

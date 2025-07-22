@@ -13,3 +13,10 @@
 // Export: You can export functions, variables, or classes from a module using the export keyword.
 // Import: You can import the exported code into another file using the import keyword.
 
+
+//?Memo code refine
+//?even bubbling e.stoppropagate function modify
+
+//?
+
+

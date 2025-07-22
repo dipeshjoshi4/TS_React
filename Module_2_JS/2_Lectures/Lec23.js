@@ -68,3 +68,25 @@ console.timeEnd("with memo 2nd call") //?With memo 1st call - 0.381ms
 // const cahce = {
 //     3_4:7
 // }
+
+//?Modify refine code of memoziation
+
+//?Refine Code for Memo
+/*
+function memoize() {
+    const cahce = new Map() // const cahce = {}
+    return function (a, b) {
+        const key = `${a}_${b}`;
+        // if (cahce[key]) {
+        //     return cahce[key]
+        // }
+        if (cahce.has(key)) {
+            return cahce.get(key)
+        }
+        for (let i = 0; i < 1e8; i++) { }
+        const result = a + b;
+        cahce.set(key, result)    //? cahce[key] = result
+        return result
+    }
+}
+*/
