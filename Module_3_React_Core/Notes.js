@@ -1,7 +1,7 @@
 
 
 //!-----------------------------------------------------------------------------------------------------------
-                                        //MODULE-3-NOTES
+//MODULE-3-NOTES
 //!-----------------------------------------------------------------------------------------------------------
 
 import { useState } from "react"
@@ -364,3 +364,39 @@ export default CreateTodo;
 */
 
 //!51 Lecture-12-Handling User Input in Forms & Events
+
+//- here we make chnage in search componenet which is reflect on <h2>
+//- here we see when on elatter type and vdom vs newvdom created and diffing and actual dom chnage .....
+//- on every latter you write in searchbox the chnage reflect with efficent way
+
+/*
+const CreateTodo = () => {
+    const [count, setCount] = useState(0);
+    const [input, setInput] = useState("");
+
+    const handleClick = () => {
+        setCount(count + 1);
+    }
+
+    const handleChange = (event) => {
+        setInput(event.target.value)
+    }
+    return (
+        <>
+            <h1 className="btn">With State : {count}</h1>
+            <input type="text" onChange={handleChange} />
+            <button onClick={handleClick}>Add Task</button>
+            <h2>{input}</h2>
+        </>
+    )
+}
+export default CreateTodo;
+
+*/
+
+//!52 Lecture-11-Rendering Lists Dynamically with Map function
+
+
+
+
+
