@@ -17,11 +17,11 @@
 // - Handling Inputs
 // - Mapping Lists
 
-//! # 41 Lecture-1-Setting Up a New React Project the Right Way
+//! # 40 Lecture-1-Setting Up a New React Project the Right Way
 
 // - as name suggest basic react project setup with name => "dailytask"
 
-//! # 42 Lecture-2-Building Your First Reusable Component
+//! # 41 Lecture-2-Building Your First Reusable Component
 
 //? Component-Based Architecture
 // - Break UI Into smaller,resuables pieces(Components)
@@ -64,7 +64,7 @@
 //     </StrictMode>,
 // )
 
-//! 43 Lecture-3-JSX & Babel: How They Work Together?
+//! 42 Lecture-3-JSX & Babel: How They Work Together?
 
 // Introducing the New JSX Transform(Ref this - https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html )
 
@@ -108,7 +108,7 @@
 
 // 8️⃣ Finally, the browser renders plain HTML - <h1>Hello</h1>
 
-//!44 Lecture-4-Naming Conventions: CamelCase, PascalCase & Kebab-Case Simplified
+//!43 Lecture-4-Naming Conventions: CamelCase, PascalCase & Kebab-Case Simplified
 
 // - In this lecture, I have covered the best practices and naming conventions we use when creating components. I’ve also shared the workflow before React 17 and how it changed after React 17.
 
@@ -165,7 +165,7 @@
 //? - you can search esbuild in file and you found at dependecy
 //? - you can modify and use any transpiler which are famouse
 
-//!45 Lecture-5-React Fragments: Adding Elements Seamlessly
+//!44 Lecture-5-React Fragments: Adding Elements Seamlessly
 
 // - we see babel transpile in js code .but if you see then you will notice the code which converted its not pure js there many things which is not js
 //- so at end of the day the many bundle(webpacks) which we use either is rollup,parcel..... are cpnverted them in js and putit on server
@@ -184,7 +184,7 @@ const greet = () => {
 
 //- Now react internally gives us <React.Fragment></React.Fragment> or <></>. we can simply use it as parent and get rido unnecessary div
 
-//!46 Lecture-6-Using JavaScript Expressions Inside JSX
+//!45 Lecture-6-Using JavaScript Expressions Inside JSX
 
 //- js code writes inside jsx
 //- in js you can {2*3}, you make function ,variable all the things you do here same but above return which want declare
@@ -221,7 +221,7 @@ export default CreateTodo;
 
 //- if you want cvalue in string then you have to use `-----${}` and $ for js expression before curly bracket
 
-//!47 Lecture-7-Setting Attributes Dynamically in JSX
+//!46 Lecture-7-Setting Attributes Dynamically in JSX
 
 //- in html element if we want to pass attributes
 
@@ -256,7 +256,7 @@ return (
 )
 */
 
-//!48 Lecture-8-Handling Events in React Like a Pro
+//!47 Lecture-8-Handling Events in React Like a Pro
 
 /*
 const CreateTodo = () => {
@@ -277,7 +277,7 @@ const CreateTodo = () => {
 
 //so here we see handlclcik work very weell but it cant change on Ui .and thats where our concept of state who can handle UI
 
-//!49 Lecture-9-Understanding State in React (with Examples)
+//!48 Lecture-9-Understanding State in React (with Examples)
 
 // - in react nothing chnage directly in dom
 // - first virtual dom made - actual dom copy => virtal dom
@@ -285,3 +285,28 @@ const CreateTodo = () => {
 
 //- diffing algorithm see what is chnage between VDOM and New V DOM and that chnage made in Original DOM(BrowserDOM)
 //- that Process called Reconciliation
+
+//?State in React
+
+//- state allows us to manage and display chnaging data in our application.
+//- when we use normal variable in react.they dont directly reflect changes in the DOM
+//- State Variables,state is used to tell react,watch the variable and if it chnage then reflect on the DOM
+
+//Note -for the v.DOM,How Changes in the V.DOM get Compared to the original DOM,and then updates are reflected on the actual DOM
+
+//!49 Lecture-10-Introduction to React Hooks: The Functional Revolution
+
+//- Hooks are functions that allows you use React features in functional Componenet
+//- In Simple Words,Hooks are functions that make functional componments work like class component
+
+//?Problem With Class Component ?
+
+//? 1-Class Component Challneges:
+//- Using Class components can be a bit  difficult because of this keyword confusion
+
+//?2-Boilerplate Code
+//- class coponents often require writing repetitive boilerplate code ,which can make the codebase lengthy and less maintable
+
+//?3-Hooks Advnatgae:
+//- with hooks functional components can now have state and other react features,making them just as powerfull as class components
+//- but with a similar and more readable syntax
