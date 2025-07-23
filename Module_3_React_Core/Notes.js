@@ -4,6 +4,8 @@
                                         //MODULE-3-NOTES
 //!-----------------------------------------------------------------------------------------------------------
 
+import { useState } from "react"
+
 
 //! React Basics
 // - Building Components
@@ -310,3 +312,55 @@ const CreateTodo = () => {
 //?3-Hooks Advnatgae:
 //- with hooks functional components can now have state and other react features,making them just as powerfull as class components
 //- but with a similar and more readable syntax
+
+//!50 Lecture-11-Using useState for State Management
+
+//?CODE
+
+//?for first step of understanding of state
+
+/*
+import { useState } from "react";
+const CreateTodo = () => {
+    let task = 0;
+    const countArr = useState(0);     // => countArr is gives use array [0,f()]
+    const firstValue = countArr[0];   // => 0-intial value
+    const secondValue = countArr[1]   // => f()-which we used
+    const handleClick = () => {
+        task++;
+        secondValue(firstValue + 1)
+        console.log("Button Clicked", task)
+    }
+    return (
+        <>
+            <h1 className="btn">Without State : {task}</h1>
+            <h1 className="btn">With State :{firstValue}</h1>
+            <button onClick={handleClick}>Add Task</button>
+        </>
+    )
+}
+export default CreateTodo;
+*/
+
+//?- Here we see for the count increment we need to make 3 constant
+//?- made the destructing in the game and put array for value passing  like this
+
+//?CODE
+/*
+import { useState } from "react";
+const CreateTodo = () => {
+    const [count, setCount] = useState(0); // => countArr is gives use array [0,f()]
+    const handleClick = () => {
+        setCount(count + 1);
+    }
+    return (
+        <>
+            <h1 className="btn">With State : {count}</h1>
+            <button onClick={handleClick}>Add Task</button>
+        </>
+    )
+}
+export default CreateTodo;
+*/
+
+//!51 Lecture-12-Handling User Input in Forms & Events
