@@ -394,9 +394,27 @@ export default CreateTodo;
 
 */
 
-//!52 Lecture-11-Rendering Lists Dynamically with Map function
+//!52 Lecture-13-Rendering Lists Dynamically with Map function
 
+//- with map we put list on react UI
 
+//? key in react
+//- key helps react identify which item have chnaged are remove or added
 
+//?CODE
+/*
+const CreateTodo = () => {
+    const tasks = ["Task1", "Task2", "Task3", "Task4", "Task5"]
+    return (
+        <>
+            <ul>
+                {
+                    tasks.map((task) => <li key={task}>{task}</li>)
+                }
+            </ul>
+        </>
+    )
+}
+export default CreateTodo;
 
-
+*/
