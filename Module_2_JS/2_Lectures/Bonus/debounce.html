@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Debouce</title>
+</head>
+
+<body>
+    <input type="text" id="search" placeholder="Search Product">
+
+</body>
+<script>
+
+    function debounce(fn,delay){
+        let timer;
+        return function(...args){
+            clearTimeout(timer)
+            timer = setTimeout(()=>fn(...args),delay)
+        }
+    }
+
+    const searchAPI=debounce((query)=>{
+            console.log("Search For ",query)
+    },5000)
+
+    document.getElementById("search").addEventListener("input",(e)=>{
+        searchAPI(e.target.value)
+    })
+
+</script>
+</html>
