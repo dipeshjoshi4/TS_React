@@ -420,3 +420,115 @@ export default CreateTodo;
 */
 
 //!53 Lecture-14- Web DevTools Deep Dive: Inspect to Network
+
+//!54 Lecture-15-Mastering Props: Passing Data Between Components
+
+//?Props
+//- in react sharing data from one Components to another Components OR sharing data from Parent Components to child Components
+
+//?Situation
+//like DATA from A Components to B and B to C or C to D Components then you have to use Context API which we learn in hooks
+
+//?Example
+//here Card is Parent Components & UserCard is Child Components
+
+//props gives data as object so we have to destructing them
+
+//!FIRST WAY OF SYNTAX
+
+//?PARENT COMPONENT
+/*
+import CreateTodo from "./create-todo"
+import UserCard from "./UserCard";
+const Card = () => {
+    return (
+        <>
+            <h1>Hello Card Componenet</h1>
+            <CreateTodo />
+            <UserCard Name="Dipesh Joshi" Professional="Sodtware Engineer" />
+            <UserCard Name="Hardik Joshi" Professional="Data Engineer" />
+        </>
+    )
+}
+export default Card;
+*/
+
+//?CHILD COMPONENT
+/*
+import React from "react";
+const UserCard = (props) => {
+    const { Name, Professional } = props;
+    return (
+        <div>
+            <h3>{Name}</h3>
+            <p>{Professional}</p>
+        </div>
+    )
+
+}
+export default UserCard
+
+*/
+
+//!SECOND WAY OF SYNTAX
+//?CHILD COMPONENT
+/*
+import React from "react";
+const UserCard = ({ Name, Professional }) => {
+    return (
+        <div>
+            <h3>{Name}</h3>
+            <p>{Professional}</p>
+        </div>
+    )
+
+}
+export default UserCard
+
+*/
+
+//?React rule says
+//is whatever data trasfer its comes from parent to child means top to bottom
+
+//?Not A Good Practise
+// data whatever comes from parent please dont change in child component
+// props are immutable .so please dont change
+//?Example-1
+// const UserCard = ({ Name, Professional }) => {
+//     name = "maxi armani"
+//     return (<div></div>)
+// }
+
+
+//?Recommanded Practise
+//you can give any default value to props if not given as props
+//- you can not pass name prop then what
+
+//?Example
+//?Parent
+//  <UserCard Professional="Sodtware Engineer" />
+//?Child
+// const UserCard = ({ Name = "Dafult Name", Professional }) => {}
+
+
+//?Recommanded Practise
+//- but when you pass the valeu but its falsy value like null,empty,undefiend
+
+//?Example
+//?Parent
+//  <UserCard Name="" Professional="Sodtware Engineer" />
+//?Child
+// const UserCard = ({ Name, Professional }) => {
+//     const newName = Name || "Default Manager";
+//     return (
+//         <div >
+//             <h3>{newName}</h3>
+//             <p>{Professional}</p>
+//         </div>
+//     )
+// }
+
+//?Babel
+//- when browser dont understand Es6 a mordern js then babbel transpile them into es5 .which browser understand
+//- and when our jsx write babbel transpile into js but this is nor pure js 
+//- so we have bundler like vite,parcel which converted them into pure JS
