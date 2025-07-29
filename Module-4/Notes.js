@@ -1,7 +1,7 @@
 
 //! Module-4-Hands-on Project - Learn By Building
 
-//?56 Lecture-1-Introduction: Project Overview, Planning, and the Developer Mindset
+//!56 Lecture-1-Introduction: Project Overview, Planning, and the Developer Mindset
 
 //?Developer who built application 2 things is Must
 
@@ -18,6 +18,50 @@
 //?company most time follow Agile Method Not waterfall method
 //?Agile is like
 // - real time feedback
-// - sprint wise work 
-// - real time suggestions 
-// - Real requirement seen by client or product owner 
+// - sprint wise work
+// - real time suggestions
+// - Real requirement seen by client or product owner
+
+//!57 Lecture-2-Design Breakdown: Header + Main with Styling
+
+// just make normal structure and give little bit style for look like structure
+
+//?App.jsx
+/*
+
+import React from "react";
+import "./app.css";
+
+const App = () => {
+  return (
+    <div className="app">
+      <header className="app_header">Jira Board</header>
+      <main className="app_main">
+        <section className="task_Column">Section-1</section>
+        <section className="task_Column">Section-1</section>
+        <section className="task_Column">Section-1</section>
+        <section className="task_Column">Section-1</section>
+      </main>
+    </div>
+  );
+};
+export default App;
+*/
+
+//?App.css
+/*
+.app{
+  display:grid;
+  grid-template-rows: 150px auto;
+}
+.app_main{
+  display: flex;
+  justify-content: space-evenly;
+  padding:20px 8%;
+}
+.task_Column{
+  width:30%;
+  background-color: red;
+  margin:20px;
+}
+*/
