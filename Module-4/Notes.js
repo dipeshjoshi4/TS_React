@@ -65,3 +65,17 @@ export default App;
   margin:20px;
 }
 */
+
+//?
+
+//?App.jsx
+/*
+const App = () => {
+  return (
+    <div className="app">
+      <h1 style={{ textAlign: "center", margin: "50px" }}>Jira Board</h1>
+      <TaskForm />
+    </div>
+  );
+};
+*/
