@@ -66,7 +66,12 @@ export default App;
 }
 */
 
-//?
+//?60 Lecture-3-Building the Header Layout – JSX and Component Basics
+
+//- we make structure of header jsx
+//- make task form and put all the structure then import task form component into App.jsx
+//?our folder structure 
+//is for every componentent there will be component folder and there we have componenet specific CSS file too
 
 //?App.jsx
 /*
@@ -78,4 +83,35 @@ const App = () => {
     </div>
   );
 };
+*/
+
+//?task-form.jsx
+/*
+import "./task-form.css";
+const TaskForm = () => {
+    return (
+        <header className="app_header">
+            <form>
+                <input type='text' placeholder='Enter Class Details' className='task_input' />
+
+                <div className=''>
+                    <button className='tag'>DEV</button>
+                    <button className='tag'>QA</button>
+                    <button className='tag'>Product Owner</button>
+                </div>
+
+                <select className='task_status'>
+                    <option value="Ready For Development">Ready For Development</option>
+                    <option value="Task In Progress">Task In Progress</option>
+                    <option value="Ready For Test">Ready For Test</option>
+                    <option value="Closed">Closed</option>
+                </select>
+
+                <button type='submit' className='task_submit'>+Add</button>
+            </form>
+
+        </header>
+    )
+}
+export default TaskForm
 */
