@@ -1,0 +1,70 @@
+
+.app_header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_header > form {
+    width:60%;
+}
+
+.task_input{
+    background-color: #f9f9f9;
+    color:black;
+    border:1px solid #dfe3e6;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding:8px 12px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.task_input::placeholder{
+    color:#686868;
+}
+
+.task_form_bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tag{
+    background-color: #f9f9f9;
+    color:#000;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #dfe3e6;
+    border-radius: 5px;
+    padding:2px 10px;
+}
+
+.task_status{
+    background-color: #f9f9f9;
+    color:#000;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #dfe3e6;
+    border-radius: 5px;
+    width:220px;
+    height: 40px;
+    padding:0px 3px;
+    margin-left: 50px;
+
+}
+
+.task_submit{
+    color:#fff;
+    background-color: blue;
+    font-size: 16px;
+    font-weight: 500;
+    padding:3px 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    height:40px;
+    margin-left: 10px;
+
+}
