@@ -24,10 +24,10 @@
 
 class Person {
     constructor(name) {                //? The constructor method is called when a new object is created
-        this._name = name              //? The constructor initializes the name property //here "_" is used to indicate that this property is priv
+        this._name = name              //? The constructor initializes the name property. "_" is used to  property is private
     }
 }
-const person = new Person("Ajay");     //?object creation using the Person class
+const person = new Person("Ajay");     //?object creation using the Person class.
 console.log(person.name);
 // Output: Ajay
 
