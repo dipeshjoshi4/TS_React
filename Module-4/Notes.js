@@ -121,4 +121,48 @@ export default TaskForm
 //Just ADD TASK-FORM.CSS all styling part of header part
 
 //?62 Lecture-5-Tag Component & Props Implementation
+//find oprtunity what can reuse and we find button are reuse in card
+// so make a seprate component of "Tag.jsx" with special Tag.css
 
+//?Tag.jsx
+/*
+import React from 'react'
+import "./Tag.css"
+const Tag = (props) => {
+    const { tagName } = props
+    return (
+        <>
+            <button className='tag'>{tagName}</button>
+        </>
+    )
+}
+export default Tag;
+*/
+
+//?Tag.css
+/*
+.tag{
+    background-color: #f9f9f9;
+    color:#000;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #dfe3e6;
+    border-radius: 5px;
+    padding:2px 10px;
+}
+*/
+
+
+//?63 Lecture-6-Implementing a Reusable Tag Component Using Props
+//put props as tagName passing from "task-form.jsx" to "Tag.jsx"
+
+//?task-form.jsx
+/*
+ <div>
+      <Tag tagName="DEV"/>
+      <Tag tagName="QA" />
+      <Tag tagName="Product Owner" />
+  </div>
+*/
+
+//?64 Lecture-7-Task List & Task Card Components
