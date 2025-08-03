@@ -153,7 +153,7 @@ export default Tag;
 */
 
 
-//?63 Lecture-6-Implementing a Reusable Tag Component Using Props
+//? 63 Lecture-6-Implementing a Reusable Tag Component Using Props
 //put props as tagName passing from "task-form.jsx" to "Tag.jsx"
 
 //?task-form.jsx
@@ -165,4 +165,72 @@ export default Tag;
   </div>
 */
 
-//?64 Lecture-7-Task List & Task Card Components
+//?64 Lecture-7- Creating a Column Component with Styling
+
+//- whenevr we see the some texture or style repeat it will be seprate compon
+
+//- here we will see the box section and selection section have repeat so we can make new componenet for them
+
+//for selection ->task-column
+//for box ->
+
+//How we gave path in image otherwise it dont work
+//- so when you aplication go on the bundle and deployment that time only static file will be gone
+//-  your all file path will be at one place
+//- for that time image will be work fine and react understand or webpack we have to given path
+
+//?App.jsx
+/*
+import TaskColumn from "./components/TaskColumn/task-column";
+import ClosedIcon from "./assets/right-check-finale.png"
+
+const App = () => {
+  return (
+    <div className="app">
+      <h1 style={{ textAlign: "center", margin: "50px" }}>Jira Board</h1>
+      <TaskForm />
+      <main className="app_main">
+        <TaskColumn title="Ready For Development" />
+        <TaskColumn title="In Progress" />
+        <TaskColumn title="Ready For Test" />
+        <TaskColumn title="Closed" icon={ClosedIcon} />
+      </main>
+*/
+
+//?task-column.jsx
+/*
+import React from 'react'
+import "./task-column.css"
+const TaskColumn = (props) => {
+    return (
+        <div>
+            <section className="task_Column">
+                <h2 className='task_column_heading'>
+                    <img src={props.icon} alt='' className='task_column_icon'></img>
+                    {props.title}</h2>
+            </section>
+        </div>
+    )
+}
+export default TaskColumn;
+*/
+
+//?task-column.css
+/*
+.task_Column{
+  margin: 20px;
+}
+
+.task_column_heading{
+  display: flex;
+  align - items: center;
+}
+
+.task_column_icon{
+  width: 15px;
+  margin - right: 5px;
+
+}
+  */
+
+//?65 Lecture-8-

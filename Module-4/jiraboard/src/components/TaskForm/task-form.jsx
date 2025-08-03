@@ -5,16 +5,15 @@ const TaskForm = () => {
     return (
         <header className="app_header">
             <form>
+                
                 <input type='text' placeholder='Enter Class Details' className='task_input' />
 
                 <div className='task_form_bottom'>
-
                     <div>
                         <Tag tagName="DEV"/>
                         <Tag tagName="QA" />
                         <Tag tagName="Product Owner" />
                     </div>
-
                     <div>
                         <select className='task_status'>
                             <option value="Ready For Development">Ready For Development</option>
@@ -24,8 +23,8 @@ const TaskForm = () => {
                         </select>
                         <button type='submit' className='task_submit'>+Add</button>
                     </div>
-
                 </div>
+
             </form>
 
         </header>
