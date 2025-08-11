@@ -107,27 +107,45 @@ const TaskForm = () => {
     })
 
     const handleChange = (e) => {
-        const {name,value} = e.target
-        setTaskData((prev)=>{
-            return {...prev, [name]:value}
-        });
+        const { name, value } = e.target;
+        setTaskData((prev) => {
+            return { ...prev, [name]: value }
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(taskData);
     }
 
     return (
         <header className="app_header">
+            <form onSubmit={handleSubmit}>
+                <input type='text' placeholder='Enter Class Details' className='task_input' name="task" onChange={handleChange} />
+                <div className='task_form_bottom'>
+                    <div>
+                        <Tag tagName="DEV"/>
+                        <Tag tagName="QA" />
+                        <Tag tagName="Product Owner" />
+                    </div>
+                    <div>
+                        <select className='task_status' onChange={handleChange} name="status">
+                            <option value="Ready For Development">Ready For Development</option>
+                            <option value="Task In Progress">Task In Progress</option>
+                            <option value="Ready For Test">Ready For Test</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                        <button type='submit' className='task_submit'>+Add</button>
+                    </div>
+                </div>
+            </form>
 
-                <input type='text' placeholder='Enter Class Details' name="task" className='task_input' onChange={handleTask} />
-
-                 <select className='task_status' onChange={handleChange} name="status">
-                        <option value="Ready For Development">Ready For Development</option>
-                        <option value="Task In Progress">Task In Progress</option>
-                        <option value="Ready For Test">Ready For Test</option>
-                        <option value="Closed">Closed</option>
-                </select>
         </header>
     )
 }
+
 export default TaskForm
+
 
 */
 
@@ -161,6 +179,17 @@ export default TaskForm
 const handleChange = (e) => {
     const { name, value } = e.target
     console.log(name, value)
+}
+*/
+
+//?5
+//- last we have to submit the form with <form onSubmit={handleSubmit}>
+//- on Submit bt default behaviour is refresh the page so to stop that
+//?CODE
+/*
+ const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(taskData);
 }
 */
 
