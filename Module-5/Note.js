@@ -54,11 +54,21 @@ export default TaskForm
 
 //-first of all chnage we can not do the same state then for many complex forms have 5-6 chnages and thast we have to maintain 5-6 state completely injustice to react first rule -- reuse
 
-//-
-
 
 //?69 Lecture-3-Understanding & Using React Strict Mode
 
-//? 70
+//?70 Lecture-4-Understanding and Implementing Tag Selection Logic
 
-//?71
+//?71 Lecture-5-Dynamically Displaying Selected Tags with Applied Colors
+
+//?72 Lecture-6-Code Optimization: Removing Duplicates and Organizing Constants
+
+//?73 Lecture-7-Selecting the Data Structure & Implementing Card Display Logic
+
+//?74 Lecture-8-Implementing Delete Functionality
+
+//?75 Lecture-9-Making Task Data Persistent with Local Storage.
+
+
+
+
