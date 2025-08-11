@@ -21,18 +21,6 @@ const TaskForm = () => {
         console.log(taskData);
     }
 
-
-    // const [task, setTask] = useState("");
-    // const handleTask = (e) => {
-    //     setTask(e.target.value)
-    // };
-    // console.log(task)
-    // const [status, setStatus] = useState("");
-    // const handleStatus = (e) => {
-    //     setStatus(e.target.value)
-    // };
-    // console.log(status)
-
     return (
         <header className="app_header">
             <form onSubmit={handleSubmit}>
