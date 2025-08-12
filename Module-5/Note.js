@@ -3,10 +3,10 @@
 
 //!-In module-5 we will go for the logic part how dynamic we change the data Notes only code will be still in Module -4 Folder structure
 
-//?66 lecture-01-Integrating Functionality: Understanding Requirements and Application Behavior.
+//!67 lecture-01-Integrating Functionality: Understanding Requirements and Application Behavior.
 
 
-//!67 Lecture-1-Handling Form Submissions Efficiently
+//!68 Lecture-1-Handling Form Submissions Efficiently
 //- talks about all the requirement menas drop and and drags the functionality ,delete CRUD
 //- We just make a our different functionality in in array of object and make Map function and iterate and given all info. while user interact
 //- this is in short wee will do in this whole Module
@@ -85,7 +85,7 @@ export default TaskForm
 //- so for every chnage we have to make different state thats not fisible so we can optimize this thing in Next Lecture
 
 
-//!68 Lecture-2-Pro Tip: Shortcut for Handling Complex Forms
+//!69 Lecture-2-Pro Tip: Shortcut for Handling Complex Forms
 
 //- There were many times we have complex forms. to handle we can messure many things
 //- First of all change we cann't do the same state.
@@ -192,7 +192,7 @@ const handleChange = (e) => {
 }
 */
 
-//! 69 Lecture-3-Understanding & Using React Strict Mode
+//! 70 Lecture-3-Understanding & Using React Strict Mode
 
 //- in our app new updates and all dependecy chnage and deprecated by the time
 //- as developer we dont remember all the things so when you use the old depricated thing strict mode indciated warning
@@ -204,7 +204,7 @@ const handleChange = (e) => {
 //- it highlights potential unnecessary re-renders
 
 
-//! 70 Lecture-4-Understanding and Implementing Tag Selection
+//! 71 Lecture-4-Understanding and Implementing Tag Selection
 
 // here we seen how tags multiple select and get data at that moment
 
@@ -268,20 +268,41 @@ console.log(taskData);
 
 */
 
+//- so here we understand one by one all the line
+//- we go taskdata.tags.some (which is array method who check what is in the array)
+//- so we check if statement for whatever is in the array are not include and we add filter out
+//- so we check by arrow function item === tag
+//- then filter what are not in item !== tag are goes into array with setTaskData
+//- to get in array we do same as we do for input and dropdown menu
+//?CODE
+/*
+setTaskData((prev) => {
+        return { ...prev, tags: filterTags }
+    }
+)
+*/
+// here prev have old data and we have put new data with tags:filterTags
+// for else...
+//- we do same but difference else is first time use when old data is completley empty
+//- on slight chnage happen when multiple tags select to have multiple tag selected we have
+//?CODE
+/*
+setTaskData((prev) => {
+    return{...prev,tags:[...prev.tags,tag]}
+})
+*/
+//- here old tags will be same so tags:[...prev.tags] and also new tag which we select [,tag]
+
+//! 72 Lecture-5-Dynamically Displaying Selected Tags with Applied Colors
 
 
+//! 73 Lecture-6-Code Optimization: Removing Duplicates and Organizing Constants
 
+//! 74 Lecture-7-Selecting the Data Structure & Implementing Card Display Logic
 
+//! 75 Lecture-8-Implementing Delete Functionality
 
-//! 71 Lecture-5-Dynamically Displaying Selected Tags with Applied Colors
-
-//! 72 Lecture-6-Code Optimization: Removing Duplicates and Organizing Constants
-
-//! 73 Lecture-7-Selecting the Data Structure & Implementing Card Display Logic
-
-//! 74 Lecture-8-Implementing Delete Functionality
-
-//! 75 Lecture-9-Making Task Data Persistent with Local Storage.
+//! 76 Lecture-9-Making Task Data Persistent with Local Storage.
 
 
 
