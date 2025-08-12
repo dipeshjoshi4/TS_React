@@ -7,6 +7,7 @@ const TaskForm = () => {
     const [taskData, setTaskData] = useState({
         task: "",
         status: "Ready For Development",
+        tags: [],
     })
 
     const handleChange = (e) => {
@@ -18,8 +19,25 @@ const TaskForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(taskData);
+
     }
+
+    const selectedTag = (tag) => {
+        if (taskData.tags.some((item) => (item === tag))) {
+            const filterTags = taskData.tags.filter((item) => item !== tag);
+            setTaskData((prev) => {
+                return { ...prev, tags: filterTags }
+            })
+        } else {
+            setTaskData((prev) => {
+                return { ...prev, tags: [...prev.tags, tag] }
+            })
+        }
+    }
+
+    console.log(taskData);
+
+
 
     return (
         <header className="app_header">
@@ -27,9 +45,9 @@ const TaskForm = () => {
                 <input type='text' placeholder='Enter Class Details' className='task_input' name="task" onChange={handleChange} />
                 <div className='task_form_bottom'>
                     <div>
-                        <Tag tagName="DEV" />
-                        <Tag tagName="QA" />
-                        <Tag tagName="Product Owner" />
+                        <Tag tagName="DEV" selectedTag={selectedTag} />
+                        <Tag tagName="QA" selectedTag={selectedTag} />
+                        <Tag tagName="Product Owner" selectedTag={selectedTag} />
                     </div>
                     <div>
                         <select className='task_status' onChange={handleChange} name="status">

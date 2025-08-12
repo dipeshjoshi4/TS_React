@@ -189,7 +189,6 @@ const handleChange = (e) => {
 /*
  const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(taskData);
 }
 */
 
@@ -205,7 +204,74 @@ const handleChange = (e) => {
 //- it highlights potential unnecessary re-renders
 
 
-//! 70 Lecture-4-Understanding and Implementing Tag Selection Logic
+//! 70 Lecture-4-Understanding and Implementing Tag Selection
+
+// here we seen how tags multiple select and get data at that moment
+
+//- if we see without adding any logic and click on button our default taskdata comes .but ideally it comes from the "+Add" button!
+//- so the things is button bydefault type is type ="Submit" so we have to chnage type="button"
+// <button type="button" className='tag'>{tagName}</button>
+
+//?What we want
+//- so we want our tag when we click and it appers .it can multiple tags too. so we can make array and put in our default state
+//- we make sure duplicate dont include in array
+
+//?1
+//- we want this with one state so first add tags default value
+//?CODE
+//  const [taskData, setTaskData] = useState({
+//         task: "",
+//         status: "Ready For Development",
+//         tags:[],
+//     })
+
+//?2
+// - we use prop,driling and pass our in tag component so that when we click our function runs and we get value
+//?task-form.jsx
+/*
+const selectedTag = (tag) => {
+    console.log(tag)
+}
+return (
+    <Tag tagName="DEV" selectedTag={selectedTag} />
+    <Tag tagName="QA" selectedTag={selectedTag} />
+    <Tag tagName="Product Owner" selectedTag={selectedTag} />
+)
+*/
+//?Tag.jsx
+//?First Vesion
+// <button type="button" className='tag' onClick={selectedTag(tagName)}>{tagName}</button>
+//- here we seen the tagname in argument so that we know and our function knows the tag name
+//- but as per syntax it run only once and get error and we cant select multiple
+//- Error - selectTag is Not A Function
+//- so we change like whenever we click its runs every time so we make there arrow function
+//?Updated Version
+// <button type="button" className='tag' onClick={() => { selectedTag(tagName) }}>{tagName}</button>
+
+//?3
+//- now we make we dont want duplicate in array  and it comes when form submit with our state answer
+//?CODE
+/*
+const selectedTag = (tag) => {
+    if (taskData.tags.some((item) => (item === tag))) {
+        const filterTags = taskData.tags.filter((item) => item !== tag);
+        setTaskData((prev) => {
+            return { ...prev, tags: filterTags }
+        })
+    } else {
+        setTaskData((prev) => {
+            return { ...prev, tags: [...prev.tags, tag] }
+        })
+    }
+}
+console.log(taskData);
+
+*/
+
+
+
+
+
 
 //! 71 Lecture-5-Dynamically Displaying Selected Tags with Applied Colors
 
