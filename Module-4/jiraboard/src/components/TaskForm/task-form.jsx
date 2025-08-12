@@ -27,7 +27,7 @@ const TaskForm = () => {
                 <input type='text' placeholder='Enter Class Details' className='task_input' name="task" onChange={handleChange} />
                 <div className='task_form_bottom'>
                     <div>
-                        <Tag tagName="DEV"/>
+                        <Tag tagName="DEV" />
                         <Tag tagName="QA" />
                         <Tag tagName="Product Owner" />
                     </div>

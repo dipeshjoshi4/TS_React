@@ -195,6 +195,16 @@ const handleChange = (e) => {
 
 //! 69 Lecture-3-Understanding & Using React Strict Mode
 
+//- in our app new updates and all dependecy chnage and deprecated by the time
+//- as developer we dont remember all the things so when you use the old depricated thing strict mode indciated warning
+// - in main.jsx our app in ------> <StrictMode><App /></StrictMode >,
+
+//React Strict Mode is tool provided by React that Helps developer write better quality Code by Highlighting potential problems during developement
+//- it may not support deprectaed React API and Components
+//- it helps catch unsafe state updates
+//- it highlights potential unnecessary re-renders
+
+
 //! 70 Lecture-4-Understanding and Implementing Tag Selection Logic
 
 //! 71 Lecture-5-Dynamically Displaying Selected Tags with Applied Colors
