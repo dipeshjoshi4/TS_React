@@ -295,6 +295,29 @@ setTaskData((prev) => {
 
 //! 72 Lecture-5-Dynamically Displaying Selected Tags with Applied Colors
 
+// - so here we above see that our data dynimically chnage and our app run perfect
+// - all though we optimized our tag if...else condition in next lecture too...
+
+//?in mutliple tag slection if we select the old tag again then its remove from the our tags[]
+
+//- so in tags if..else condition we mention "whatever tag is not in the array are going into filterTags"
+//- we somehow now find if this "tag" selected then we get to know
+
+const checkTag = (tag) => {
+    return taskData.tags.some((item)=>{item === tag})
+}
+
+//- now pass this checkTag as props in Tag as selected={checkTag("Product Owner")
+
+//?task-form.jsx
+<div>
+    <Tag tagName="DEV" selectedTag={selectedTag} selected={checkTag("DEV")} />
+    <Tag tagName="QA" selectedTag={selectedTag} selected={checkTag("QA")} />
+    <Tag tagName="Product Owner" selectedTag={selectedTag} selected={checkTag("Product Owner")} />
+</div>
+//?Tag.jsx
+
+
 
 //! 73 Lecture-6-Code Optimization: Removing Duplicates and Organizing Constants
 
