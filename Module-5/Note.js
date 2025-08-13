@@ -393,7 +393,62 @@ return (
 //! 74 Lecture-7-Selecting the Data Structure & Implementing Card Display Logic
 /*
 
+What is the Agenda?
+- if my data is this then goes to card in ready for development section
+- if my data is that it goes to card in closed
+- means whole card component render if this or that condition work
 
+DATA
+- so first we have to make our data and we alredy know data iterate we have to use map and for that we need array
+- so our data is kind of like this
+const data = [
+{
+  task: "this for DEV",
+  status: "Ready For Development",
+  tags: [DEV],
+},
+{
+  task: "this for QA",
+  status: "Ready For Development",
+  tags: [QA],
+},
+{
+  task:"this for Product Owner",
+  status: "Ready For Development",
+  tags: [Product Owner],
+},
+]
+
+How WE gET ?
+
+- first we useState and make the useState default value empty array 
+* why empty array ?
+  because our target is to iterate for map and for that we need array
+  //?CODE APP.JSX
+            const App = () => {
+            const [tasks, setTasks] = useState([]);
+            console.log(tasks)
+            return (
+                <TaskForm setTasks={setTasks} />
+                </div>
+            );
+            
+
+- then we have pass seTasks as props to taskForm so can we get value
+//?CODE task-form.jsx
+       const TaskForm = ({ setTasks }) => {
+            const handleSubmit = (e) => {
+            e.preventDefault();
+            setTasks((prev) => {
+                  return [...prev, taskData]
+             })
+        }
+
+- then we where our taskSubmit at that point we print ...prev data and then taskData
+* why Prev Data?
+- because 1st time its empty as default then and we add data and its become previous data so when print second task the first and second both task array comes  means our proper card will be show in console
+
+//?T.S. -> 06:30
 
 */
 

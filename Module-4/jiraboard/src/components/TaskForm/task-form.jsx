@@ -2,7 +2,7 @@ import "./task-form.css";
 import Tag from "../Tag/Tag";
 import { useState } from "react";
 
-const TaskForm = () => {
+const TaskForm = ({ setTasks }) => {
 
     const [taskData, setTaskData] = useState({
         task: "",
@@ -23,6 +23,9 @@ const TaskForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setTasks((prev) => {
+            return [...prev, taskData]
+        })
     }
 
     const selectedTag = (tag) => {
@@ -31,23 +34,9 @@ const TaskForm = () => {
             const tags = isSelected ? prev.tags.filter((item) => item !== tag) : [...prev.tags, tag]
             return { ...prev, tags }
         })
-
-        // if (taskData.tags.some((item) => (item === tag))) {
-        //     const filterTags = taskData.tags.filter((item) => item !== tag);
-        //     setTaskData((prev) => {
-        //         return { ...prev, tags: filterTags }
-        //     })
-        // } else {
-        //     setTaskData((prev) => {
-        //         return { ...prev, tags: [...prev.tags, tag] }
-        //     })
-        // }
-
     }
 
     console.log(taskData);
-
-
 
     return (
         <header className="app_header">
