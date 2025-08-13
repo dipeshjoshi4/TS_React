@@ -265,15 +265,21 @@ const selectedTag = (tag) => {
     }
 }
 console.log(taskData);
-
 */
 
+//?Hindi
+//- jo tag aa raha hai wo humcheck karte with some method isme hai to wo tag se match karte all the click of user and then filter kardenge
+//- agar fresh tags ke liye else loop chal hi raha hai
+//- bas duplicasy na aaye isliye hum filter wali method use kar rhe hai
+
+//?English
 //- so here we understand one by one all the line
 //- we go taskdata.tags.some (which is array method who check what is in the array)
 //- so we check if statement for whatever is in the array are not include and we add filter out
 //- so we check by arrow function item === tag
 //- then filter what are not in item !== tag are goes into array with setTaskData
 //- to get in array we do same as we do for input and dropdown menu
+
 //?CODE
 /*
 setTaskData((prev) => {
@@ -302,26 +308,94 @@ setTaskData((prev) => {
 
 //- so in tags if..else condition we mention "whatever tag is not in the array are going into filterTags"
 //- we somehow now find if this "tag" selected then we get to know
-
-const checkTag = (tag) => {
-    return taskData.tags.some((item)=>{item === tag})
-}
-
 //- now pass this checkTag as props in Tag as selected={checkTag("Product Owner")
 
 //?task-form.jsx
+/*
+const checkTag = (tag) => {
+    return taskData.tags.some((item)=>{item === tag})
+}
 <div>
     <Tag tagName="DEV" selectedTag={selectedTag} selected={checkTag("DEV")} />
     <Tag tagName="QA" selectedTag={selectedTag} selected={checkTag("QA")} />
     <Tag tagName="Product Owner" selectedTag={selectedTag} selected={checkTag("Product Owner")} />
 </div>
+*/
+
 //?Tag.jsx
+/*
+const { tagName, selectedTag, selected } = props
+const TagStyle = {
+    DEV: { backgroundColor: "#04Caff" },
+    QA: { backgroundColor: "#ff2e04" },
+    PO: { backgroundColor: "#04ff2a" }
+}
+const tagKeyMap = {
+    DEV: "DEV",
+    QA: "QA",
+    "Product Owner": "PO"
+}
+const key = tagKeyMap[tagName]
+return (
+    <>
+        <button type="button"
+            style={selected ? TagStyle[key] : {}} className='tag' onClick={() => { selectedTag(tagName) }}>{tagName}
+        </button>
+    </>
+)
+*/
 
+//- for key we dont have to pass the  space in key => "Product Owner"
+//- so for that we map ->  tagkeymap
+//- then make const key = tagKeyMap[tagName]
 
+//?Both Are Same
+// selected ? tagStyle[tagKeyMap[tagName]]
+// selected ? tagStyle[key]
 
 //! 73 Lecture-6-Code Optimization: Removing Duplicates and Organizing Constants
+// - if.....else duplicast of setTaskData(()=>{})
+
+//? Optimize this code
+// const selectedTag = (tag) => {
+//     if (taskData.tags.some((item) => (item === tag))) {
+//         const filterTags = taskData.tags.filter((item) => item !== tag);
+//         setTaskData((prev) => {
+//             return { ...prev, tags: filterTags }
+//         })
+//     } else {
+//         setTaskData((prev) => {
+//             return { ...prev, tags: [...prev.tags, tag] }
+//         })
+//     }
+// }
+// console.log(taskData);
+
+//?explain
+// - what above code do if the array has value then check and then that value are not match with selected tag
+// - which we select then goes into array
+// - and for the fresh data we add prev and prev.tags
+
+//?Updated code
+// const selectedTag = (tag) => {
+//     setTaskData((prev) => {
+//         const isSelected = prev.tags.includes(tag);
+//         const tags = isSelected ? prev.tags.filter((item) => item !== tag) : [...prev.tags, tag]
+//         return { ...prev, tags }
+//     })
+
+//?Explain in Hindi
+//- we see jo bhi tag aa raha hai check karte hai direct with includes method kya wo tags array main
+//- isSelected main hai then hum purane tag ko filter karke dallenge if nahi hai then fresh item hum daal hi rahe hai
+//- return main hum purange tags jo array main hai wo and tag we capture kiya wo copy kar denge
+
 
 //! 74 Lecture-7-Selecting the Data Structure & Implementing Card Display Logic
+/*
+
+
+
+*/
 
 //! 75 Lecture-8-Implementing Delete Functionality
 
