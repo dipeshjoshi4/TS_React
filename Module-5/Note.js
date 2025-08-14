@@ -598,10 +598,28 @@ const TaskCard = ({ title, tags }) => {
 - So in this lecture, we’ve learned that we’re currently storing our task data in state variables, and if we refresh the page, that data will be lost. That’s because after a page refresh, any data stored in state variables gets cleaned up.
 - To make the data persistent, we can use a database like MongoDB or simply use local storage. So we’ve talked about what local storage is, when to use it, and how we can store data in it.
 
+* What is Local Storage?
+- local storage is feature in web browser that allows developers like us to store data on user's machine or user computer
+- this can be accessed later by the website or web application
 
+* App.jsx
+  const exisitingTask = localStorage.getItem("tasks");
+  console.log(exisitingTask) //null- because we didint given any task
+
+- in local storage we have to given task to get data 
+- for also something we chnage for that also we have to say in local storage
+- for that we have need something which is telling the local storage something you have delete => useEffect(()=>)
+- in React setTask ( ) have abilty to tell soemthing chnage 
+- but when we work and that time locally something delete from task-4 to task -3 that timw what to do 
 
 */
 
 
+//! 77 Lecture-10-Persisting Data with useEffect: Storing in Local Storage.
+
+/*
+
+
+*/
 
 

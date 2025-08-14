@@ -6,6 +6,9 @@ import TaskColumn from "./components/TaskColumn/task-column";
 import ClosedIcon from "./assets/right-check-finale.png"
 import { useState } from "react";
 
+//for local storage
+const exisitingTask = localStorage.getItem("tasks");
+console.log(exisitingTask)
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
