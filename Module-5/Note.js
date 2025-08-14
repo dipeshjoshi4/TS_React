@@ -619,7 +619,122 @@ const TaskCard = ({ title, tags }) => {
 
 /*
 
+ Tasks-------------> LS<----------------updated task
+
+ - to chnage any state in react how browser knows
+ - ex:tasks State have 3 task and updated task is now 2 .. the chnage how react will know
 
 */
 
+//!78 Lecture-11-Persisting Data with useEffect: Storing in Local Storage.
+ /*
 
+ * useEffect()
+
+ - useEffect() is used to perform side effects in our Componenet
+
+ * Side Effects are actions which are perform with the outside world
+ - Fetching Data from an API
+ - Directly updating DOM
+ - Timer Function(setTimeout or setInterval)
+
+ * SYNTAX
+
+    useEffect (()=>{
+        console.log("Logic")
+    },[])
+
+    - [] :- define when to run 
+    - {} :- logic part
+    - if you dont give second paramter [] then it works render Everytime | if you give emoty the second paramter it works once
+
+* CODE
+const exisitingTask = localStorage.getItem("tasks");
+const App = () => {
+  const [tasks, setTasks] = useState(JSON.parse(exisitingTask));
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks])
+
+
+  - to set data in local we have to stringify so we JSON.Stringify(tasks)
+  - for set item 2 argument required => "tasks", JSON.stringify(tasks)
+  - to get data from local storage which is the default of state but we have convert them into stringify to array
+    useState(JSON.parse(exisitingTask));
+
+*/
+
+//?INTERVIEW SPECIAL
+//!79 Lecture-12-Implementing Drag-and-Drop Functionality Without Any Library
+/*
+
+* Agenda-1
+  - previous code when existing task delete we have get error so to rid of this error in useState we can do like this
+  - const [tasks, setTasks] = useState(JSON.parse(exisitingTask) || []);
+
+* Agenda-2-Core Custome dragable Depedency
+- In this lecture, we've implemented drag-and-drop functionality entirely from scratch, without using any library. 
+- It's a common interview question to explain how to create drag-and-drop yourself, 
+- so I've walked through every detail—how to think about it, how to design the algorithm, and how to explain it well in an interview
+- if you're asked to build it. By the end of this project, you'll have learned a lot.
+
+*Exaplain
+- which TaskCard are we moving  along with their index &
+- which category & 
+- at which position we are moving &
+- at which draw Area limit
+
+* 1st dragable on so for that => <article className='taskcard' draggable>
+
+* 2nd thing we want which card moving along with index for that
+- we first make state  
+- App.jsx
+const { activeCard, setActiveCard } = useState(null);
+
+-passing  props to App.jsx ->  taskColumn -> TaskCard as props and apply on =>
+- TaskCard.jsx
+<article className='taskcard' draggable onDragStart={() => { setActiveCard(index) }} onDragEnd={() => { setActiveCard(null) }}>
+
+- App.jsx
+<h2>activecard {activCard}</h2>
+- Now In App.jsx if you print and drag the card  then you will see index 0,1,2 as per your drag card  
+- because taskCard is object of array which give index which index have your drag card
+
+*/
+
+//!80 Lecture-12-Drag-and-Drop Area Creation & Handling
+
+
+/*
+
+- which category & 
+- at which position we are moving &
+- at which draw Area limit
+
+* DropArea 
+- either is vertical or horizantal moving within the Ready for Development to Closed right!
+- for this we make seprate components and style
+
+* DropArea.jsx
+import React from 'react'
+import "../DropArea/DropArea.css"
+import { useState } from 'react';
+
+
+const DropArea = () => {
+
+    const [showDrop, setShowDrop] = useState(false);
+
+    return (
+        <section className={showDrop ? "drop-area" : "hide-area"}
+            onDragEnter={() => { setShowDrop(true) }}
+            onDragLeave={() => { setShowDrop(false) }}>
+            Drop-Area
+        </section>
+    )
+}
+
+export default DropArea
+
+
+*/

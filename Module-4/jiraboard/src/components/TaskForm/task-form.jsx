@@ -41,7 +41,7 @@ const TaskForm = ({ setTasks }) => {
         })
     }
 
-    console.log(taskData);
+    
 
     return (
         <header className="app_header">
