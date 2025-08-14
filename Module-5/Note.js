@@ -448,11 +448,90 @@ How WE gET ?
 * why Prev Data?
 - because 1st time its empty as default then and we add data and its become previous data so when print second task the first and second both task array comes  means our proper card will be show in console
 
-//?T.S. -> 06:30
+# T.S. -> 06:30
+
+- our aim is to make a data where we get array and running a map so we get it
+- we can pass data now by running a map and also conditioning status its match or not
+
+//?How We Do It
+- so we remove console.log(tasks) and pass as props {TaskColumn}
+- also we pass the status="Ready For Development".... All in each individual so that we can apply condition
+
+//?App.jsx
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+  // console.log(tasks)
+  return (
+    < className="app">
+      <h1 style={{ textAlign: "center", margin: "50px" }}>Jira Board</h1>
+      <TaskForm setTasks={setTasks} />
+      <main className="app_main">
+        <TaskColumn title="Ready For Development" tasks={tasks} status="Ready For Development"/>
+        <TaskColumn title="In Progress" tasks={tasks} status="Ready For Development" />
+        <TaskColumn title="Ready For Test" tasks={tasks} status="Ready For Development" />
+        <TaskColumn title="Closed" icon={ClosedIcon} tasks={tasks} status="Ready For Development" />
+      </main>
+
+* task-coumn.jsx
+- so we direct pass as props and in task-column
+- then we make condition of taskcard after passing condition we display taskcard
+
+* CODE
+{
+tasks.map((task,index)=>(<TaskCard key={index}/>))
+}
+- here we map the array which comes from tasks and pass the index and task which user write and our card shows on by one
+- but we have to check status and then as per status task comes so we
+{
+tasks.map((task,index)=>task.status === status && <TaskCard key={index} title={task.title} tags={task.tags}/>)
+}
+
+* CODE task-column.jsx
+const TaskColumn = ({ title, tasks, status, icon }) => {
+    return (
+        <div>
+            <section className="task_Column">
+                <h2 className='task_column_heading'>
+                    <img src={icon} alt='' className='task_column_icon'></img>
+                    {title}
+                </h2>
+                {
+                  tasks.map((task, index) => task.status === status && (<TaskCard key={index} title={task.task} tags={task.tags} />))
+                }
+
+            </section>
+        </div>
+    )
+}
+
+* CODE TaskCard.jsx
+
+const TaskCard = ({ title, tags }) => {
+    return (
+        <article className='taskcard'>
+            <p className='task_text'>{title}</p>
+            <div className='task_card_bottom_line'>
+                <div className='task_card_tags'>
+                    {
+                        tags.map((tag, index) => (<Tag key={index} tagName={tag} selected />))
+                    }
+                </div>
+                <div className='task_delete'>
+                    <img src={deleteIcon} alt="" className='deleteIcon' />
+                </div>
+            </div>
+
+        </article>
+    )
+}
+
+- here selected for the tags colors in below card section where no condition only color apply we need
 
 */
 
 //! 75 Lecture-8-Implementing Delete Functionality
+
+
 
 //! 76 Lecture-9-Making Task Data Persistent with Local Storage.
 

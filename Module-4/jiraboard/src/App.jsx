@@ -9,16 +9,16 @@ import { useState } from "react";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
-  console.log(tasks)
+  // console.log(tasks)
   return (
     <div className="app">
       <h1 style={{ textAlign: "center", margin: "50px" }}>Jira Board</h1>
       <TaskForm setTasks={setTasks} />
       <main className="app_main">
-        <TaskColumn title="Ready For Development" />
-        <TaskColumn title="In Progress" />
-        <TaskColumn title="Ready For Test" />
-        <TaskColumn title="Closed" icon={ClosedIcon} />
+        <TaskColumn title="Ready For Development" tasks={tasks} status="Ready For Development" />
+        <TaskColumn title="In Progress" tasks={tasks} status="In Progress" />
+        <TaskColumn title="Ready For Test" tasks={tasks} status="Ready For Test" />
+        <TaskColumn title="Closed" icon={ClosedIcon} tasks={tasks} status="Closed" />
       </main>
     </div>
   );

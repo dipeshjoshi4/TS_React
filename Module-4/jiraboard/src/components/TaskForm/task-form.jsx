@@ -51,7 +51,7 @@ const TaskForm = ({ setTasks }) => {
                     <div>
                         <select className='task_status' onChange={handleChange} name="status">
                             <option value="Ready For Development">Ready For Development</option>
-                            <option value="Task In Progress">Task In Progress</option>
+                            <option value="In Progress"> In Progress</option>
                             <option value="Ready For Test">Ready For Test</option>
                             <option value="Closed">Closed</option>
                         </select>
