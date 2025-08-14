@@ -421,7 +421,7 @@ const data = [
 
 How WE gET ?
 
-- first we useState and make the useState default value empty array 
+- first we useState and make the useState default value empty array
 * why empty array ?
   because our target is to iterate for map and for that we need array
   //?CODE APP.JSX
@@ -432,7 +432,7 @@ How WE gET ?
                 <TaskForm setTasks={setTasks} />
                 </div>
             );
-            
+
 
 - then we have pass seTasks as props to taskForm so can we get value
 //?CODE task-form.jsx
@@ -530,10 +530,77 @@ const TaskCard = ({ title, tags }) => {
 */
 
 //! 75 Lecture-8-Implementing Delete Functionality
+/*
+
+- In this lecture, we talked about how we’ll achieve the delete functionality. We wrote the code in a very simple way and tried to understand how the logic will work.
+
+* Agenda-1
+- we see one bug that once your card enter you will see the text in inpur field or status or tags are same not goes in his default value
+- so we have to do this for betterment of project
+
+* Solution
+
+- form where the form submit after that you have to mentioned your intial state
+
+* CODE task-form.jsx
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setTasks((prev) => {
+            return [...prev, taskData]
+        })
+        setTaskData({
+            task: "",
+            status: "Ready For Development",
+            tags: [],
+        })
+    }
+
+    <input type='text' placeholder='Enter Class Details' className='task_input' name="task" value={taskData.task} onChange={handleChange} />
+    <Tag tagName="DEV" selectedTag={selectedTag} selected={checkTag("DEV")} />
+    <select className='task_status' onChange={handleChange} name="status" value={taskData.status}>
+
+    - we alson have to given value from taskData.status and taskData.task => so its chnage by react
+
+    * t.s.-3:45
+
+    * Agenda-2- Apply delete Functionality
+     - for that you have delete function which is working on index and pass as props till delete button
 
 
+    * App.jsx
+        const handleDelete = (taskIndex) => {
+            const newTask = tasks.filter((tasks, index) => (index !== taskIndex))
+            setTasks(newTask)
+        }
+        <TaskColumn title="Ready For Development" tasks={tasks} status="Ready For Development" handleDelete={handleDelete } />
+
+    - here we  filter out with id => normal index !== when delete button click id |  are not in array => is remaining task new tasks
+
+
+    * task-column.jsx
+    <TaskCard key={index} title={task.task} tags={task.tags} handleDelete={handleDelete} index={index} />
+    - pass index too
+
+    * TaskCard.jsx
+    <div className='task_delete' onClick={() => { handleDelete(index) }}>
+            <img src={deleteIcon} alt="" className='deleteIcon' />
+    </div>
+    - take index as props and applied function onClick
+
+*/
 
 //! 76 Lecture-9-Making Task Data Persistent with Local Storage.
+
+/*
+* Agenda-So we’ve talked about what local storage is, when to use it, and how we can store data in it.
+
+- So in this lecture, we’ve learned that we’re currently storing our task data in state variables, and if we refresh the page, that data will be lost. That’s because after a page refresh, any data stored in state variables gets cleaned up.
+- To make the data persistent, we can use a database like MongoDB or simply use local storage. So we’ve talked about what local storage is, when to use it, and how we can store data in it.
+
+
+
+*/
 
 
 

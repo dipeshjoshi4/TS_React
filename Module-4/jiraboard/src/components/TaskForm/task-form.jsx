@@ -26,6 +26,11 @@ const TaskForm = ({ setTasks }) => {
         setTasks((prev) => {
             return [...prev, taskData]
         })
+        setTaskData({
+            task: "",
+            status: "Ready For Development",
+            tags: [],
+        })
     }
 
     const selectedTag = (tag) => {
@@ -41,7 +46,7 @@ const TaskForm = ({ setTasks }) => {
     return (
         <header className="app_header">
             <form onSubmit={handleSubmit}>
-                <input type='text' placeholder='Enter Class Details' className='task_input' name="task" onChange={handleChange} />
+                <input type='text' placeholder='Enter Class Details' className='task_input' name="task" value={taskData.task} onChange={handleChange} />
                 <div className='task_form_bottom'>
                     <div>
                         <Tag tagName="DEV" selectedTag={selectedTag} selected={checkTag("DEV")} />
@@ -49,7 +54,7 @@ const TaskForm = ({ setTasks }) => {
                         <Tag tagName="Product Owner" selectedTag={selectedTag} selected={checkTag("Product Owner")} />
                     </div>
                     <div>
-                        <select className='task_status' onChange={handleChange} name="status">
+                        <select className='task_status' onChange={handleChange} name="status" value={taskData.status}>
                             <option value="Ready For Development">Ready For Development</option>
                             <option value="In Progress"> In Progress</option>
                             <option value="Ready For Test">Ready For Test</option>
