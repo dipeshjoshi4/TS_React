@@ -606,11 +606,11 @@ const TaskCard = ({ title, tags }) => {
   const exisitingTask = localStorage.getItem("tasks");
   console.log(exisitingTask) //null- because we didint given any task
 
-- in local storage we have to given task to get data 
+- in local storage we have to given task to get data
 - for also something we chnage for that also we have to say in local storage
 - for that we have need something which is telling the local storage something you have delete => useEffect(()=>)
-- in React setTask ( ) have abilty to tell soemthing chnage 
-- but when we work and that time locally something delete from task-4 to task -3 that timw what to do 
+- in React setTask ( ) have abilty to tell soemthing chnage
+- but when we work and that time locally something delete from task-4 to task -3 that timw what to do
 
 */
 
@@ -627,40 +627,40 @@ const TaskCard = ({ title, tags }) => {
 */
 
 //!78 Lecture-11-Persisting Data with useEffect: Storing in Local Storage.
- /*
+/*
 
- * useEffect()
+* useEffect()
 
- - useEffect() is used to perform side effects in our Componenet
+- useEffect() is used to perform side effects in our Componenet
 
- * Side Effects are actions which are perform with the outside world
- - Fetching Data from an API
- - Directly updating DOM
- - Timer Function(setTimeout or setInterval)
+* Side Effects are actions which are perform with the outside world
+- Fetching Data from an API
+- Directly updating DOM
+- Timer Function(setTimeout or setInterval)
 
- * SYNTAX
+* SYNTAX
 
-    useEffect (()=>{
-        console.log("Logic")
-    },[])
+   useEffect (()=>{
+       console.log("Logic")
+   },[])
 
-    - [] :- define when to run 
-    - {} :- logic part
-    - if you dont give second paramter [] then it works render Everytime | if you give emoty the second paramter it works once
+   - [] :- define when to run
+   - {} :- logic part
+   - if you dont give second paramter [] then it works render Everytime | if you give emoty the second paramter it works once
 
 * CODE
 const exisitingTask = localStorage.getItem("tasks");
 const App = () => {
-  const [tasks, setTasks] = useState(JSON.parse(exisitingTask));
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks])
+ const [tasks, setTasks] = useState(JSON.parse(exisitingTask));
+ useEffect(() => {
+   localStorage.setItem("tasks", JSON.stringify(tasks));
+ }, [tasks])
 
 
-  - to set data in local we have to stringify so we JSON.Stringify(tasks)
-  - for set item 2 argument required => "tasks", JSON.stringify(tasks)
-  - to get data from local storage which is the default of state but we have convert them into stringify to array
-    useState(JSON.parse(exisitingTask));
+ - to set data in local we have to stringify so we JSON.Stringify(tasks)
+ - for set item 2 argument required => "tasks", JSON.stringify(tasks)
+ - to get data from local storage which is the default of state but we have convert them into stringify to array
+   useState(JSON.parse(exisitingTask));
 
 */
 
@@ -673,21 +673,21 @@ const App = () => {
   - const [tasks, setTasks] = useState(JSON.parse(exisitingTask) || []);
 
 * Agenda-2-Core Custome dragable Depedency
-- In this lecture, we've implemented drag-and-drop functionality entirely from scratch, without using any library. 
-- It's a common interview question to explain how to create drag-and-drop yourself, 
+- In this lecture, we've implemented drag-and-drop functionality entirely from scratch, without using any library.
+- It's a common interview question to explain how to create drag-and-drop yourself,
 - so I've walked through every detail—how to think about it, how to design the algorithm, and how to explain it well in an interview
 - if you're asked to build it. By the end of this project, you'll have learned a lot.
 
-*Exaplain
-- which TaskCard are we moving  along with their index &
-- which category & 
-- at which position we are moving &
+* Exaplain Drag and Drop Area Logic-------
+- which TaskCard are we moving & along with their index
 - at which draw Area limit
+- at which position we are moving ? status & index
+- which Position
 
 * 1st dragable on so for that => <article className='taskcard' draggable>
 
 * 2nd thing we want which card moving along with index for that
-- we first make state  
+- we first make state
 - App.jsx
 const { activeCard, setActiveCard } = useState(null);
 
@@ -697,7 +697,7 @@ const { activeCard, setActiveCard } = useState(null);
 
 - App.jsx
 <h2>activecard {activCard}</h2>
-- Now In App.jsx if you print and drag the card  then you will see index 0,1,2 as per your drag card  
+- Now In App.jsx if you print and drag the card  then you will see index 0,1,2 as per your drag card
 - because taskCard is object of array which give index which index have your drag card
 
 */
@@ -707,11 +707,11 @@ const { activeCard, setActiveCard } = useState(null);
 
 /*
 
-- which category & 
+- which category &
 - at which position we are moving &
 - at which draw Area limit
 
-* DropArea 
+* DropArea
 - either is vertical or horizantal moving within the Ready for Development to Closed right!
 - for this we make seprate components and style
 
@@ -736,5 +736,37 @@ const DropArea = () => {
 
 export default DropArea
 
+
+*/
+
+//! 81 Lecture-13-Extending Custom Drag-and-Drop Functionality
+/*
+
+- which TaskCard are we moving & along with their index  -> Done
+- at which draw Area limit -> DONE
+- at which position we are moving ? status & index 
+- which Position
+
+- so we need in which postion we drag and that new  positions status and index
+
+* App.jsx
+ - Pass as Props to Task Column
+
+   const onDrop = (status, positions) => {
+        console.log(` ${activeCard} is going place into ${status} and  at Postion ${positions}`)
+    }
+    return(
+        <TaskColumn title="Ready For Development" tasks={tasks} status="Ready For Development"
+          handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
+          onDrop={onDrop} />
+    )
+        
+* task-column.jsx 
+ - take the props and put function at 
+
+    <DropArea onDrop={() => onDrop(status, index + 1)} />
+
+- here you notice you take status but why index+1 -> because you put your dragTaskCard  in below so thats why index+1
 
 */

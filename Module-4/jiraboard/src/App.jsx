@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./app.css";
 import TaskForm from "./components/TaskForm/task-form";
@@ -8,7 +7,6 @@ import { useState, useEffect } from "react";
 
 //?for local storage
 const exisitingTask = localStorage.getItem("tasks");
-
 
 const App = () => {
 
@@ -20,6 +18,22 @@ const App = () => {
 
   const [activeCard, setActiveCard] = useState(null);
 
+  const onDrop = (status, positions) => {
+    console.log(` ${activeCard} is going place into ${status} and  at Postion ${positions}`)
+
+    if (activeCard === null || activeCard === undefined) return;
+
+    const tasktoMove = tasks[activeCard];
+    const updatedTasks = tasks.filter((task, index) => index !== activeCard)
+
+    updatedTasks.splice(positions, 0, {
+      ...tasktoMove,
+      status: status,
+    })
+    setTasks(updatedTasks);
+
+  }
+
   const handleDelete = (taskIndex) => {
     const newTask = tasks.filter((tasks, index) => (index !== taskIndex))
     setTasks(newTask)
@@ -28,14 +42,44 @@ const App = () => {
   return (
     <div className="app">
       <h1 style={{ textAlign: "center", margin: "50px" }}>Jira Board</h1>
+
       <TaskForm setTasks={setTasks} />
+
       <main className="app_main">
-        <TaskColumn title="Ready For Development" tasks={tasks} status="Ready For Development" handleDelete={handleDelete} setActiveCard={setActiveCard} />
-        <TaskColumn title="In Progress" tasks={tasks} status="In Progress" handleDelete={handleDelete} setActiveCard={setActiveCard} />
-        <TaskColumn title="Ready For Test" tasks={tasks} status="Ready For Test" handleDelete={handleDelete} setActiveCard={setActiveCard} />
-        <TaskColumn title="Closed" icon={ClosedIcon} tasks={tasks} status="Closed" handleDelete={handleDelete} setActiveCard={setActiveCard} />
+
+        <TaskColumn title="Ready For Development"
+          tasks={tasks}
+          status="Ready For Development"
+          handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
+          onDrop={onDrop} />
+
+        <TaskColumn title="In Progress"
+          tasks={tasks}
+          status="In Progress"
+          handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
+          onDrop={onDrop} />
+
+        <TaskColumn title="Ready For Test"
+          tasks={tasks}
+          status="Ready For Test"
+          handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
+          onDrop={onDrop} />
+
+        <TaskColumn title="Closed"
+          icon={ClosedIcon}
+          tasks={tasks}
+          status="Closed"
+          handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
+          onDrop={onDrop} />
+
       </main>
-      <h2>ActiveCard  {activeCard}</h2>
+
+      {/* <h2>ActiveCard  {activeCard}</h2> */}
+
     </div>
   );
 };
