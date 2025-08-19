@@ -110,5 +110,49 @@ import NotFound from './components/NotFound/NotFound';
 
 - In this lecture, we learned how to create a single-page application using the React Router DOM dependency. We explored how components like Link and NavLink help us build SPAs and enhance the user experience by enabling smooth navigation.
 
+# How To Make SPA Application
+
+- so in our app when we click on any Navbar button everytime whole application load .... user have to wait when its big website
+- so to make a SPA using react and react-rounder-dom depdency
+
+#1st
+- make link replace in place for anchor tag "a"
+- link  comes from react-router-dom
+- with link we have to use to="" attribute rather then href
+  <a href="/">Home</a> to <Link to="/">Home</Link> 
+
+#2nd
+- you can use NavLink instead of Link for the User to Know Where the user stay
+- so NavLink Gives A Active Class to when we click any Navabar Button
+- on that active class we dynmically chnage css and make that clickble portion highlight
+  <NavLink to="/">Home </NavLink>
+
+* Navbar.jsx
+
+import { NavLink } from 'react-router-dom'
+const Navbar = () => {
+    return (
+        <nav>
+            <ul className='navbar_list'>
+                <li>
+                    <NavLink to="/">Home</NavLink>
+                </li>
+            </ul>
+        </nav>
+    )
+}
+
+* Navbar.css
+ 
+ .navbar_list a.active {
+    font-weight: 500;
+    color: blue;
+}
+
+- we see hear a why because react eventually convert that NavLink into a in browser so we have to use a.active
+- because active class with in a tag
+- in browser we see this 
+  <a class="active" href="/" data-discover="true">Home</a>
+
 
 */
