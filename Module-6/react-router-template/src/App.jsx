@@ -7,6 +7,7 @@ import Articles from "./components/Articles/Articles"
 import Admin from "./components/Admin/Admin"
 import Products from "./components/Products/Products"
 import Contact from "./components/Contact/Contact"
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path='/products' element={<Products />} />
           <Route path='articles' element={<Articles />} />
           <Route path='/admin' element={<Admin />} />
-          <Route path='/contact' element={<Contact/>} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
       </main>

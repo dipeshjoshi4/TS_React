@@ -21,7 +21,7 @@ Admin[Admin,sales,sellers] - Articles - Home - Navbar - NotFound ---->  Products
 - we have all roting means Home Click Home Open, Different Tab Click Different associate Tab Open
 
 # 1st
-- for the we have one depedency which "npm i react-router-dom"  which give use dependecy of routing 
+- for the we have one depedency which "npm i react-router-dom"  which give use dependecy of routing
 - after install depedency we know the depdency install in package.json you will see
 - for all the routing first we have to Wrap our main "App"
 
@@ -88,4 +88,27 @@ function App() {
 
 */
 
-//? 87 Lecture-3-Building a Single-Page Application (SPA) with React Router
+
+//?87 Lecture-3-Handling Invalid Routes with a "Not Found" Page
+/*
+
+- when we give some unauthroized route or some unothrized path which will not in application then we have to show proper
+Message to User That Not Found
+
+* App.jsx
+
+import NotFound from './components/NotFound/NotFound';
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+*/
+
+//?88 Lecture-4-Building a Single-Page Application (SPA) with React Router
+
+/*
+
+- In this lecture, we learned how to create a single-page application using the React Router DOM dependency. We explored how components like Link and NavLink help us build SPAs and enhance the user experience by enabling smooth navigation.
+
+
+*/
