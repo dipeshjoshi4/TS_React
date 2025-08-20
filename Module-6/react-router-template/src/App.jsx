@@ -8,6 +8,7 @@ import Admin from "./components/Admin/Admin"
 import Products from "./components/Products/Products"
 import Contact from "./components/Contact/Contact"
 import NotFound from './components/NotFound/NotFound';
+import SingleProducts from "./components/Products/SingleProducts";
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
       <main className='app_main'>
         <Routes>
           <Route path='/' element={<Home />} />
+
           <Route path='/products' element={<Products />} />
+          <Route path='/products/:id' element={<SingleProducts />} />
+
           <Route path='articles' element={<Articles />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/contact' element={<Contact />} />

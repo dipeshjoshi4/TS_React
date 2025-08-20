@@ -156,3 +156,69 @@ const Navbar = () => {
 
 
 */
+
+//?89 Lecture-5-Route Parameters: Load Data Dynamically
+
+/*
+- In this lecture, we learned how to use Route Parameters in a React application to create dynamic routes.
+- Route parameters allow us to pass data through the URL, such as /users/1 or /products/123, where 1 and 123 are dynamic values.
+- We defined our routes using a colon syntax like :id, and accessed these values inside components using useParams() from react-router-dom.
+- This is extremely useful when we want to fetch and display data based on the specific ID or value in the URL.
+
+Snippet to Enable Emmet in React Files
+Steps:
+1-Open VS Code
+2-Press Cmd + Shift + P (Mac) or Ctrl + Shift + P (Windows)
+3-Type: Preferences: Open Settings (JSON) and press Enter
+4-Inside the JSON file, paste the following snippet (or merge if emmet.includeLanguages already exists):
+
+"emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "javascriptreact": "html"
+  }
+  
+# App.js
+    <Route path='/products' element={<Products />} />
+    <Route path='/products/:id' element={<SingleProducts />} />   //--
+
+# Products.jsx
+import { Link } from "react-router-dom"
+const Products = () => {
+  return (
+    <div>
+      <h2>Products</h2>
+      <ul>
+        <li>
+          <Link to="/Products/1">Product 1</Link>
+        </li>
+        <li>
+          <Link to="/Products/2">Product 2</Link>
+        </li>
+        <li>
+          <Link to="/Products/3">Product 3</Link>
+        </li>
+      </ul>
+    </div>
+  )
+}
+
+# SingleProducts.jsx
+
+import React from 'react'
+import { useParams } from 'react-router-dom'
+
+const SingleProducts = () => {
+  // const params = useParams();
+  // console.log(params)
+  const { id } = useParams();
+  return (
+    <div>
+      <h2>SingleProducts-{id}</h2>
+    </div>
+  )
+}
+
+export default SingleProducts
+
+
+*/
