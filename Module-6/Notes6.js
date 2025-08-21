@@ -222,3 +222,81 @@ export default SingleProducts
 
 
 */
+
+//?90 Lecture-6-Working with Query Strings Using useSearchParams Hook
+/*
+- In this lecture, we learned how to work with query strings in React Router using the useSearchParams hook. 
+- We explored how to read data from the URL query string and how to update it dynamically based on user actions or events. 
+- This makes our application more interactive and allows us to preserve state directly in the URL.
+
+* Example 
+
+- when we search on youtube "Mr.Beast" then we Search "Mr.Beast" and in route we see Like This!
+https://www.youtube.com/results?search_query=mr+beast
+- so how we could achecive this in Articles by query strings and useSearchParams
+- We Have one hook whatever you see in url we can use for that this hook called useSearchParams()
+
+const[searchParams,setSearchParams] = useSearchParams()
+
+#Articles.jsx
+import React from 'react'
+import { useSearchParams } from "react-router-dom";
+const Articles = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams()
+    const sortBy = searchParams.get("sortBy")
+    const category = searchParams.get("category")
+    const handleSortViews = () => {
+        setSearchParams({
+            sortBy: "Views",
+        })
+    }
+    
+    return (
+        <div>
+            <h2>
+                Articles:
+                <p>SortBy:{sortBy} Category:{category}</p>
+                <button onClick={handleSortViews}>Sort On Views</button>
+            </h2>
+        </div>
+
+    )
+}
+
+export default Articles
+
+//? Examples
+
+* 1
+
+http://localhost:5173/articles?sortBy=frontend&category=technical
+Output:SortBy:frontend Category:technical
+
+* 2
+
+http://localhost:5173/articles?sortBy=students&category=ClassB
+Output:SortBy:students Category:ClassB
+
+* 3
+http://localhost:5173/articles?sortBy=gender&category=Humans
+SortBy:gender Category:Humans
+
+* By Click On Button we Can Change The Query on Route
+http://localhost:5173/articles?sortBy=Views
+SortBy:Views Category:
+
+- searchParams gives use get method from that we can get data and by setSearchParams we can change Data
+- searchParams.get() get the query string from Route and we dynmically {} get the value 
+
+*/
+
+//?91 Lecture-7-Sorting Data with Query Strings: A Real-Life Example
+/*
+- In this lecture, we saw a demo of how to sort actual data—whether by views or by category—using query strings.
+We explored a real-life example so you can understand it better in a practical context.
+
+
+
+
+*/
