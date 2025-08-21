@@ -15,18 +15,30 @@ const Articles = () => {
 
     const sortBy = searchParams.get("sortBy")
     const category = searchParams.get("category")
+    const sortByViews = searchParams.get("sortByViews")
+
     let filterArticles = dummyArticles;
 
     const handleSortViews = () => {
         setSearchParams({
-            sortBy: "Views",
-            category: "Vlogger"
+            sortByViews: "true",
+            category: "Electronics",
         })
     }
+
+
+    if (category) {
+        filterArticles = filterArticles.filter((article) => article.category === category)
+    }
+    if (sortByViews === "true") {
+        filterArticles = [...filterArticles].sort((a, b) => a.views - b.views)
+    }
+
+
     return (
         <div>
-            <h2>Articles:<p>SortBy:{sortBy} Category:{category}</p></h2>
-            <button onClick={handleSortViews}>Sort On Click</button>
+            <h2>Articles:<p>SortBy:{sortBy ?? (sortByViews === "true" ? "Views" : "none")} Category:{category ?? "All"} </p></h2>
+            <button onClick={handleSortViews}>Sort By Views</button>
             <ul>
                 {
                     filterArticles.map((article) => (

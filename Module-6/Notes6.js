@@ -119,7 +119,7 @@ import NotFound from './components/NotFound/NotFound';
 - make link replace in place for anchor tag "a"
 - link  comes from react-router-dom
 - with link we have to use to="" attribute rather then href
-  <a href="/">Home</a> to <Link to="/">Home</Link> 
+  <a href="/">Home</a> to <Link to="/">Home</Link>
 
 #2nd
 - you can use NavLink instead of Link for the User to Know Where the user stay
@@ -143,7 +143,7 @@ const Navbar = () => {
 }
 
 * Navbar.css
- 
+
  .navbar_list a.active {
     font-weight: 500;
     color: blue;
@@ -151,7 +151,7 @@ const Navbar = () => {
 
 - we see hear a why because react eventually convert that NavLink into a in browser so we have to use a.active
 - because active class with in a tag
-- in browser we see this 
+- in browser we see this
   <a class="active" href="/" data-discover="true">Home</a>
 
 
@@ -176,7 +176,7 @@ Steps:
     "javascript": "javascriptreact",
     "javascriptreact": "html"
   }
-  
+
 # App.js
     <Route path='/products' element={<Products />} />
     <Route path='/products/:id' element={<SingleProducts />} />   //--
@@ -225,11 +225,11 @@ export default SingleProducts
 
 //?90 Lecture-6-Working with Query Strings Using useSearchParams Hook
 /*
-- In this lecture, we learned how to work with query strings in React Router using the useSearchParams hook. 
-- We explored how to read data from the URL query string and how to update it dynamically based on user actions or events. 
+- In this lecture, we learned how to work with query strings in React Router using the useSearchParams hook.
+- We explored how to read data from the URL query string and how to update it dynamically based on user actions or events.
 - This makes our application more interactive and allows us to preserve state directly in the URL.
 
-* Example 
+* Example
 
 - when we search on youtube "Mr.Beast" then we Search "Mr.Beast" and in route we see Like This!
 https://www.youtube.com/results?search_query=mr+beast
@@ -251,7 +251,7 @@ const Articles = () => {
             sortBy: "Views",
         })
     }
-    
+
     return (
         <div>
             <h2>
@@ -287,16 +287,83 @@ http://localhost:5173/articles?sortBy=Views
 SortBy:Views Category:
 
 - searchParams gives use get method from that we can get data and by setSearchParams we can change Data
-- searchParams.get() get the query string from Route and we dynmically {} get the value 
+- searchParams.get() get the query string from Route and we dynmically {} get the value
 
 */
 
 //?91 Lecture-7-Sorting Data with Query Strings: A Real-Life Example
+
+//- In this lecture, we saw a demo of how to sort actual data—whether by views or by category—using query strings.
+//- We explored a real-life example so you can understand it better in a practical context.
+
+//?CODE
 /*
-- In this lecture, we saw a demo of how to sort actual data—whether by views or by category—using query strings.
-We explored a real-life example so you can understand it better in a practical context.
+import React from 'react'
+import { useSearchParams } from "react-router-dom";
+
+const dummyArticles = [
+  { id: 1, title: "Laptop Review", views: 250, category: "Electronics" },
+  { id: 2, title: "SmartPhone Tips", views: 300, category: "Electronics" },
+  { id: 3, title: "Running Shoes", views: 100, category: "Fashion" },
+  { id: 4, title: "Washing Machine", views: 150, category: "Electronics" },
+]
+  
+const Articles = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const sortBy = searchParams.get("sortBy")
+  const category = searchParams.get("category")
+  const sortByViews = searchParams.get("sortByViews")
+
+  let filterArticles = dummyArticles;
+  const handleSortViews = () => {
+    setSearchParams({
+      sortByViews: "true",
+      category: "Electronics",
+    })
+  }
 
 
+  if (category) {
+    filterArticles = filterArticles.filter((article) => article.category === category)
+  }
+  if (sortByViews === "true") {
+    filterArticles = [...filterArticles].sort((a, b) => a.views - b.views)
+  }
 
+  return (
+    <div>
+      <h2>Articles:<p>SortBy:{sortBy ?? (sortByViews === "true" ? "Views" : "none")} Category:{category ?? "All"} </p></h2>
+      <button onClick={handleSortViews}>Sort By Views</button>
+      <ul>
+        {
+          filterArticles.map((article) => (
+            <li key={article.id}>
+              {article.title} - {article.views} Views ({article.category})
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  )
+}
+export default Articles
 
 */
+
+
+//?CODE
+/*
+if (category) {
+   filterArticles = filterArticles.filter((article) => article.category === category)
+}
+if (sortByViews === "true") {
+  filterArticles = [...filterArticles].sort((a, b) => a.views - b.views) 
+}
+*/
+//?Explanation
+//- if my article which COMES from dummyArticles that article's category will be same as category of my given value catogray
+//- then it will stored in filterArticles
+//- what we want after category is sortBy . so we sortting the filtered array from category and sort by sort((a,b)=>a.views - b.views)
+// a-b = Ascending = small to largest
+// b-a = Dscending = largest to small
+// here if you then filterArtciles = [...filterArticles] is both same its just that first giver array of object and we just destructing give ine by one object its same
