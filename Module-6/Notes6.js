@@ -307,7 +307,7 @@ const dummyArticles = [
   { id: 3, title: "Running Shoes", views: 100, category: "Fashion" },
   { id: 4, title: "Washing Machine", views: 150, category: "Electronics" },
 ]
-  
+
 const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const sortBy = searchParams.get("sortBy")
@@ -357,7 +357,7 @@ if (category) {
    filterArticles = filterArticles.filter((article) => article.category === category)
 }
 if (sortByViews === "true") {
-  filterArticles = [...filterArticles].sort((a, b) => a.views - b.views) 
+  filterArticles = [...filterArticles].sort((a, b) => a.views - b.views)
 }
 */
 //?Explanation
@@ -367,3 +367,112 @@ if (sortByViews === "true") {
 // a-b = Ascending = small to largest
 // b-a = Dscending = largest to small
 // here if you then filterArtciles = [...filterArticles] is both same its just that first giver array of object and we just destructing give ine by one object its same
+//?For h2 JSX Explanation
+// No params → sortBy = null, sortByViews = null, category = null.
+// Line sortBy ?? (sortByViews === "true" ? "Views" : "none") → "none".
+// Line category ?? "All" → "All".
+
+
+//?92 Lecture-8-Nested Routing in React: Routes within Routes
+
+/* 
+- we learned about nested routing, which is essentially routing inside another route. We've gone through it in detail with examples. 
+- its basically use when we want show nested components 
+
+* Admin.jsx
+
+import React from 'react'
+import { Link, Outlet } from "react-router-dom";
+const Admin = () => {
+    return (
+        <div>
+            <h1>Admin Page</h1>
+            <ul>
+                <li>
+                    <Link to="/admin/sales">Sales</Link>
+                </li>
+                <li>
+                    <Link to="/admin/sellers">Sellers</Link>
+                </li>
+            </ul>
+            <Outlet />
+        </div>
+    )
+}
+export default Admin
+
+* App.jsx
+
+import Navbar from "./components/Navbar/Navbar";
+import AllRoutes from './components/AllRoutes/AllRoutes';
+function App() {
+  return (
+    <div className='app'>
+      <Navbar />
+      <main className='app_main'>
+        <AllRoutes />
+      </main>
+    </div>
+  )
+}
+export default App
+
+* AllRoutes.jsx
+
+import { Route, Routes } from 'react-router-dom';
+import Home from "../Home/Home";
+import Articles from "../Articles/Articles"
+import Admin from "../Admin/Admin"
+import Products from "../Products/Products"
+import Contact from "../Contact/Contact"
+import NotFound from '../NotFound/NotFound';
+import SingleProducts from "../Products/SingleProducts";
+import Sales from "../Admin/Sales";
+import Sellers from '../Admin/Sellers';
+const AllRoutes = () => {
+    return (
+        <div>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/products' element={<Products />} />
+                <Route path='/products/:id' element={<SingleProducts />} />
+                <Route path='articles' element={<Articles />} />
+
+                <Route path='/admin' element={<Admin />} >
+                    <Route path="sales" element={<Sales />} />
+                    <Route path="sellers" element={<Sellers />} />
+                </Route >
+
+                <Route path='/contact' element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+
+        </div>
+    )
+}
+export default AllRoutes
+
+
+* Explantion
+
+So the Difference
+Nested Routes = How you structure routes (hierarchy of pages).
+useParams = How you read the dynamic values (like id) from the URL.
+
+They’re related but different:
+You define a nested route to allow :id URLs.
+Inside that component, you call useParams to actually get the id.
+
+Key Difference
+
+Nested Routes = parent + child render together.→ Useful when detail is a sub-section of the parent page.
+Separate Routes = only one component shows at a time.→ Useful when detail should completely replace the parent page.
+
+⚡ Quick Analogy:
+Nested → Like YouTube: /videos shows a list, clicking a video still keeps the list (sidebar) + video player (nested).
+Separate → Like a Login page: /login replaces everything, not part of the homepage.
+
+
+*/
+
+//?93 Lecture-9-Mastering Programmatic Navigation: Using the Navigate Component and UseNavigate Hook
