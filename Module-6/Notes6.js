@@ -375,9 +375,9 @@ if (sortByViews === "true") {
 
 //?92 Lecture-8-Nested Routing in React: Routes within Routes
 
-/* 
-- we learned about nested routing, which is essentially routing inside another route. We've gone through it in detail with examples. 
-- its basically use when we want show nested components 
+/*
+- we learned about nested routing, which is essentially routing inside another route. We've gone through it in detail with examples.
+- its basically use when we want show nested components
 
 * Admin.jsx
 
@@ -476,3 +476,71 @@ Separate → Like a Login page: /login replaces everything, not part of the home
 */
 
 //?93 Lecture-9-Mastering Programmatic Navigation: Using the Navigate Component and UseNavigate Hook
+
+// - here we understand and see example like : if my user is not Admin then he cant see the restricted Admin Componenet
+
+//?Navigate
+/*
+- for that we have Navigate Component Given By react-router-dom
+
+//?CODE
+import { Link, Navigate, Outlet } from "react-router-dom";
+const Admin = () => {
+    const user = { role: "user" }
+    if (user.role !== "admin") {
+        return <Navigate to="/" />
+    }
+*/
+
+//?useNavigate Hook
+
+//- it can use for go Back The Step or you can use to Go Back to Specific Page
+
+
+//?SingleProducts.jsx
+/*
+import React from 'react'
+import { useParams,useNavigate } from 'react-router-dom'
+
+const SingleProducts = () => {
+  const { id } = useParams();
+
+  const navigate = useNavigate()
+  const handleBack = () => {
+    navigate("/Products/" + 3)
+  }
+
+  return (
+    <div>
+      <h2>SingleProducts-{id}</h2>
+      <button onClick={handleBack}>Go Back</button>
+    </div>
+  )
+}
+export default SingleProducts
+
+*/
+
+//?for One Step Back
+// const navigate = useNavigate()
+// const handleBack = () => {
+//   navigate(-1)
+// }
+
+//?for two Step Back
+// const navigate = useNavigate()
+// const handleBack = () => {
+//   navigate(-2)
+// }
+
+//?for specific page
+// const navigate = useNavigate()
+// const handleBack = () => {
+//   navigate("/Products")
+// }
+
+//?for specific page with dynamic id
+// const navigate = useNavigate()
+// const handleBack = () => {
+//   navigate("/Products/" + 3)
+// }
