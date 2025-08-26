@@ -7,11 +7,10 @@ const Sellers = () => {
 
     // Directly upodating dom
     //Example-1
-    document.title = `Name is ${name}`;
-
+    // document.title = `Name is ${name}`;
     //Example-2
-    const heading = document.querySelector("h3");
-    heading.style.color = "red";
+    // const heading = document.querySelector("h3");
+    // heading.style.color = "red";
 
     console.log("Component Mount")
   }, [name])

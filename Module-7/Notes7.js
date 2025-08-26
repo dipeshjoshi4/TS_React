@@ -23,7 +23,10 @@ import { Component } from "react"
 //!98 Lecture-2-Understanding useEffect and Its Dependency Array : Mounting & Re-Rendering
 /*
 
-?-> kya karna hai jo useEfect andar ho | kab karna dpednecy(jab depdency pe chnage ho tab) or empty(once)
+?SYNTAX
+useEffect(()=>{
+      kya karna hai jo useEfect andar ho
+},[kab karna dpednecy(jab depdency pe chnage ho tab) or empty(once)])
 
 ?3 time genrally our componenet render
 - 1st time -> when componenet diplay on web -> Mounting
@@ -70,6 +73,7 @@ export default Sellers
 all though we change name by useState but he keep track record
 
 ?one more thing we learn that directly updating dom.example is below but we dont have to do that .
+?its not a good practise
 ?because react work on vdom chnage also happen with seen vdom so dont do chnage with vanilla js .overlapping issue happen.
 ? Example-1
 
@@ -85,3 +89,6 @@ all though we change name by useState but he keep track record
 
   
 */
+
+
+//!99 Lecture-3-Fetching Data Using fetch() and Axios
