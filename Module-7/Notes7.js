@@ -91,4 +91,53 @@ all though we change name by useState but he keep track record
 */
 
 
-//!99 Lecture-3-Fetching Data Using fetch() and Axios
+//!99 Lecture-3-Unmounting Components with useEffect (Cleanup Function)
+/*
+- In this lecture, we dived into the concept of how to properly unmount a component in a React application.
+- We explored how the useEffect hook provides a way to perform cleanup and handle unmounting logic, ensuring that components are removed from the DOM cleanly.
+- By the end of this lecture, you’ll have a solid understanding of how to manage the lifecycle of functional components, especially when it comes to unmounting
+
+- nothing happen directly in dom first VDOM then newVDOM have different name and then comparision then diffing throughh.....
+
+- for unmount or clean up function you just have to in same useEffect right callback when component change the the component unmount 
+
+- when other page click this working page change we getting that by useEffect first vdom -> copy of vdom and then change refelect on dom
+
+*Sellers.jsx
+
+const Sellers = () => {
+  const [name, setName] = useState();
+  useEffect(() => {
+    console.log("Component Mount")
+    return (() => {
+      console.log("Componenet UNMOUNT!!!")
+    })
+  }, [name])
+
+
+*/
+
+//!100 Lecture-4-Client Server Architecture and HTTP Essentials for Frontend Developers
+
+/*
+- In this lecture, we covered the fundamentals of client-server architecture.
+- We discussed how a client sends requests to a server, how the server responds, and what technologies are commonly used on the frontend and backend. 
+- Additionally, we delved into essential HTTP methods and HTTP status codes that are crucial for working with APIs. These are foundational concepts that every frontend developer should understand when dealing with data fetching and backend communication
+
+
+- so there is one user whoch have frontend means UI with some techstack it made ......other side backend with sometechstack it made and its server
+
+- client send some reuqest for get data for post data partial chnage ,pure chnage there is lot of http request came
+- server also m,ade api that defiend if this request cam e then this http response came , if this then that response
+
+- so there is different methods with request as per ask you send the method and request 
+
+?SOURCE =>see this http-methods.png in Module-7
+
+IF SERVER gives response also have some http code who hide some msg =>  200 for success | 404 not found .....
+
+
+
+*/
+
+//!101 lecture-5-
