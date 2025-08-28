@@ -140,4 +140,28 @@ IF SERVER gives response also have some http code who hide some msg =>  200 for 
 
 */
 
-//!101 lecture-5-
+//!101 lecture-5-Fetching Data from a Server: Using Fetch and Axios
+
+/*
+- In this lecture, we made an API call to retrieve data from the server using the GET method.
+- We first demonstrated how to do this with the Fetch API, and then we showed how to achieve the same result using Axios.
+- By the end of this session, you'll understand how to fetch data from a server using Axios Library
+
+- So we Get Data from backend in es6 we learn fetch so let take example of fetch 
+
+?Through Fetch Function
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users").
+      then((res) => res.json()).
+      then((data) => console.log(data)).catch(()=>{})
+  },[])
+
+- fetch first time give object then we parsed json data array of object
+- here if you see the data came and just to convert it from json format we use "res.json" and then as usal that gives use return so for that we have to use again then and get the actual Data
+
+?Through Axios Function
+
+
+
+*/
