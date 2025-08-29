@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import Loader from '../Common/Loader';
 
 const Sellers = () => {
 
   const [users, setUsers] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [errors, setErrors] = useState("")
 
 
   // useEffect(() => {
@@ -28,12 +33,22 @@ const Sellers = () => {
 
   //?through Axios
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => { setUsers(res.data) })
+    setIsLoading(true)
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      setUsers(res.data);
+      setIsLoading(false);
+    })
+      .catch((err) => {
+        setErrors(err.message)
+        setIsLoading(false)
+      })
   }, [])
 
   return (
     <>
       <h3>Admin Sellers Page</h3>
+      {isLoading && <Loader />}
+      {errors && <em>{errors}</em>}
       {
         users.map((user) => (
           <p key={user.id}>{user.name}</p>

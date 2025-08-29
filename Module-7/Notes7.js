@@ -185,3 +185,100 @@ IF SERVER gives response also have some http code who hide some msg =>  200 for 
     </>
 
 */
+
+//!102 Lecture-6-Enhancing User Experience with Loaders and Error Handling"
+
+/*
+- In this lecture, we added a loader to improve the user experience.
+- Essentially, if data doesn’t come back from the API immediately, a loading spinner will appear, just like you’ve probably seen elsewhere. 
+- We also covered how to display an error message if something goes wrong.
+-  This is all about making the user's experience smoother and more user-friendly, and that's what we've covered in this lecture.
+
+
+- through done that we have specify a loader in common folder in components folder
+?through Axios
+
+import axios from "axios"
+import Loader from '../Common/Loader';
+
+const Sellers = () => {
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    setIsLoading(true)
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => { setUsers(res.data) })
+    setIsLoading(false)
+  }, [])
+  return (
+    <>
+      <h3>Admin Sellers Page</h3>
+      {isLoading && <Loader />}
+      {
+        users.map((user) => (
+          <p key={user.id}>{user.name}</p>
+        ))
+      }
+
+    </>
+  )
+}
+export default Sellers
+
+
+*/
+
+//! 103 Lecture-7-Mastering Error Handling in API Calls
+
+/*
+- In this lecture, we covered how to implement error handling when making API calls.
+- Sometimes the internet might not be available, or the API may not respond properly. 
+- In such cases, it’s important to handle errors gracefully to ensure a smooth user experience.
+- This lecture explains how to detect and manage these errors effectively.
+
+? Sellers.jsx
+
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
+import Loader from '../Common/Loader';
+
+const Sellers = () => {
+
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState("")
+
+  useEffect(() => {
+    setIsLoading(true)
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      setUsers(res.data);
+      setIsLoading(false);
+    })
+      .catch((err) => {
+        setErrors(err.message)
+        setIsLoading(false)
+      })
+  }, [])
+
+  return (
+    <>
+
+      <h3>Admin Sellers Page</h3>
+
+      {isLoading && <Loader />}
+
+      {errors && <em>{errors}</em>}
+
+      {
+        users.map((user) => (
+          <p key={user.id}>{user.name}</p>
+        ))
+      }
+
+    </>
+  )
+}
+
+export default Sellers
+
+
+*/
