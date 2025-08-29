@@ -282,3 +282,70 @@ export default Sellers
 
 
 */
+
+//!104 Lecture-8-Modernizing Code with Async/Await for Better Readability
+
+/*
+
+- In this lecture, we took the code we had written so far and rewrote it in a more modern style using async and await.
+- This approach makes the code more readable, easier to maintain, and simpler to understand. It helps keep things clean
+
+?We make this below code from modern syntax
+
+  ?through Axios
+  useEffect(() => {
+  
+    setIsLoading(true)
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      setUsers(res.data);
+      setIsLoading(false);
+    })
+      .catch((err) => {
+        setErrors(err.message)
+        setIsLoading(false)
+      })
+      
+  }, [])
+
+
+  ?-----------------------------------convert into this ---------------------
+
+   useEffect(() => {
+    fetchUser()
+  }, [])
+
+  const fetchUser = async () => {
+    try {
+      setIsLoading(true)
+      const res = await axios.get("https://jsonplaceholder.typicode.com/users")
+      setUsers(res.data);
+      setIsLoading(false);
+    } catch (err) {
+        setErrors(err.message)
+        setIsLoading(false)
+    }finally{
+        console.log("all good ")
+    }
+  }
+
+?Notes
+
+asunc ...await have to use vecause promise comes 
+with async await you cant use then
+using try ...catch block
+
+
+*/
+
+//! 105 Lecture-9-Handling POST Requests with Axios
+
+/*
+- In this lecture, we covered how to handle POST requests using Axios. 
+- We demonstrated how to send data from the client side to a server and how that data can be stored in a database. 
+- The logic we implemented will work with an actual API, giving you a clear idea of how to use Axios for POST requests in real-world applications. 
+- We also discussed how to structure the request body properly and handle responses or errors effectively.
+
+
+
+
+*/

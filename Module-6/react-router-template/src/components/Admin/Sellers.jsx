@@ -33,16 +33,35 @@ const Sellers = () => {
 
   //?through Axios
   useEffect(() => {
-    setIsLoading(true)
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+
+    fetchUser()
+
+    // setIsLoading(true)
+    // axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+    //   setUsers(res.data);
+    //   setIsLoading(false);
+    // })
+    //   .catch((err) => {
+    //     setErrors(err.message)
+    //     setIsLoading(false)
+    //   })
+
+  }, [])
+
+
+  const fetchUser = async () => {
+    try {
+      setIsLoading(true)
+      const res = await axios.get("https://jsonplaceholder.typicode.com/users")
       setUsers(res.data);
       setIsLoading(false);
-    })
-      .catch((err) => {
+    } catch (err) {
         setErrors(err.message)
         setIsLoading(false)
-      })
-  }, [])
+    } finally {
+      console.log("all good at the end!!")
+    }
+  }
 
   return (
     <>
