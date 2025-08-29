@@ -162,6 +162,26 @@ IF SERVER gives response also have some http code who hide some msg =>  200 for 
 
 ?Through Axios Function
 
+- first intsall "npm i axios" in react-router-template means in your main project file
 
+?CODE
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => console.log(res.data))
+  })
+  
+- in axios u dont have to use 2 time then here you just simply write res.data u will get data 
+- from webdev tools from browser Network -> fecth/xhr -> you can see request get | previous | intieter -> means who acces this data from where (sellers)
+- all methods ,metadata,ip of system all things you see there
+
+? Directly Print Data on Screen with help of map
+  return (
+    <>
+      <h3>Admin Sellers Page</h3>
+      {
+        users.map((user) => (
+          <p key={user.id}>{user.name}</p>
+        ))
+      }
+    </>
 
 */

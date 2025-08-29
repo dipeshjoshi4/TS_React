@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import axios from "axios"
 
 const Sellers = () => {
-  const [name, setName] = useState();
+
+  const [users, setUsers] = useState([]);
 
 
   // useEffect(() => {
-  //   // Directly upodating dom
+  //   //? Directly upodating dom
   //   //Example-1
   //   // document.title = `Name is ${name}`;
   //   //Example-2
@@ -17,16 +19,27 @@ const Sellers = () => {
   //   })
   // }, [name])
 
+  //?through fetch we get data
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/users").
+  //     then((res) => res.json()).
+  //     then((data) => console.log(data)).catch(()=>{})
+  // },[])
+
+  //?through Axios
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users").
-      then((res) => res.json()).
-      then((data) => console.log(data)).catch(()=>{})
-  },[])
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => { setUsers(res.data) })
+  }, [])
 
   return (
     <>
       <h3>Admin Sellers Page</h3>
-      <input type='text' onChange={(e) => { setName(e.target.value) }} />
+      {
+        users.map((user) => (
+          <p key={user.id}>{user.name}</p>
+        ))
+      }
+
     </>
   )
 }
