@@ -10,6 +10,9 @@ const Sellers = () => {
 
   const [errors, setErrors] = useState("")
 
+  const [name, setName] = useState();
+
+
 
   // useEffect(() => {
   //   //? Directly upodating dom
@@ -63,11 +66,35 @@ const Sellers = () => {
     }
   }
 
+  const addUser = () => {
+    const newUser = {
+      name: name,
+      id: users.length + 1,
+    }
+    setUsers([newUser, ...users])
+
+    //ACTUL POST REQUEST to server
+
+    axios.post("https://jsonplaceholder.typicode.com/users", newUser).then((res) => {
+      setUsers([res.data, ...users])
+    }).catch((err) => {
+      setErrors(err.message);
+      setUsers(users)
+    })
+  }
+
   return (
     <>
       <h3>Admin Sellers Page</h3>
+
+      <input type='text' onChange={(e) => { setName(e.target.value) }} />
+
+      <button onClick={addUser}>ADD USER</button>
+
       {isLoading && <Loader />}
+
       {errors && <em>{errors}</em>}
+
       {
         users.map((user) => (
           <p key={user.id}>{user.name}</p>

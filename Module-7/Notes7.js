@@ -345,7 +345,63 @@ using try ...catch block
 - The logic we implemented will work with an actual API, giving you a clear idea of how to use Axios for POST requests in real-world applications. 
 - We also discussed how to structure the request body properly and handle responses or errors effectively.
 
+- client to server send POST request which server (backend) process and that data get by client we get on screen
+
+- for sending data we use click button and some data => that scenario we use POST request only
+
+- best way to POST data while working in react you have to make list of data and connect with the old state which we create here
+- so we made button -> click handle the function ....normal way
+- when you add the new user make sure give name but make sure you give ID =>  id : users.length+1
+- then we setName([...users,newUser]) => [in array old list of user + new user ]
 
 
+? Sellers.jsx
+
+const addUser = () => {
+    const newUser = {
+      name: name,
+      id: users.length + 1,
+    }
+    setUsers([newUser, ...users])
+  }
+return (
+   <input type='text' onChange={(e) => { setName(e.target.value) }} />
+   <button onClick={addUser}>ADD USER</button>
+)
+
+
+?Two Way Update Data
+
+?Optimistic Update
+Update Data On UI -------->Call API TO UPDATE DATA ON UI
+- means first make user see like your task is done IN UI and then backend update while api call in time
+
+?Pessimistic Update
+call API to update Data at Backend --------------->  Update Data on UI
+- vice-Versa
+
+?now we send POST request
+    axios.post("https://jsonplaceholder.typicode.com/users", newUser).then((res) => {
+      setUsers([res.data, ...users])
+    }).catch((err) => {
+      setErrors(err.message);
+      setUsers(users)
+    })
+  }
+  
+  ?FInal CODE
+    const addUser = () => {
+    const newUser = {
+      name: name,
+      id: users.length + 1,
+    }
+    setUsers([newUser, ...users])
+    axios.post("https://jsonplaceholder.typicode.com/users", newUser).then((res) => {
+      setUsers([res.data, ...users])
+    }).catch((err) => {
+      setErrors(err.message);
+      setUsers(users)
+    })
+  }
 
 */
