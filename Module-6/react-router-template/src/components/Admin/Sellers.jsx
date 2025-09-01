@@ -83,6 +83,18 @@ const Sellers = () => {
     })
   }
 
+  //ACTUL Delete REQUEST to server
+
+  const deleteUser = (id) => {
+    setUsers(users.filter((u) => u.id !== id))
+    axios.delete("https://jsonplaceholder.typicode.com/users/${id}").catch((err) => {
+      setErrors(err.message);
+      setUsers(users)
+    })
+  }
+
+
+
   return (
     <>
       <h3>Admin Sellers Page</h3>
@@ -95,11 +107,28 @@ const Sellers = () => {
 
       {errors && <em>{errors}</em>}
 
-      {
-        users.map((user) => (
-          <p key={user.id}>{user.name}</p>
-        ))
-      }
+      <table>
+        <tbody>
+
+          {users.map((user) => (
+
+            <tr key={user.id}>
+
+              <td>
+                <p key={user.id}>{user.name}</p>
+              </td>
+
+              <td>
+                <button onClick={() => { deleteUser(user.id) }}>Delete</button>
+              </td>
+
+            </tr>
+          ))}
+
+        </tbody>
+      </table>
+
+
 
     </>
   )

@@ -405,3 +405,51 @@ call API to update Data at Backend --------------->  Update Data on UI
   }
 
 */
+
+
+//!106 Lecture-10-Handling DELETE Requests with Axios
+
+/*
+- In this lecture, we’ve covered how to perform DELETE requests using Axios.
+- You'll gain a complete understanding of how to use Axios to remove data from a server. 
+- By the end, you’ll know exactly how to implement and manage DELETE operations in your own applications.
+
+?Note -  axios.delete("https://jsonplaceholder.typicode.com/users/${id}").catch((err) => {
+?- here you have to given id 
+
+?ACTUL Delete REQUEST to server
+
+  const deleteUser = (id) => {
+    setUsers(users.filter((u) => u.id !== id))
+    axios.delete("https://jsonplaceholder.typicode.com/users/${id}").catch((err) => {
+      setErrors(err.message);
+      setUsers(users)
+    })
+  }
+  return (
+    <>
+      <h3>Admin Sellers Page</h3>
+      <input type='text' onChange={(e) => { setName(e.target.value) }} />
+      <button onClick={addUser}>ADD USER</button>
+      {isLoading && <Loader />}
+      {errors && <em>{errors}</em>}
+
+      <table>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>
+                <p key={user.id}>{user.name}</p>
+              </td>
+              <td>
+                <button onClick={() => { deleteUser(user.id) }}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+)
+
+
+*/
