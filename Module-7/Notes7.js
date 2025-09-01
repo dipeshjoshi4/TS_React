@@ -453,3 +453,66 @@ call API to update Data at Backend --------------->  Update Data on UI
 
 
 */
+
+//!107 Lecture-11-Handling PATCH Requests with Axios
+
+/*
+
+- In this lecture, we’ve covered how to achieve PATCH requests using Axios.
+- We took a simple example to show how you can update just one field out of multiple fields in a resource without modifying the entire record.
+- If you want to update the entire resource, you would typically use a PUT request instead.
+- We focused on the PATCH example here so you can understand how to partially update data using Axios.
+
+?path -> when you have to chnage slective resource to get chnage then use PATCH
+?PUT -> WHEN YOU HAVE TO USE ALL THE FILED
+
+
+  ?ACTUL PATCH REQUEST TO SERVER
+
+  const updateUser = (user) => {
+    const UpdateUser = {
+      ...user,
+      name: user.name + "   Updated"
+    }
+    setUsers(users.map((u) => (u.id === user.id ? UpdateUser : u)))
+    
+    axios
+      .patch("https://jsonplaceholder.typicode.com/users/${user.id}", UpdateUser)
+      .catch((err) => {
+        setErrors(err.message)
+        setUsers(users)
+    })
+  }
+  
+  return(
+              <td>
+                <button onClick={() => { updateUser(user) }}>Update</button>
+              </td>
+        )
+
+
+?Notes
+
+- here for patch you can see the payload of u selected id came with all object and get response the updated from backend which is in name filed
+
+- REMEMBER : SETuSER WE DO FOR THE ui and axios.patch for the backend data change
+
+- in path we have to pass user.id with chnage object which is UserUpdate object
+
+- let talk about UserUpdate object  where we take one id slected on click  and then we chnage name : user.name + "  updated"
+
+- so when we click on id the old id copy and chnage withnew data where we chnage name only with updated concacte
+
+?Map Function Info
+- setUsers(users.map((u) => (u.id === user.id ? UpdateUser : u)))
+- basic map function where users main se 1 user nikla uski id and nay upadteuser main user.id same 
+- then updateduser object dall do warna old wala apna u
+
+*/
+
+//?PUT mETHOD
+
+
+//!108 Lecture-12-Simplifying Code with Axios Create and Base URLs
+
+

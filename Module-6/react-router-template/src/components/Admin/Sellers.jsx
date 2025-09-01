@@ -93,6 +93,23 @@ const Sellers = () => {
     })
   }
 
+  //ACTUL PATCH REQUEST TO SERVER
+
+  const updateUser = (user) => {
+    const UpdateUser = {
+      ...user,
+      name: user.name + "   Updated"
+    }
+    setUsers(users.map((u) => (u.id === user.id ? UpdateUser : u)))
+    
+    axios
+      .patch("https://jsonplaceholder.typicode.com/users/${user.id}", UpdateUser)
+      .catch((err) => {
+        setErrors(err.message)
+        setUsers(users)
+    })
+  }
+
 
 
   return (
@@ -120,6 +137,10 @@ const Sellers = () => {
 
               <td>
                 <button onClick={() => { deleteUser(user.id) }}>Delete</button>
+              </td>
+
+              <td>
+                <button onClick={() => { updateUser(user) }}>Update</button>
               </td>
 
             </tr>
