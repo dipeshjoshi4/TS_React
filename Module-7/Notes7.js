@@ -510,9 +510,61 @@ call API to update Data at Backend --------------->  Update Data on UI
 
 */
 
-//?PUT mETHOD
+//?PUT METHOD
 
 
 //!108 Lecture-12-Simplifying Code with Axios Create and Base URLs
 
 
+//?make src -> utils ->api-client.js
+
+//?CODE-api-client.js
+/*
+import axios from "axios";
+export default axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com",
+})
+*/
+
+//?CODE-Sellers.jsx
+
+/*
+
+// import axios from "axios" //?Axios Delete depdency because we dont use now
+import apiClient from '../../utils/api-client';
+
+
+const res = await apiClient.get("/users")
+apiClient.post("/users", newUser).then((res) => {
+apiClient.delete("/users/${id}").catch(err) => 
+apiClient.patch("/users/${user.id}", UpdateUser)
+apiClient.put(`/users/${user.id}`, UpdateUserPut)
+*/
+
+
+//?PUT METHOD WE CHNAGE USERNAME AND PHONENUMBER
+// => IN USERNAME WE Chnage => "username+update"
+// => IN PhoneNumber WE Chnage => Prefix=>"571-"+"PhoneNumber"
+
+/*
+
+  const updateUserPut = (user) => {
+    const UpdateUserPut = {
+      ...user,
+      username: user.username + " Updated",
+      phone: user.phone.replace("", "567-")
+    };
+
+    // update locally
+    setUsers(users.map((u) => (u.id === user.id ? UpdateUserPut : u)));
+
+    // send API call with PUT
+    apiClient
+      .put(`/users/${user.id}`, UpdateUserPut)
+      .catch((err) => {
+        setErrors(err.message);
+        setUsers(users); // rollback on failure
+      });
+  };
+
+*/

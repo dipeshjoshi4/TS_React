@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios"
+// import axios from "axios"
 import Loader from '../Common/Loader';
+import apiClient from '../../utils/api-client';
 
 const Sellers = () => {
 
@@ -55,12 +56,12 @@ const Sellers = () => {
   const fetchUser = async () => {
     try {
       setIsLoading(true)
-      const res = await axios.get("https://jsonplaceholder.typicode.com/users")
+      const res = await apiClient.get("/users")
       setUsers(res.data);
       setIsLoading(false);
     } catch (err) {
-        setErrors(err.message)
-        setIsLoading(false)
+      setErrors(err.message)
+      setIsLoading(false)
     } finally {
       console.log("all good at the end!!")
     }
@@ -75,7 +76,7 @@ const Sellers = () => {
 
     //ACTUL POST REQUEST to server
 
-    axios.post("https://jsonplaceholder.typicode.com/users", newUser).then((res) => {
+    apiClient.post("/users", newUser).then((res) => {
       setUsers([res.data, ...users])
     }).catch((err) => {
       setErrors(err.message);
@@ -87,7 +88,7 @@ const Sellers = () => {
 
   const deleteUser = (id) => {
     setUsers(users.filter((u) => u.id !== id))
-    axios.delete("https://jsonplaceholder.typicode.com/users/${id}").catch((err) => {
+    apiClient.delete("/users/${id}").catch((err) => {
       setErrors(err.message);
       setUsers(users)
     })
@@ -101,14 +102,37 @@ const Sellers = () => {
       name: user.name + "   Updated"
     }
     setUsers(users.map((u) => (u.id === user.id ? UpdateUser : u)))
-    
-    axios
-      .patch("https://jsonplaceholder.typicode.com/users/${user.id}", UpdateUser)
+    console.log(users);
+
+    apiClient
+      .patch("/users/${user.id}", UpdateUser)
       .catch((err) => {
         setErrors(err.message)
         setUsers(users)
-    })
+      })
   }
+
+  //ACTUL PUT
+
+  const updateUserPut = (user) => {
+    const UpdateUserPut = {
+      ...user,
+      username: user.username + " Updated",
+      phone: user.phone.replace("", "567-")
+    };
+
+    // update locally
+    setUsers(users.map((u) => (u.id === user.id ? UpdateUserPut : u)));
+
+    // send API call with PUT
+    apiClient
+      .put(`/users/${user.id}`, UpdateUserPut)
+      .catch((err) => {
+        setErrors(err.message);
+        setUsers(users); // rollback on failure
+      });
+  };
+
 
 
 
@@ -132,7 +156,9 @@ const Sellers = () => {
             <tr key={user.id}>
 
               <td>
-                <p key={user.id}>{user.name}</p>
+                <p>Name:{user.name}</p>
+                <p>UserName:{user.username}</p>
+                <p>Phone:{user.phone}</p>
               </td>
 
               <td>
@@ -141,6 +167,10 @@ const Sellers = () => {
 
               <td>
                 <button onClick={() => { updateUser(user) }}>Update</button>
+              </td>
+
+              <td>
+                <button onClick={() => { updateUserPut(user) }}>UpdatePUT</button>
               </td>
 
             </tr>
