@@ -13,7 +13,7 @@
 // Purpose is just maintain and scalable
 // Bisiness and Design part on some structure
 
-//?111 Lecture-2-
+//?111 Lecture-2-Part 1: Mastering Container Components in React
 
 /*
 - In this lecture, we covered the concept of container and the presentational design pattern in React. 
@@ -81,6 +81,27 @@ useEffect(() =>
 - now we have to pass as props in UserList.jsx
 
 ?Theory Some  To undertsand this design part
+
+?1.Container Component = "Smart"
+- Hnadles All Logic of that Component  if users then users(state API,DATA FECTHING,side Effects) what data send to the UI
+
+?2.Presentation Component = "Dumb"
+- Only responsible for displaying the UI
+- recevies data via props from the container
+- No Logic,Just Presentation
+
+? benefits
+
+- Reusable Components
+- Easier To Maintain
+- Simpler to Test
+
+? Drawbacks
+
+- slight overhead for many smaller scale app
+- can be tricky for beginner to understand
+- May Lead to Prop Drilling(Passing data through multiple components levels)
+
 
 
 */
