@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useState, useEffect } from 'react'
 
+import UserList from "../Components/UserList"
+
 
 const UserContainers = () => {
 
@@ -12,7 +14,6 @@ const UserContainers = () => {
     const getUser = async () => {
 
         try {
-
             setIsLoading(true);
             const response = await fetch('https://reqres.in/api/users', {
                 headers: {
@@ -35,7 +36,7 @@ const UserContainers = () => {
     }, [])
     return (
         <div>
-
+            <UserList users={users} Loading={isLoading} error={errors} />
         </div>
     )
 }

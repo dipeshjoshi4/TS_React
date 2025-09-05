@@ -16,8 +16,8 @@
 //?111 Lecture-2-Part 1: Mastering Container Components in React
 
 /*
-- In this lecture, we covered the concept of container and the presentational design pattern in React. 
-- We explored how containers manage state and pass it down as props to presentational (or "dumb") components, which are focused solely on rendering the UI. 
+- In this lecture, we covered the concept of container and the presentational design pattern in React.
+- We explored how containers manage state and pass it down as props to presentational (or "dumb") components, which are focused solely on rendering the UI.
 - This is a widely used design pattern, especially in large-scale projects, to maintain clean and manageable code.
 
 ? we make 2 Component
@@ -66,17 +66,17 @@ export default UserContainers
 - so here we make a data api which we get from  => https://app.reqres.in/  => We get User Api
 
 ?CODE Structure
-- so untill data comes loading then comes then users and if not comes then Errors 
-- So 3 state for the data 
+- so untill data comes loading then comes then users and if not comes then Errors
+- So 3 state for the data
 - one function to get Data from users  => we use getUser()
 - here we write logic part of async await with in try catch  to get data from api
 
-- in last we use useEffect Hook . Why  Because we need to refresh page when data came to for that 
+- in last we use useEffect Hook . Why  Because we need to refresh page when data came to for that
 useEffect(() =>
     {getUser()
 },[])
 
-?Result 
+?Result
 - we get data on console
 - now we have to pass as props in UserList.jsx
 
@@ -104,4 +104,55 @@ useEffect(() =>
 
 
 
+*/
+
+//?112 Lecture-3-Part 2: Mastering Presentational Components in React
+
+
+/*
+
+- In this lecture, we covered the concept of container and the presentational design pattern in React. We explored how containers manage state and pass it down as props to presentational (or "dumb") components, which are focused solely on rendering the UI. This is a widely used design pattern, especially in large-scale projects, to maintain clean and manageable cod
+
+
+?UserList.jsx
+
+
+import React from 'react'
+import "./userlist.css"
+
+const UserList = ({ users, Loading, error }) => {
+  if (Loading) return <div>Loading......</div>
+  if (error) return <div>Something Went Wrong......</div>
+  if (!users) return null
+  return (
+    <div className='userlist'>
+      {
+        users.length && users.map((user) => {
+          return (
+            <div key={user.id}>
+              <img src={user.avatar} />
+              <p>
+                <strong>{user.first_name}</strong>
+              </p>
+              <p>
+                {user.email}
+              </p>
+            </div>
+          )
+        })
+      }
+
+    </div>
+  )
+}
+
+export default UserList
+
+
+?UserContainers.jsx
+  return (
+        <div>
+            <UserList users={users} Loading={isLoading} error={errors} />
+        </div>
+      )
 */
