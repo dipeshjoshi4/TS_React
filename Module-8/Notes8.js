@@ -248,6 +248,49 @@ export default UserContainers
 
 /*
 
+?useWindowSize.js
+
+import React from 'react'
+import { useState, useEffect } from 'react'
+
+export const useWindowSize = () => {
+    const [size, setSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    })
+
+    useEffect(() => {
+        const handleResize = () => {
+            setSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            })
+        };
+        window.addEventListener("resize", handleResize)
+        return (()=>window.removeEventListener("resize",handleResize))
+    }, [])
+    return size;
+}
+
+export default useWindowSize
+
+? App.jsx
+import UserContainers from "./containers/UserContainers"
+import useWindowSize from "./hooks/useWindowSize"
+function App() {
+  const { width, height } = useWindowSize()
+  return (
+    <>
+      <h1>Conatiner Presentation Design Pattern</h1>
+      <UserContainers />
+      <div>
+        window Size : {height} * {width};
+      </div>
+    </>
+  )
+}
+export default App
+
 
 */
 
