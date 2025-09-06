@@ -156,3 +156,98 @@ export default UserList
         </div>
       )
 */
+
+
+//?113 Lecture-4-Mastering Custom Hooks Design Pattern : Simplify Your Code Reusability
+
+/*
+- In this lecture, we covered the Custom Hook design pattern, a powerful approach commonly used in large codebase applications.
+- We explored how to create your own custom hooks to encapsulate logic once and reuse it anywhere you need. By doing so, you can avoid repetitive code and streamline your components. 
+- This lecture will help you understand the practical use of custom hooks and how they make your React code more maintainable and efficient.
+*/
+
+/*
+?Custom Hook Design Pattern
+
+- logic and fetching data function into hooks 
+
+?hooks -> useFetch.js
+
+import React, { useState, useEffect } from 'react'
+export const useFetch = () => {
+    const [users, setUsers] = useState([])
+    const [errors, setErrors] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const getUser = async () => {
+        try {
+            setIsLoading(true);
+            const response = await fetch('https://reqres.in/api/users', {
+                headers: {
+                    'x-api-key': 'reqres-free-v1'
+                }
+            })
+            const json = await response.json();
+            console.log(json)
+            if (!json.data) return;
+            setUsers(json.data)
+            setIsLoading(false)
+        } catch (errors) {
+            setErrors(errors);
+            console.log(errors)
+        }
+    }
+    useEffect(() => {
+        getUser()
+    }, [])
+    return { users, errors, isLoading }
+}
+export default useFetch
+
+?UserContainer.jsx
+
+import UserList from "../Components/UserList"
+import useFetch from '../hooks/useFetch'
+const UserContainers = () => {
+    const { users, errors, isLoading } = useFetch()
+
+    // const [users, setUsers] = useState([])
+    // const [errors, setErrors] = useState(false)
+    // const [isLoading, setIsLoading] = useState(false)
+    // const getUser = async () => {
+    //     try {
+    //         setIsLoading(true);
+    //         const response = await fetch('https://reqres.in/api/users', {
+    //             headers: {
+    //                 'x-api-key': 'reqres-free-v1'
+    //             }
+    //         })
+    //         const json = await response.json();
+    //         console.log(json)
+    //         if (!json.data) return;
+    //         setUsers(json.data)
+    //         setIsLoading(false)
+    //     } catch (errors) {
+    //         setErrors(errors);
+    //         console.log(errors)
+    //     }
+    // }
+    // useEffect(() => {
+    //     getUser()
+    // }, [])
+    return (
+        <div>
+            <UserList users={users} Loading={isLoading} error={errors} />
+        </div>
+    )
+}
+export default UserContainers
+
+*/
+
+//?2nd Example
+
+/*
+
+
+*/
+
