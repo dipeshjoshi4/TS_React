@@ -164,9 +164,8 @@ export default UserList
 - In this lecture, we covered the Custom Hook design pattern, a powerful approach commonly used in large codebase applications.
 - We explored how to create your own custom hooks to encapsulate logic once and reuse it anywhere you need. By doing so, you can avoid repetitive code and streamline your components. 
 - This lecture will help you understand the practical use of custom hooks and how they make your React code more maintainable and efficient.
-*/
 
-/*
+
 ?Custom Hook Design Pattern
 
 - logic and fetching data function into hooks 
@@ -209,31 +208,6 @@ import UserList from "../Components/UserList"
 import useFetch from '../hooks/useFetch'
 const UserContainers = () => {
     const { users, errors, isLoading } = useFetch()
-
-    // const [users, setUsers] = useState([])
-    // const [errors, setErrors] = useState(false)
-    // const [isLoading, setIsLoading] = useState(false)
-    // const getUser = async () => {
-    //     try {
-    //         setIsLoading(true);
-    //         const response = await fetch('https://reqres.in/api/users', {
-    //             headers: {
-    //                 'x-api-key': 'reqres-free-v1'
-    //             }
-    //         })
-    //         const json = await response.json();
-    //         console.log(json)
-    //         if (!json.data) return;
-    //         setUsers(json.data)
-    //         setIsLoading(false)
-    //     } catch (errors) {
-    //         setErrors(errors);
-    //         console.log(errors)
-    //     }
-    // }
-    // useEffect(() => {
-    //     getUser()
-    // }, [])
     return (
         <div>
             <UserList users={users} Loading={isLoading} error={errors} />
@@ -242,11 +216,11 @@ const UserContainers = () => {
 }
 export default UserContainers
 
-*/
 
-//?2nd Example
 
-/*
+?2nd Example
+
+
 
 ?useWindowSize.js
 
@@ -290,6 +264,56 @@ function App() {
   )
 }
 export default App
+
+?useEffect() Why Need Here in this solution!
+
+   ❌ Calling it directly
+  getUser();
+
+getUser() runs on the first render → sets state with setUsers.Setting state causes React to re-render.On re-render, getUser() 
+runs again → sets state again → another re-render.
+🔁 Infinite loop of re-renders & API calls.
+✅ Why useEffect solves this
+When you do:
+
+useEffect(() => {
+  getUser();
+}, []);
+
+React delays the call until after the first render is done.With [] (empty dependency array),
+it only runs once when the component mounts.No infinite loop, no repeated API calls.
+
+🧠 Key idea
+Component body = render logic only (pure function of props/state → UI).
+useEffect = side effects (API calls, subscriptions, timers, logging).
+That’s why in design patterns:
+The Container or Custom Hook puts side effects in useEffect.
+The Presentational component stays pure (no side effects).
+
+👉 Think of it like this:
+Render = “What should I show right now?”
+Effect = “What should I do after showing it?”
+
+?useEffect(()=>{
+      return 
+},[])
+//? in useEfect whatever you return its a clean up function
+
+
+
+?--------------------------Thory OF Custom Hook Design Pattern----------------------
+
+- A custom hook is a resuable function the use react built in Hooks to capture and reuse  any logic across components
+
+?# pros 
+- Reusability : Build once,use multiple times,Avoid Rewriting the same data-fetching or logic repeatedly
+- Cleaner Code :keeps components code simple and clean by moving complex logic into the hook
+- Testing & Maintenanace: Easier to test and maintain since the logic is isolated
+
+?#Cons 
+- Learning Curve : Beginners might find it tricky at first to decide when and how to create custom hooks
+- overhead for small apps : May Be Unnecessary overhead for very small applications
+
 
 
 */
