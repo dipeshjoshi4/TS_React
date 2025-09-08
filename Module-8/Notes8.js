@@ -318,3 +318,29 @@ Effect = “What should I do after showing it?”
 
 */
 
+
+//?114 Lecture-5-Enhancing Components with Higher-Order Components (HOCs)
+
+/*
+- In this lecture, we delved into the Higher-Order Component (HOC) design pattern. 
+- We explained how HOCs work by taking an existing component and returning a new component with enhanced functionality.
+- We used a user authentication scenario as a real-world example for demo how you can wrap components with HOCs to add extra behavior. 
+- This lecture will give you a clear understanding of how to leverage HOCs to make your React components more modular and reusable.
+
+? Higher Order Component Design Pattern :-
+- Are basically  components that take another component as input,add some  extra functionality to it, and then return a new enhanced 
+Component
+
+?as for the pros
+- improve code reusability,sepration of concerns and overall readability
+
+?as for the cons
+- they can sometimes lead to a bit of reduced performance and add some complexity in debugging
+
+
+- if in our website there is user page and dashboard page .
+- then we gave that component to HOC and HOC Handle That Authentic Layer to is it qualified for access that particular page or not
+
+
+
+*/
