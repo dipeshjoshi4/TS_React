@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Dashboard = () => {
+const Dashboard = ({ name, hoc }) => {
     return (
-        <div>Hello,Dashboard</div>
+        <div>
+            <h2>Hello,Dashboard Welcome {name} {hoc}</h2>
+        </div>
     )
 }
 

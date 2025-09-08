@@ -11,6 +11,9 @@ function App() {
 
   const { size } = useWindowSize()
 
+  const CheckUserProfile = UserAuth(UserProfile);
+  const CheckDashboard = UserAuth(Dashboard);
+
   return (
     <>
       <h1>Conatiner Presentation Design Pattern</h1>
@@ -20,8 +23,8 @@ function App() {
       </div>
       <hr></hr>
       <Routes>
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/userprofile" element={<CheckUserProfile />} />
+        <Route path="/dashboard" element={<CheckDashboard name="Ajay" />} />
         <Route path="/" element={<div> HOC Page And Welcomne To Login Page</div>} />
       </Routes>
 
