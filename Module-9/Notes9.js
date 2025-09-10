@@ -26,4 +26,80 @@ Unmount - Whatever render or re-redner ,Channge You do in Component You Dismiss 
 class Component -> constructor -> render -> componentDidMount -> (onStateChange)Render -> ComponentDidUpdate ->
  (onRemovel)componentWillUnmount
 
+ ?class
+
+ import React, { Component } from 'react'
+
+export default class MyClassComponent extends Component {
+
+    constructor(props) {
+        super(props);  //pass this props to this Component Constructor 
+        this.state = { count: 0 };
+        console.log("1️⃣Constructore:Intial Setup")
+    }
+
+    componentDidMount() {
+        console.log("3️⃣componentDidMount = Component Added To Dom First Time")
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("4️⃣componentDidUpdate: when state/props Chnage", prevProps, prevState)
+    }
+
+    componentWillUnmount() {
+        console.log("5️⃣componentWillUnmount:componenet remove from DOM ")
+    }
+
+    render() {
+        console.log("2️⃣Render=UI Render")
+        return (
+            <div>
+                <h2>Count: {this.state.count}</h2>
+                <button onClick={() => {
+                    this.setState({ count: this.state.count + 1 })
+                }}>Add By One</button>
+            </div>
+        )
+    }
+}
+
+?Function
+import React, { useState, useEffect } from 'react'
+const MyFunctionComponent = () => {
+    const [count, setCount] = useState(0)
+    useEffect(() => {
+        console.log("useEfefct:Component Mount")
+    }, [])
+    useEffect(() => {
+        console.log("useEfefct:Component re-render")
+        return () => { console.log("Remove from the DOM") }
+    }, [count])
+    return (
+        <div>
+            <h2>Count:{count}</h2>
+            <button onClick={() => setCount(count + 1)}>Add By Fn</button>
+        </div >
+    )
+}
+export default MyFunctionComponent
+
+
+?App.jsx
+import MyClassComponent from "./ReactLifeCycle/MyClassComponent"
+import MyFunctionComponent from "./ReactLifeCycle/MyFunctionComponent"
+import { useState } from "react"
+function App() {
+  const [show, setShow] = useState(true)
+  return (
+    <>
+       <MyClassComponent />
+      <button onClick={() => { setShow(!show) }}>Toggle</button>
+      {show && <MyFunctionComponent />}
+    </>
+)
+        
+
+
+
+
 */
