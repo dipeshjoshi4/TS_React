@@ -99,7 +99,86 @@ function App() {
 )
         
 
+? Here for UnmOunt in useEffect  we have just  return () => { console.log("Remove from the DOM") }
 
+  useEffect(() => {
+        console.log("useEfefct:Component re-render")
+        return () => { console.log("Remove from the DOM") }
+    }, [count])
+
+? Runs on when click button then count increase and unmount  comes 
+- because when useEffect runs and depdend on count so you have to see unmount from the dom and re-redner both will see in console
+
+
+?✅ How to log only on true unmount Happen
+
+If you want "Remove from the DOM" to show only when the component actually unmounts, you need to put it inside a useEffect with an empty dependency array []:
+
+import React, { useState, useEffect } from 'react'
+
+const MyFunctionComponent = () => {
+    const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        console.log("useEffect: Component Mount")
+
+        return () => {
+            console.log("Remove from the DOM") // runs only on unmount
+        }
+    }, [])  // ✅ runs once on mount, cleanup on unmount
+
+    useEffect(() => {
+        console.log("useEffect: Component re-render")
+    }, [count]) // ✅ runs only when count changes
+
+    return (
+        <div>
+            <h2>Count: {count}</h2>
+            <button onClick={() => setCount(count + 1)}>Add By Fn</button>
+        </div>
+    )
+}
+export default MyFunctionComponent
+
+
+
+*/
+
+//!117 Lecture-2-useState() Hook : When and How to Use It Effectively
+
+/*
+In this lecture, we thoroughly learned about the useState hook.
+We covered when you should and shouldn't use useState, and we looked at examples of using it with numbers, strings, booleans, arrays, and objects. 
+This is a full tutorial that will give you a lot of confidence on how and when to use useState in various scenarios.
+*/
+
+/*
+?For String
+
+import React from 'react'
+const MyStateComponent = () => {
+    let a = "Dipesh ";
+    function ChnageName() {
+        console.log("Clicked!!!")
+        a = "Dipesh Joshi";
+        return a;
+    }
+    return (
+        <>
+            <h1>Hello ,{a}</h1>
+            <button onClick={ChnageName}>Click Me</button>
+        </>
+    )
+}
+export default MyStateComponent
+
+?Output
+- String Clicked in Console show but the name from "Dipesh" to "Dipesh Joshi" Can't Happen in here
+- as per state we used
+
+?Some Rules
+- console.log(useState(0)); //?object which intial and function | to chnage intial value we have to use Function
+- also not use in condition oiperation | if...else.. | in callback or in function
 
 
 */

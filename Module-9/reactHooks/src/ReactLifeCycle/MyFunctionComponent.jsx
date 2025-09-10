@@ -4,12 +4,12 @@ const MyFunctionComponent = () => {
     const [count, setCount] = useState(0)
     useEffect(() => {
         console.log("useEfefct:Component Mount")
+        return () => { console.log("Remove from the DOM") }
+
     }, [])
 
     useEffect(() => {
         console.log("useEfefct:Component re-render")
-
-        return () => { console.log("Remove from the DOM") }
     }, [count])
     return (
         <div>
