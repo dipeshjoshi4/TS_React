@@ -12,7 +12,6 @@ function App() {
 
       <button onClick={() => { setShow(!show) }}>Toggle</button>
       {show && <MyFunctionComponent />}
-
       {/* {show && <MyClassComponent />} */}
 
       <MyStateComponent />
