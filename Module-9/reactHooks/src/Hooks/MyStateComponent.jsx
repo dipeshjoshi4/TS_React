@@ -26,7 +26,6 @@ const MyStateComponent = () => {
         // setNames(names.push({ id: name.length, name })) //it will give count .it will not give new array while adding element
         setNames([...names, { id: name.length, name }])
     }
-
     console.log(names)
 
     return (
