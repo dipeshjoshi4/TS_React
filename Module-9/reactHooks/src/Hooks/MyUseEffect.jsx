@@ -19,6 +19,8 @@ const MyUseEffect = () => {
             transition: "width 1s",
         }}>
             MyUseEffect
+            <hr></hr>
+
         </div>
     )
 }

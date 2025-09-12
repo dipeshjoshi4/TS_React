@@ -3,6 +3,7 @@
 // import MyFunctionComponent from "./ReactLifeCycle/MyFunctionComponent"
 // import { useState } from "react"
 import MyUseEffect from "./Hooks/MyUseEffect"
+import MyUseRef from "./Hooks/MyUseRef"
 
 
 function App() {
@@ -24,7 +25,10 @@ function App() {
       {/* <MyStateComponent /> */}
 
       {/* 3 */}
-      <MyUseEffect />
+      {/* <MyUseEffect /> */}
+
+      {/* 4 */}
+      <MyUseRef />
 
 
     </>
