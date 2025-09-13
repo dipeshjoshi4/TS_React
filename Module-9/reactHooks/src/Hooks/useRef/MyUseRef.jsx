@@ -18,13 +18,12 @@ const MyUseRef = () => {
         inputEle.current.focus()
     }
 
+    //?it dont work for one time and infinite loops render
     // const [count, setCount] = useState(0)
     // useEffect(() => {
     //     setCount(count + 1)
     // }, [count])
-
-
-
+    
     return (
         <>
             <h1>MyUseRef</h1>

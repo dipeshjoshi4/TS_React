@@ -1,9 +1,9 @@
-// import MyStateComponent from "./Hooks/MyStateComponent"
+// import MyStateComponent from "./Hooks/State/MyStateComponent"
 // import MyClassComponent from "./ReactLifeCycle/MyClassComponent"
 // import MyFunctionComponent from "./ReactLifeCycle/MyFunctionComponent"
 // import { useState } from "react"
-import MyUseEffect from "./Hooks/MyUseEffect"
-import MyUseRef from "./Hooks/MyUseRef"
+import MyUseEffect from "./Hooks/useEffect/MyUseEffect"
+import MyUseRef from "./Hooks/useRef/MyUseRef"
 
 
 function App() {
