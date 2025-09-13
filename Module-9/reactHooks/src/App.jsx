@@ -4,6 +4,7 @@
 // import { useState } from "react"
 import MyUseEffect from "./Hooks/useEffect/MyUseEffect"
 import MyUseRef from "./Hooks/useRef/MyUseRef"
+import Parent from "./Hooks/useRef/Parent"
 
 
 function App() {
@@ -28,7 +29,10 @@ function App() {
       {/* <MyUseEffect /> */}
 
       {/* 4 */}
-      <MyUseRef />
+      {/* <MyUseRef /> */}
+
+      {/* 4 forwardref */}
+      <Parent/>
 
 
     </>
