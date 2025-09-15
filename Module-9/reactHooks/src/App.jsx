@@ -5,7 +5,8 @@ import { useState } from "react"
 import MyUseEffect from "./Hooks/useEffect/MyUseEffect"
 import MyUseRef from "./Hooks/useRef/MyUseRef"
 import Parent from "./Hooks/useRef/Parent"
-import { UserContext } from "./Context/UserContext"
+import { UserContext, UserContextProvider } from "./Context/UserContext"
+
 
 
 function App() {
@@ -39,9 +40,15 @@ function App() {
       {/* <Parent/> */}
 
       {/* 7-Context API */}
-      <UserContext.Provider value={{ name, setName }}>
+      {/* <UserContext.Provider value={{ name, setName }}>
         <Parent />
-      </UserContext.Provider>
+      </UserContext.Provider> */}
+
+      {/* 8- Modernize code and with Custom Hook */}
+      <UserContextProvider userDetails={{ name, setName }}>
+        <Parent />
+      </UserContextProvider>
+
 
 
 

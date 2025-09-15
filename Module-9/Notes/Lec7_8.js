@@ -67,3 +67,48 @@ const Parent = () => {
 
 
 
+//!122 Lecture-8-Understanding Context API: Using createContext and useContext Hooks
+
+/*
+- In this lecture, we built on what we learned in the last lecture about the Context API and saw how to write more advanced code like it’s done at a company.
+- We explored how you can create a custom hook to use context more easily across your components.
+- We introduced a new and more advanced syntax where you define the provider at the context level and pass children to it so that all components can access the data.
+- This is a more professional way to structure your code and avoid repetitive prop drilling.
+*/
+
+//?------------------------------------------------------------------UserContext.jsx
+// import React, { createContext, useContext } from "react";
+// export const UserContext = createContext(null);
+
+// //?Custom Hook - using useContext //Using this line  to in Hook -> const { name, setName } = useContext(UserContext)
+// export const useUserDetails = () => {
+//     const userContext = useContext(UserContext)
+//     if (!userContext) {
+//         throw new Error("UserDetails Must Be Used Inside the UserContextProvider")
+//     }
+//     return userContext
+// }
+
+// //?Export Function to rid from App.jsx
+// export const UserContextProvider = ({ children, userDetails }) => {
+//     return (
+//         <UserContext.Provider value={userDetails}>
+//             {children}
+//         </UserContext.Provider>
+//     )
+// }
+
+//?------------------------------------------------------------------Parent.jsx
+
+//?Replace this Line
+// import { useContext } from 'react'
+// const { name, setName } = useContext(UserContext)
+
+//?With This New Morden Custom Hook
+const { name, setName } = useUserDetails();
+
+//?------------------------------------------------------------------App.jsx
+import { UserContext, UserContextProvider } from "./Context/UserContext"
+<UserContextProvider userDetails={{ name, setName }}>
+    <Parent />
+</UserContextProvider>

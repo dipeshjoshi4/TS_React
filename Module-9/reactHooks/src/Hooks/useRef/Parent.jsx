@@ -1,15 +1,18 @@
 
 import CustomInput from './CustomInput '
 
-import React, { useContext, useRef } from 'react'
-import { UserContext } from '../../Context/UserContext';
+import React, { useRef } from 'react'
+// import { useContext } from 'react'
+import { UserContext, useUserDetails } from '../../Context/UserContext';
 
 
 const Parent = () => {
     const inputEle = useRef(null);
     console.log(inputEle.current)
 
-    const { name, setName } = useContext(UserContext)
+    // const { name, setName } = useContext(UserContext)
+
+    const { name, setName } = useUserDetails();
 
     // const [name, setName] = useState("")
     return (
