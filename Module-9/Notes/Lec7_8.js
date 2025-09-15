@@ -112,3 +112,6 @@ import { UserContext, UserContextProvider } from "./Context/UserContext"
 <UserContextProvider userDetails={{ name, setName }}>
     <Parent />
 </UserContextProvider>
+
+
+//in this lecture-8- we use custom hook so make sure it will understand 

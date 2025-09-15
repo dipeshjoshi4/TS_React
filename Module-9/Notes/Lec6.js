@@ -37,7 +37,7 @@ import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 const customInput = forwardRef((props, ref) => {
     //for IMprevative
     const inputEle = useRef();
-    useImperativeHandle(ref, () => ({ 
+    useImperativeHandle(ref, () => ({
         focusInput: () => {
             inputEle.current.focus()
         },
@@ -63,4 +63,9 @@ export default customInput
 //first we use useRef and pass ref to childrean
 
 //?Child-Parent
-//now we use useRef and pass method  to ref => which goes to use by parent 
+//now we use useRef and pass method  to ref => which goes to use by parent
+
+
+
+
+adasdasd
