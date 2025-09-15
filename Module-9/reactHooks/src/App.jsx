@@ -1,16 +1,20 @@
 // import MyStateComponent from "./Hooks/State/MyStateComponent"
 // import MyClassComponent from "./ReactLifeCycle/MyClassComponent"
 // import MyFunctionComponent from "./ReactLifeCycle/MyFunctionComponent"
-// import { useState } from "react"
+import { useState } from "react"
 import MyUseEffect from "./Hooks/useEffect/MyUseEffect"
 import MyUseRef from "./Hooks/useRef/MyUseRef"
 import Parent from "./Hooks/useRef/Parent"
+import { UserContext } from "./Context/UserContext"
 
 
 function App() {
 
   // 1
   // const [show, setShow] = useState(true)
+
+  //7
+  const [name, setName] = useState("Ajay")
 
   return (
     <>
@@ -31,8 +35,15 @@ function App() {
       {/* 4 */}
       {/* <MyUseRef /> */}
 
-      {/* 4 forwardref */}
-      <Parent/>
+      {/* 4-5-6 forwardref */}
+      {/* <Parent/> */}
+
+      {/* 7-Context API */}
+      <UserContext.Provider value={{ name, setName }}>
+        <Parent />
+      </UserContext.Provider>
+
+
 
 
     </>
