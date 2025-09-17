@@ -6,7 +6,8 @@
 /*
 - In this lecture, we talked about the createContext and useContext hooks in React. 
 - We explained what the Context API is used for—basically, to avoid prop drilling when you need to pass data through multiple layers of components.
-- We covered a very simple example to show how you can create a provider at a global level and then consume that data wherever needed using a consumer. 
+- We covered a very simple example to show how you can create a provider at a global level and then consume that data 
+- wherever needed using a consumer. 
 - This way, you can manage shared state easily without passing props down manually through every component.
 */
 
@@ -18,8 +19,13 @@
 // - best for theme,user auth,global settings,language etc.
 
 
-//- save from prop-drilling, 
-//- our application have one provider and which provide date 
+//- save from prop-drilling,
+//- our application have one provider and which provide date
+
+//?createContext in React
+
+//- It is not a hook itself(it’s a function).
+//- It creates a Context object, which is like a “box” where you can store values(like user, theme, language) and share them with any component in the tree without having to pass props manually at every level.
 
 
 //?CODE-
