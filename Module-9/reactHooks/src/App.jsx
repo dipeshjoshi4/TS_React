@@ -7,6 +7,7 @@ import MyUseRef from "./Hooks/useRef/MyUseRef"
 import Parent from "./Hooks/useRef/Parent"
 import { UserContext, UserContextProvider } from "./Context/UserContext"
 import Counter from "./Hooks/useReducer/Counter"
+import User from "./Hooks/useReducer/User"
 
 
 
@@ -52,6 +53,10 @@ function App() {
 
       {/* 9 */}
       <Counter />
+      <hr></hr>
+
+      {/* 10 */}
+      <User />
 
 
 
