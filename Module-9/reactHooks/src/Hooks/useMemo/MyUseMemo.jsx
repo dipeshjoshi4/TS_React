@@ -1,12 +1,14 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
+import PrintTable from './PrintTable';
 
 
 function expensiveFunction(number) {
     console.log("Calculating....");
-    for (let i = 0; i < 1000000; i++) {
+    for (let i = 0; i < 100000000; i++) {
         return number * 3
     }
 }
+
 
 const MyUseMemo = () => {
     const [number, setNumber] = useState(0);
@@ -15,16 +17,27 @@ const MyUseMemo = () => {
         backgroundColor: dark ? "black" : "white",
         color: dark ? "white" : "black",
     }
+    //?Memo
     const MemoCalculation = useMemo(() => {
         return expensiveFunction(number)
     }, [number])
-
     // const calculation = expensiveFunction(number) //?Chnage
+
+    //?UseCalllback
+    const calculateTables = useCallback(() => {
+        return [number * 1, number * 2, number * 3, number * 4]
+    }, [number])
+
+    // const calculateTables = () => {
+    //     return [number * 1, number * 2, number * 3, number * 4]
+    // }
+
 
     return (
         <div style={cssStyle}>
             <input type="number" value={number} onChange={(e) => { setNumber(e.target.valueAsNumber) }} />
             <h3>Calculation Output :{MemoCalculation}</h3>
+            <PrintTable calculateTables={calculateTables} />
             <button onClick={() => setDark(!dark)}>Toggle</button>
         </div>
     )
