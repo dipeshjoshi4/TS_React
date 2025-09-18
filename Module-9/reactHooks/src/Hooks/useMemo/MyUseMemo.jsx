@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState, useTransition } from 'react'
 import PrintTable from './PrintTable';
 
 
@@ -13,6 +13,7 @@ function expensiveFunction(number) {
 const MyUseMemo = () => {
     const [number, setNumber] = useState(0);
     const [dark, setDark] = useState(false);
+    const [pending, startTransition] = useTransition()
     const cssStyle = {
         backgroundColor: dark ? "black" : "white",
         color: dark ? "white" : "black",
@@ -35,8 +36,15 @@ const MyUseMemo = () => {
 
     return (
         <div style={cssStyle}>
-            <input type="number" value={number} onChange={(e) => { setNumber(e.target.valueAsNumber) }} />
-            <h3>Calculation Output :{MemoCalculation}</h3>
+            <input type="number" value={number}
+                onChange={(e) => {
+                    startTransition(() => {
+                        setNumber(e.target.valueAsNumber)
+                    })
+                }
+                } />
+            {pending ? (<h1>Making Data</h1>) : `CalculationOutput :${MemoCalculation}`}
+            {/* <h3>Calculation Output :{MemoCalculation}</h3> */}
             <PrintTable calculateTables={calculateTables} />
             <button onClick={() => setDark(!dark)}>Toggle</button>
         </div>

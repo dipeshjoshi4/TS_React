@@ -64,9 +64,11 @@ function App() {
       {/* <MyUseMemo /> */}
 
       {/* 13 */}
-      <MyUseId />
-      <MyUseId />
+      {/* <MyUseId />
+      <MyUseId /> */}
 
+      {/* 14 */}
+      <MyUseMemo />
 
 
 
