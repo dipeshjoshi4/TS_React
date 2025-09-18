@@ -4,10 +4,36 @@
 In this lecture, we covered the useReducer hook, which you can think of as a simpler version of Redux.
 It helps you manage more complex state logic in your project.
 We started with a very basic example so you can get familiar with the syntax and understand how it works.
-In the next lecture(PART-2), we'll dive into more complex structures, but for now, you’ll get a solid idea of how to implement useReducer in your own projects.
+In the next lecture(PART-2), we'll dive into more complex structures, but for now, you’ll get a solid idea of 
+how to implement useReducer in your own projects.
 */
 
+//?PPT Notes
+
 /*
+
+
+- useReducer is a state management hook in react. it is mainly used when your state become complex or when you need to handle multiple
+state updates logically one place
+- it works as altenrative  to useState but provides a more structured and scalble way to manage state
+
+?UseCase OF useReducer
+
+?1.Complex state Logic
+- when the state contains multiple sub-values(like form field or nested objects) and you want  to update them in a predictable way
+- Example- a form where name,email and age are all stored in single state object
+
+?2.Depedent State Updates
+- when updating one state depends on the value of other state
+- Example : a Counter where increment,decrement and reset all handled in one place
+
+?3.Scalable State Management
+- in large applications moving update logic  into a separate reducer function improves readability and maintainbility 
+
+?4.Redux-Life Pattern
+- if you want the benefites of redux-style  state management but dont want to  setup  the entire redux library in a small app
+- useReducer is a lighweight alternative
+
 ?dispatch
 - action throws
 

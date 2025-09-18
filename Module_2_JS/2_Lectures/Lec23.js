@@ -31,15 +31,14 @@
 
 function memoize() {
     const cahce = {}
+
     return function (a, b) {
-
-        const key = `${a}_${b}`;
-
+        //make a key if key exist then give answer from cahche if key not exist then normal time take and then result store in cache
+        const key = `${a}_${b}`; //3_4
         if (cahce[key]) {
             return cahce[key]
         }
-
-        for (let i = 0; i < 1e8; i++) { }
+        for (let i = 0; i < 1e8; i++) { }  //1e8 ===> 1*10 (rasto) 8
         const result = a + b;
         cahce[key] = result
         return result
@@ -59,11 +58,6 @@ console.timeEnd("with memo 2nd call") //?With memo 1st call - 0.381ms
 
 
 //?Process in short of Memoization
-
-//- Here if you see then we use closure use too
-//- as per closure memoize() execute and inner function(a,b) remember outer function variable like const cache = {}
-//- if cahce[key] first empty then after first output again same calculation which is from key came then the return
-
 //this will happen in short
 // const cahce = {
 //     3_4:7
