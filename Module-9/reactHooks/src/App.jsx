@@ -10,6 +10,8 @@ import Counter from "./Hooks/useReducer/Counter"
 import User from "./Hooks/useReducer/User"
 import MyUseMemo from "./Hooks/useMemo/MyUseMemo"
 import MyUseId from "./Hooks/useID/MyUseId"
+import MyUseTranslation from "./Hooks/useTranslation/MyUseTranslation"
+
 
 
 
@@ -68,8 +70,10 @@ function App() {
       <MyUseId /> */}
 
       {/* 14 */}
-      <MyUseMemo />
+      {/* <MyUseMemo /> */}
 
+      {/* 15 */}
+      <MyUseTranslation />
 
 
     </>
