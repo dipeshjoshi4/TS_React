@@ -94,3 +94,8 @@ export default Login
 //?Why useActionState
 // - for a normal form who data comes from api call we have to managed 3 state
 // - so we use useActionState which actully is easy of 2 state
+
+// useActionState is a new React 19 hook that helps you handle server actions(or async actions) and automatically manage:
+// ✅ Pending state(loading)
+// ✅ Result state(success data or error)
+// It’s designed for React Server Components(like Next.js App Router) but can also be used in client components.
