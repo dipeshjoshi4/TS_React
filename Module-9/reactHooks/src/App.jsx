@@ -11,6 +11,7 @@ import User from "./Hooks/useReducer/User"
 import MyUseMemo from "./Hooks/useMemo/MyUseMemo"
 import MyUseId from "./Hooks/useID/MyUseId"
 import MyUseTranslation from "./Hooks/useTranslation/MyUseTranslation"
+import UpdateName from "./Hooks/useTranAsync/UpdateName"
 
 
 
@@ -73,7 +74,10 @@ function App() {
       {/* <MyUseMemo /> */}
 
       {/* 15 */}
-      <MyUseTranslation />
+      {/* <MyUseTranslation /> */}
+
+      {/* Extra React-19 */}
+      <UpdateName />
 
 
     </>

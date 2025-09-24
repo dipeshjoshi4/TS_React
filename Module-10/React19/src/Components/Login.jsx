@@ -1,5 +1,6 @@
 import React, { useActionState } from 'react'
 import { loginUser } from '../api/user';
+import CustomButton from './CustomButton';
 
 
 const Login = () => {
@@ -35,9 +36,10 @@ const Login = () => {
                     <label>Password:</label>
                     <input type="password" name='password' required />
                 </div>
-                <button type='submit' disabled={isPending}>
+                {/* <button type='submit' disabled={isPending}>
                     {isPending ? "Logging in...." : "Log in"}
-                </button>
+                </button> */}
+                <CustomButton />
                 {user.data && <p style={{ color: "green" }}>Logged in :{user.data.email}</p>}
                 {user.error && <p style={{ color: "red" }}>{user.error}</p>}
                 {isPending && <h3>Validating...</h3>}

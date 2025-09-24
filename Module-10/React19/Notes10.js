@@ -99,3 +99,39 @@ export default Login
 // ✅ Pending state(loading)
 // ✅ Result state(success data or error)
 // It’s designed for React Server Components(like Next.js App Router) but can also be used in client components.
+
+//!134----------------Lecture-2-useFormStatus()–Managing Form States-------------
+
+//In this lecture, we’ve dived into the useFormStatus hook. This handy tool lets you track the status of a form until it’s submitted, giving you real-time insights into whether the form is in a pending state or ready to go.
+//If your submit button is located elsewhere or you want to avoid prop drilling, you can simply rely on useFormStatus to enable or disable the button based on the form’s current state.
+
+//?CODE-CustomButton.jsx
+/*
+import React from 'react'
+import { useFormStatus } from 'react-dom'
+const CustomButton = () => {
+    const { pending } = useFormStatus()
+    return (
+        <div>
+            <button type='submit' disabled={pending}>
+                {pending ? "Logging in...." : "Log in"}
+            </button>
+        </div>
+    )
+}
+export default CustomButton
+*/
+
+//?CODE-Login.jsx
+{/* 
+    <button type='submit' disabled={isPending}>
+                    {isPending ? "Logging in...." : "Log in"}
+    </button> 
+*/}
+<CustomButton />
+
+//!135-useActionState and useFormStatus: Understanding React 19’s Form Management Hooks
+/*
+In this lecture, we’ve brought together the concepts from the previous two sessions where we covered the useActionState and useFormStatus hooks.
+We explored the fine details of how each hook operates and how they can be used to manage form states more efficiently in React 19. By the end, you’ll have a solid understanding of how to implement these hooks to streamline your forms and minimize boilerplate code.
+*/
