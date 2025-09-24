@@ -218,7 +218,4 @@ export default Posts
 - This is especially useful for scenarios where you want to access child component refs directly.
 - We covered examples to demonstrate how this works and why it’s a handy new feature.
 
-
-
-
 */
