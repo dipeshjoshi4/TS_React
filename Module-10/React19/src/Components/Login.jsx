@@ -2,8 +2,23 @@ import React, { useActionState } from 'react'
 import { loginUser } from '../api/user';
 import CustomButton from './CustomButton';
 
-
 const Login = () => {
+
+    //Api Call
+    const login = async (previousState, formData) => {
+        let nextState = { data: null, error: null };
+        const email = formData.get("email")
+        const password = formData.get("password")
+        try {
+            const response = await loginUser(email, password);
+            nextState.data = response.data; // return { error: null, data: response.data }
+
+        } catch (error) {
+            nextState.error = error.error; // return { ...previousState, error: error.error }
+        }
+        return nextState;
+    }
+
     //Intial State Pass
     const [user, submitAction, isPending] = useActionState(login, {
         error: null,
@@ -11,23 +26,11 @@ const Login = () => {
     })
     console.log(user)
 
-    //Api Call
-    async function login(previousState, formData) {
-        const email = formData.get("email")
-        const password = formData.get("password")
-        try {
-            const response = await loginUser(email, password);
-            return { error: null, data: response.data }
-        } catch (error) {
-            return { ...previousState, error: error.error }
-        }
-    }
 
     return (
         <>
             <h1>React19 Hooks</h1>
-            {/* instead of onSubmit */}
-            <form action={submitAction}> 
+            <form action={submitAction}> {/* instead of onSubmit */}
                 <div>
                     <label>Email:</label>
                     <input type="email" name='email' required />

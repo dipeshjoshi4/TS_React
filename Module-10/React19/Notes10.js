@@ -130,8 +130,23 @@ export default CustomButton
 */}
 <CustomButton />
 
-//!135-useActionState and useFormStatus: Understanding React 19’s Form Management Hooks
+//!135-Lec-3-useActionState and useFormStatus: Understanding React 19’s Form Management Hooks
 /*
-In this lecture, we’ve brought together the concepts from the previous two sessions where we covered the useActionState and useFormStatus hooks.
-We explored the fine details of how each hook operates and how they can be used to manage form states more efficiently in React 19. By the end, you’ll have a solid understanding of how to implement these hooks to streamline your forms and minimize boilerplate code.
+- In this lecture, we’ve brought together the concepts from the previous two sessions where we covered the useActionState and useFormStatus hooks.
+- We explored the fine details of how each hook operates and how they can be used to manage form states more efficiently in React 19.
+- By the end, you’ll have a solid understanding of how to implement these hooks to streamline your forms and minimize boilerplate code.
+*/
+
+//?How to Remember
+//1- jub tum submit karte hai : browser formdata banata hai and that data goes to submitAction
+//2- react internally bolta hai :- "oke ab action run karna hai"
+
+//?TWO THINGS HAPPEN
+//- CODE FROM FUNCTION TO ARROW FUNCTION
+//- THERE WILL OTHER DATA,ACTION ,METHOD COMES WITH pending of USEFORMSTATUS()
+
+//!136-Lec-4-useOptimistic() – Handling Optimistic UI Updates
+
+/*
+ This hook is all about implementing optimistic updates, where the UI is updated immediately before the actual state changes on the backend. We discussed how this approach enhances user experience by making the UI feel more responsive and snappy.
 */
