@@ -149,4 +149,10 @@ export default CustomButton
 
 /*
  This hook is all about implementing optimistic updates, where the UI is updated immediately before the actual state changes on the backend. We discussed how this approach enhances user experience by making the UI feel more responsive and snappy.
+
+
+useState → update only after truth from server
+useOptimistic → pretend success first, fix later if needed
+Great for slow networks or actions that usually succeed (like adding a todo, liking a post, sending a message).
+
 */
