@@ -156,3 +156,16 @@ useOptimistic → pretend success first, fix later if needed
 Great for slow networks or actions that usually succeed (like adding a todo, liking a post, sending a message).
 
 */
+
+//! 137 Lec-5-use() API–The Future of Data Fetching
+
+/*
+In this lecture, we delved into the new use feature in React 19, which facilitates API calls in a more integrated way.
+
+Although not a hook, this feature allows for making API calls that can be handled with React Suspense. We noted that currently, the use feature doesn't cache promises, which can lead to infinite loops if the function isn't moved outside the component. 
+
+Suspense is used to show a loading state until the promise resolves. This is an early-stage feature and might evolve further in future React updates.
+
+
+
+*/

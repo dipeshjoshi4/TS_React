@@ -1,16 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Login from "./Components/Login";
 import ToDolIst from "./Components/ToDolIst";
+import Posts from "./Components/Posts";
 function App() {
   return (
     <>
-      <div>
-        <h1>App</h1>
-        <Login />
-        <hr></hr>
-        <ToDolIst />
-
-      </div>
+        <Suspense fallback={<div>Loading.....</div>}>
+          <h1>App Componenet</h1>
+          {/* <Login /> */}
+          <hr></hr>
+          {/* <ToDolIst /> */}
+          <hr></hr>
+          <Posts />
+        </Suspense>
     </>
   );
 }
