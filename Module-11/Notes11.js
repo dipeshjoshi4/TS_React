@@ -28,10 +28,44 @@
 //?In short, React Query makes managing and caching API data very simple and efficient.You can just focus on writing less code and getting better performance.
 
 
-//!142-lec-2-Setting Up React Query: Configuration and Query Client Provider
+//!141-lec-2-Setting Up React Query: Configuration and Query Client Provider
 
 /*
 - In this lecture, we’ve walked through the initial setup for using React Query in our project.
 - We installed the React Query dependency via npm and then wrapped our root component with the QueryClientProvider.
 - This ensures that we can leverage all the features React Query offers for data fetching and caching throughout our app.
+*/
+
+//?CODE
+//- ALL CODE OF react-router-dom we used
+
+//?installation
+//  first install reactquery from "https://tanstack.com/query/latest/docs/framework/react/installation#npm"
+//  npm i @tanstack/react-query
+
+//?main.jsx
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+const queryClient = new QueryClient();
+createRoot(document.getElementById('root')).render(
+        <QueryClientProvider client={queryClient}>
+            <App />
+        </QueryClientProvider>
+)
+// THE ONLY CONFIGURATION CODE OR FOR REACT QUERY CHANGABLE CODE
+
+
+//!142-Lec-3-Data Fetching with useQuery: Simplifying API Calls in React Query
+//In this lecture, we explored how to fetch data using the useQuery hook provided by React Query.
+//We demonstrated how to easily integrate the useQuery hook to fetch user data from an API and handle the loading and error states efficiently.
+//This lecture focuses on making data fetching smoother and more manageable with React Query’s powerful hooks.
+
+//? useQuery Hook
+
+
+/*
+useQuery({
+    queryKey: ["users"]
+})
+- here queryKey is the name of the key which stores in cache
+- means whatever the data you fetch in cache have one key and that key name is is given in string
 */
