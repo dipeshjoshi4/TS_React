@@ -17,12 +17,17 @@ const Sellers = () => {
 
   const [name, setName] = useState();
 
+
   const addUser = () => {
     const newUser = {
       name: name,
       id: users.length + 1,
     }
     setUsers([newUser, ...users])
+  }
+
+  /*
+
 
     //ACTUL POST REQUEST to server
 
@@ -83,7 +88,7 @@ const Sellers = () => {
       });
   };
 
-
+*/
 
 
   return (
