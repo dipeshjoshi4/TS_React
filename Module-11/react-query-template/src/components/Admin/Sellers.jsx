@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react'
-// import axios from "axios"
+import React, { useState } from 'react'
 import Loader from '../Common/Loader';
-import apiClient from '../../utils/api-client';
-import { useQuery } from '@tanstack/react-query';
+import apiclient from '../../utils/api-client';
+import useUsers from '../../hooks/useUsers';
 
 const Sellers = () => {
 
-  const fetchUsers = () => (apiClient.get("/users").then(res => res.data))
 
 
-  const { data: users } = useQuery({
-    queryKey: ["users"],
-    queryFn:  fetchUsers,
-
-  })
+  const { data: users, error, isLoading } = useUsers()
 
   const [name, setName] = useState();
 
@@ -99,9 +93,9 @@ const Sellers = () => {
 
       <button onClick={addUser}>ADD USER</button>
 
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
 
-      {/* {errors && <em>{errors}</em>} */}
+      {error && <em>{error.message}</em>}
 
       <table>
         <tbody>

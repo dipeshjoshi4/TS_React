@@ -69,3 +69,50 @@ useQuery({
 - here queryKey is the name of the key which stores in cache
 - means whatever the data you fetch in cache have one key and that key name is is given in string
 */
+
+//!143-Lec-4-Enhancing UX with useQuery: Handling Loading and Errors
+
+//In this lecture, we explained how useQuery provides isLoading and error states, which help with error handling and user experience.
+//We can show a loader or a message based on the isLoading flag.
+
+//?Sellers.jsx
+// const { data: users, error, isLoading } = useQuery({
+//     queryKey: ["users"],
+//     queryFn: fetchUsers,
+// })
+// return (
+//     { isLoading && <Loader /> }
+//     { error && <em>{error.message}</em> }
+// )
+
+//!144-lec-5-Creating Custom Hooks: Reusing useQuery Logic for Cleaner Code
+
+//In this lecture, we took the logic from our useQuery hook and placed it into a custom hook.
+//This makes the code cleaner and reusable across components, allowing us to use the data-fetching logic on demand.
+
+//?useUser.js
+// import { useQuery } from '@tanstack/react-query';
+// import apiClient from '../utils/api-client';
+
+// const fetchUsers = () => (apiClient.get("/users").then(res => res.data))
+// const useUsers = () => {
+//     return useQuery({
+//         queryKey: ["users"],
+//         queryFn: fetchUsers,
+//     })
+// }
+// export default useUsers;
+
+//?Sellers.jsx
+// import apiclient from '../../utils/api-client';
+// import useUsers from '../../hooks/useUsers';
+// const Sellers = () => {
+//     const { data: users, error, isLoading } = useUsers()
+// }
+
+//!145-lec-6-Using React Query DevTools: Visualize and Debug Your Cache
+
+//- In this lecture, we introduced the React Query DevTools.
+//- We installed the react-query/devtools dependency and used it to open a DevTool in the browser.
+//- This lets developers see what's stored in the cache and gather a lot of useful details, improving the developer experience.
+
