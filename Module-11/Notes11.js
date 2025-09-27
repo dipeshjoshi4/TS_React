@@ -116,3 +116,75 @@ useQuery({
 //- We installed the react-query/devtools dependency and used it to open a DevTool in the browser.
 //- This lets developers see what's stored in the cache and gather a lot of useful details, improving the developer experience.
 
+//!146-lec-7-Customize our React Query Properties
+
+//In this lecture, we covered how to configure a few important properties in the useQuery hook.
+//Essentially, we talked about setting up a default options object where you can define things like
+//- stale time || enable || disable || refetching, and manage how long data stays fresh before it’s considered stale.
+
+//In short, we explained that when data is fetched from the server, it can become stale after a set period(like 5 or 10 minutes).
+//By configuring the stale time, you ensure the data stays fresh for that duration.
+//If you want to refetch data manually or prevent it from refetching automatically, you can configure the refetch property as well.
+
+//?we see there is if we go to sellers there is data which name key as users ...but => how much time the data inactive ? we show how much time is store in cache?
+// query Explorer have answer of this ---- gcTime : 300000 means 5 min
+// when you goes to different component and then 5 min happen gc time run and clear your inactive users key data
+
+//?Solutions
+//?Main.jsx
+// const queryClient = new QueryClient({
+//     defaultOptions: {
+//         queries: {
+//             gcTime: 600000, //in js you dont have comma so you can use "_" as comma ","
+//         }
+//     }
+// });
+
+//?Retry of error amounts
+
+//?Solutions- Main.jsx
+// const queryClient = new QueryClient({
+//     defaultOptions: {
+//         queries: {
+//             gcTime: 600000, //in js you dont have comma so you can use "_" as comma ","
+//             retry:3,
+//         }
+//     }
+// });
+
+//?refecth event happen and the stale(means old data) will be new for sometimes so whenever refecth happen data will comes and it became stale means old .so to make it fresh we have put on staleTime
+//- stale happen many times on interent re-connect
+//- refocus the tab
+//- error resolve
+//- component chnage or mount/unmount
+
+//?Solutions-Main.jsx
+// const queryClient = new QueryClient({
+//     defaultOptions: {
+//         queries: {
+//             gcTime: 600000, //in js you dont have comma so you can use "_" as comma ","
+//             retry:3,
+//         }
+//     }
+// });
+
+//?But If You Want refecth to stop on certain regular events like windows focus and unmount  so do this ?
+
+//?Solutions-Main.jsx
+// const queryClient = new QueryClient({
+//     defaultOptions: {
+//         queries: {
+//             gcTime: 600000, //in js you dont have comma so you can use "_" as comma ","
+//             retry:3,
+//         }
+//     }
+// });
+
+//?this is genraic query apply .if you want specific query on specific component then apply on useQuery of that component
+
+//!147-lec-8-Fetching Todos with useQuery: Hands-on Exercise
+
+//In this lecture, we dived into a practical exercise where we fetched a list of todos using the useQuery hook.
+//We built on what we learned in the previous lecture and implemented the todo fetching functionality step by step.
+//This exercise helped solidify our understanding of how to use the useQuery hook in a real scenario.
+
