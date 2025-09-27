@@ -188,3 +188,37 @@ useQuery({
 //We built on what we learned in the previous lecture and implemented the todo fetching functionality step by step.
 //This exercise helped solidify our understanding of how to use the useQuery hook in a real scenario.
 
+//?useTodos.js
+
+// import { useQuery } from '@tanstack/react-query';
+// import apiClient from '../utils/api-client';
+// const fetchTodos = () => (apiClient.get("/todos").then(res => res.data))
+// const useTodos = () => {
+//     return useQuery({
+//         queryKey: ["todos"],
+//         queryFn: fetchTodos,
+//         gcTime: 400000,
+//         retry: 4,
+//     })
+// }
+// export default useTodos;
+
+//?Sales.js
+
+// import React from 'react'
+// import useTodos from '../../hooks/useTodos'
+// import Loader from '../Common/Loader'
+// const Sales = () => {
+//     const { data: todos, isLoading, error } = useTodos()
+//     return (
+//         <>
+//             <h3>Todos Page</h3>
+//             {isLoading && <Loader />}
+//             {error && <em>{error.message}</em>}
+//             {todos?.map((todo) => {
+//                 <p key={todo.id}>{todo.title}</p>
+//             })}
+//         </>
+//     )
+// }
+// export default Sales
