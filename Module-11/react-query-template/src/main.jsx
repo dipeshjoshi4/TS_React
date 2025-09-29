@@ -11,7 +11,7 @@ const queryClient = new QueryClient({
     queries: {
       gcTime: 600000, //in js you dont have comma so you can use "_" as comma ","
       retry: 3,
-      staleTime: 6 * 1000,
+      staleTime: 3 * 1000,
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchOnWindowFocus: true,

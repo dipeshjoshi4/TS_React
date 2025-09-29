@@ -244,6 +244,9 @@ useQuery({
 // refetchOnWindowFocus: true,   => then on stale it happen working
 // refetchOnWindowFocus: always, => then on stale it happen Always working
 
+//?Bydefault stale value is 0 means refecth happen
+//? if you pass staleTime : Infinity then data always happen fresh
+
 
 //!148-Lec-10-Using Query Params and Dynamic Cache Keys in React Query
 
@@ -251,3 +254,56 @@ useQuery({
 //- We discussed how to handle multiple query parameters and create dynamic cache keys as strings.
 //- With a real-life example, we demonstrated how to effectively use query params to manage data fetching and caching in React Query.
 
+//?sales.jsx
+/*
+import React, { useState } from 'react'
+import useTodos from '../../hooks/useTodos'
+import Loader from '../Common/Loader'
+const Sales = () => {
+    const [userId, setUserId] = useState(null)
+    console.log(userId)
+    const { data: todos, isLoading, error } = useTodos(userId)
+    return (
+        <>
+            <select onChange={(e) => { setUserId(parseInt(e.target.value)) }} value={userId}>
+                <option value="">Select</option>
+                <option value="1">user 1</option>
+                <option value="2">user 2</option>
+                <option value="3">user 3</option>
+                <option value="4">user 4</option>
+            </select>
+            <h3>Todos Page</h3>
+            {isLoading && <Loader />}
+            {error && <em>{error.message}</em>}
+            {todos?.map((todo) => {
+                return <p key={todo.id}>{todo.title}</p>
+            })}
+        </>
+    )
+}
+export default Sales
+*/
+
+//?useTodos.js
+/*
+import { useQuery } from '@tanstack/react-query';
+import apiClient from '../utils/api-client';
+const useTodos = (userId) => {
+    const fetchTodos = () => (apiClient.get(`/todos`, {
+        params: {
+            userId,
+        },
+    }).then(res => res.data));
+    ///reference => users/userId(1,2,3,4,...)/todos
+    return useQuery({
+        queryKey: userId ? ["users", userId, "todos"] : ["todos"], 
+        queryFn: fetchTodos,
+        gcTime: 400000,
+        retry: 4,
+        // enabled: !!userId, // only run if userId !== ""
+    })
+}
+export default useTodos;
+
+
+*/
