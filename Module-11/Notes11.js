@@ -1,7 +1,7 @@
 //!------------------------------------Module 11: React Query – State Management------------------------------------
 
 
-//!140-Lec-1-Introduction to React Query: The Why and How of Modern Data Fetching
+//!139-Lec-1-Introduction to React Query: The Why and How of Modern Data Fetching
 
 /*
 - In this lecture, we introduced React Query, a powerful data-fetching library that simplifies managing server-state in your React applications.
@@ -28,7 +28,7 @@
 //?In short, React Query makes managing and caching API data very simple and efficient.You can just focus on writing less code and getting better performance.
 
 
-//!141-lec-2-Setting Up React Query: Configuration and Query Client Provider
+//!140-lec-2-Setting Up React Query: Configuration and Query Client Provider
 
 /*
 - In this lecture, we’ve walked through the initial setup for using React Query in our project.
@@ -54,7 +54,7 @@ createRoot(document.getElementById('root')).render(
 // THE ONLY CONFIGURATION CODE OR FOR REACT QUERY CHANGABLE CODE
 
 
-//!142-Lec-3-Data Fetching with useQuery: Simplifying API Calls in React Query
+//!141-Lec-3-Data Fetching with useQuery: Simplifying API Calls in React Query
 //In this lecture, we explored how to fetch data using the useQuery hook provided by React Query.
 //We demonstrated how to easily integrate the useQuery hook to fetch user data from an API and handle the loading and error states efficiently.
 //This lecture focuses on making data fetching smoother and more manageable with React Query’s powerful hooks.
@@ -70,7 +70,7 @@ useQuery({
 - means whatever the data you fetch in cache have one key and that key name is is given in string
 */
 
-//!143-Lec-4-Enhancing UX with useQuery: Handling Loading and Errors
+//!142-Lec-4-Enhancing UX with useQuery: Handling Loading and Errors
 
 //In this lecture, we explained how useQuery provides isLoading and error states, which help with error handling and user experience.
 //We can show a loader or a message based on the isLoading flag.
@@ -85,7 +85,7 @@ useQuery({
 //     { error && <em>{error.message}</em> }
 // )
 
-//!144-lec-5-Creating Custom Hooks: Reusing useQuery Logic for Cleaner Code
+//!143-lec-5-Creating Custom Hooks: Reusing useQuery Logic for Cleaner Code
 
 //In this lecture, we took the logic from our useQuery hook and placed it into a custom hook.
 //This makes the code cleaner and reusable across components, allowing us to use the data-fetching logic on demand.
@@ -110,13 +110,13 @@ useQuery({
 //     const { data: users, error, isLoading } = useUsers()
 // }
 
-//!145-lec-6-Using React Query DevTools: Visualize and Debug Your Cache
+//!144-lec-6-Using React Query DevTools: Visualize and Debug Your Cache
 
 //- In this lecture, we introduced the React Query DevTools.
 //- We installed the react-query/devtools dependency and used it to open a DevTool in the browser.
 //- This lets developers see what's stored in the cache and gather a lot of useful details, improving the developer experience.
 
-//!146-lec-7-Customize our React Query Properties
+//!145-lec-7-Customize our React Query Properties
 
 //In this lecture, we covered how to configure a few important properties in the useQuery hook.
 //Essentially, we talked about setting up a default options object where you can define things like
@@ -182,14 +182,14 @@ useQuery({
 
 //?this is genraic query apply .if you want specific query on specific component then apply on useQuery of that component
 
-//!147-lec-8-Fetching Todos with useQuery: Hands-on Exercise
+//!146-lec-8-Fetching Todos with useQuery: Hands-on Exercise
 
 //In this lecture, we dived into a practical exercise where we fetched a list of todos using the useQuery hook.
 //We built on what we learned in the previous lecture and implemented the todo fetching functionality step by step.
 //This exercise helped solidify our understanding of how to use the useQuery hook in a real scenario.
 
 //?useTodos.js
-
+9
 // import { useQuery } from '@tanstack/react-query';
 // import apiClient from '../utils/api-client';
 // const fetchTodos = () => (apiClient.get("/todos").then(res => res.data))
@@ -222,3 +222,32 @@ useQuery({
 //     )
 // }
 // export default Sales
+
+//!147-Lec-9-Understanding Stale and Refetch in React Query
+
+//- In this lecture, we explored what "stale" means in the context of React Query.
+//- We discussed how long data remains fresh, when it becomes stale, and under what conditions a refetch happens or doesn't happen.
+//- Essentially, we covered that if your data is still fresh, a refetch won't trigger.But after it becomes stale, it will be refetched.
+//- We also talked about how you can disable refetching if you want to by setting certain properties.
+//- Overall, we explained these concepts in detail with examples.
+
+//- so when stale time is on means for first few stal time second in users case we have 6 second
+//- so that 6 second your data is fresh and new no refecth happen
+//?What is Refecth Factore?
+//- tab chnage
+//- component unmount
+//- re-render
+//- internet reconnect
+
+// - so when untill fresh the data refetch not happen
+//- if you
+// refetchOnWindowFocus: true,   => then on stale it happen working
+// refetchOnWindowFocus: always, => then on stale it happen Always working
+
+
+//!148-Lec-10-Using Query Params and Dynamic Cache Keys in React Query
+
+//- In this lecture, we focused on how to pass query parameters when making API calls with React Query.
+//- We discussed how to handle multiple query parameters and create dynamic cache keys as strings.
+//- With a real-life example, we demonstrated how to effectively use query params to manage data fetching and caching in React Query.
+
