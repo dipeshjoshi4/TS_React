@@ -4,15 +4,15 @@ import Loader from '../Common/Loader'
 
 
 const Sales = () => {
-
-
   const [userId, setUserId] = useState(null)
-  console.log(userId)
+  
   const { data: todos, isLoading, error } = useTodos(userId)
 
   return (
     <>
-      <select onChange={(e) => { setUserId(parseInt(e.target.value)) }} value={userId}>
+      <select onChange={(e) => {
+        setUserId(parseInt(e.target.value))
+      }} value={userId}>
         <option value="">Select</option>
         <option value="1">user 1</option>
         <option value="2">user 2</option>

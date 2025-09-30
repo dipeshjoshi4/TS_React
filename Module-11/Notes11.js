@@ -307,3 +307,110 @@ export default useTodos;
 
 
 */
+
+//!149-Lecture-11-(part-1)Implementing Pagination in React with React Query
+
+/*
+In this lecture, we covered how to implement pagination to handle large datasets efficiently in a React application.
+When you have a lot of data, loading it all on one page can be overwhelming for the user and slow down performance.
+Instead, we use pagination to display data page by page, which enhances user experience and improves performance.
+We’ll explore how React Query provides a smart way to handle pagination, making it easier to manage and load data efficiently.
+*/
+
+//?Solve todos bug
+// If userId is truthy(like 1, 2, 3…) → we attach it: request becomes / todos ? userId = 1.
+// If userId is falsy(null, undefined, 0, empty string) → we don’t attach it:request stays / todos.
+// So the backend never sees userId = null or NaN.
+
+//?Pagination setup
+// User.jsx create store in All route
+
+//?CODE-USER.JSX
+/*
+import React from 'react'
+import useTodos from '../../hooks/useTodos'
+import Loader from '../Common/Loader'
+const User = () => {
+    const { data: todos, isLoading, error } = useTodos()
+    return (
+        <>
+            <h3>Users Page</h3>
+            {isLoading && <Loader />}
+            {error && <em>{error.message}</em>}
+            {todos?.map((todo) => {
+                return <p key={todo.id}>{todo.title}</p>
+            })}
+
+        </>
+    )
+}
+export default User
+
+*/
+
+//?CODE-AllRoutes.jsx
+// < Route path = '/admin' element = {< Admin />} >
+//       <Route path="sales" element={<Sales />} />
+//       <Route path="sellers" element={<Sellers />} />
+//       <Route path="users" element={<User />} />
+//   </ >
+
+//?User.jsx
+/*
+import React, { useState } from 'react'
+import Loader from '../Common/Loader'
+import useFetchUsers from '../../hooks/useFetchUsers'
+const User = () => {
+    const [page, setPage] = useState(1)
+    const pageSize = 10;
+    const totalItems = 200;
+    const totalPages = Math.ceil(totalItems / pageSize)
+    const { data: todos, isLoading, error } = useFetchUsers({ page, pageSize })
+    return (
+        <>
+            <h2>Users Page</h2>
+            {isLoading && <Loader />}
+            {error && <em>{error.message}</em>}
+            {todos?.map((todo) => {
+                return <p key={todo.id}>{todo.title}</p>
+            })}
+            <button disabled={page === 1} onClick={() => { setPage(page - 1) }}>Previous</button>
+            <button disabled={page === totalPages} onClick={() => { setPage(page + 1) }}>Next</button>
+
+        </>
+    )
+}
+export default User
+*/
+
+//?useFecthUsers.jsx
+/*
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import apiClient from '../utils/api-client';
+const useFetchUsers = (query) => {
+    const fetchTodos = () => apiClient.get(`/todos`, {
+        params: {
+            _limit: query.pageSize,
+            _start: (query.page - 1) * query.pageSize,  //bydefault=1=> 1-1*10 so start from 0 | 2-1*10 so start from 10
+        },
+    })
+        .then(res => res.data);
+    return useQuery({
+        queryKey: ["todos", query],
+        queryFn: fetchTodos,
+        gcTime: 400000,
+        retry: 4,
+        placeholderData: keepPreviousData, //untill new data cames the privous one shows and the positions of button not chnage
+    })
+}
+export default useFetchUsers;
+*/
+
+//!150-lEcture-11-(part-2)-Adding Page Numbers to Enhance Pagination in React
+
+
+//- we building on our previous pagination lesson where we displayed a limited number of users per page using “Previous” and “Next” buttons.
+//- Now,we're enhancing the user experience further by introducing clickable page numbers.
+//- This allows users to jump directly to any page and view the corresponding set of user data.
+//- By doing this, we make navigation more intuitive and improve the overall usability of our React application.
+
