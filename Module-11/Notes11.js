@@ -414,3 +414,32 @@ export default useFetchUsers;
 //- This allows users to jump directly to any page and view the corresponding set of user data.
 //- By doing this, we make navigation more intuitive and improve the overall usability of our React application.
 
+//?User.jsx
+/*
+return (
+<button disabled={page === 1} onClick={() => { setPage(page - 1) }}>Previous</button>
+            <div>
+                {
+                    Array.from({ length: totalPages }, (_, i) => (
+                        <button key={i + 1}
+                            onClick={() => setPage(i + 1)}
+                            style={{ fontWeight: page === i + 1 ? "bold" : "normal" }}>
+                            {i + 1}
+                        </button>
+                    ))
+                }
+            </div>
+<button disabled={page === totalPages} onClick={() => { setPage(page + 1) }}>Next</button>
+)
+
+
+*/
+
+//!151-Lec-12-Infinite Scrolling in React Query
+
+/*
+We’ve also tackled infinite scrolling for large datasets.
+Instead of fetching everything at once, we use the useInfiniteQuery hook from React Query to load data in batches.
+This hook useInfiniteQuery helps us fetch the next chunk of data as needed. 
+In short, we’ve implemented infinite scrolling smoothly with React Query.
+*/

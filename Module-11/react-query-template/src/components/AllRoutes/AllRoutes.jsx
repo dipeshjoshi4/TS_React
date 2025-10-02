@@ -9,6 +9,8 @@ import SingleProducts from "../Products/SingleProducts";
 import Sales from "../Admin/Sales";
 import Sellers from '../Admin/Sellers';
 import User from '../Admin/User';
+import Page from '../Admin/Page';
+
 
 
 
@@ -27,6 +29,7 @@ const AllRoutes = () => {
                     <Route path="sales" element={<Sales />} />
                     <Route path="sellers" element={<Sellers />} />
                     <Route path="users" element={<User />} />
+                    <Route path="Page" element={<Page />} />
                 </Route >
 
                 <Route path='/contact' element={<Contact />} />

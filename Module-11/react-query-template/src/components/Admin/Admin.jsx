@@ -21,6 +21,9 @@ const Admin = () => {
                 <li>
                     <Link to="/admin/users">User</Link>
                 </li>
+                <li>
+                    <Link to="/admin/Page">Page</Link>
+                </li>
             </ul>
             <Outlet />
         </div>
