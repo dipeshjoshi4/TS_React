@@ -1,13 +1,25 @@
 import React, { useState } from 'react'
 import Loader from '../Common/Loader';
-import apiclient from '../../utils/api-client';
+import apiClient from '../../utils/api-client';
 import useUsers from '../../hooks/useUsers';
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 
 const Sellers = () => {
-
-
-
   const { data: users, error, isLoading } = useUsers()
+  const QueryClient = useQueryClient()
+
+  const addUserMutation = useMutation({
+    mutationFn: (newUser) => apiClient.post("/users", newUser).then((res) => (res.data)),
+    onSuccess: (savedUser) => {
+      console.log(savedUser)
+      // 1st cach invalid
+      // QueryClient.invalidQueries({
+      //   queryKey:["users"],
+      // })
+      //?2nd cache to copy in savedUser
+      QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
+    }
+  })
 
   const [name, setName] = useState();
 
@@ -17,7 +29,7 @@ const Sellers = () => {
       name: name,
       id: users.length + 1,
     }
-    setUsers([newUser, ...users])
+    addUserMutation.mutate(newUser)
   }
 
   /*
@@ -25,8 +37,7 @@ const Sellers = () => {
 
     //ACTUL POST REQUEST to server
 
-    apiClient.post("/users", newUser).then((res) => {
-      setUsers([res.data, ...users])
+    apiClient.post("/users", newUser).then((res) => {setUsers([res.data, ...users])
     }).catch((err) => {
       setErrors(err.message);
       setUsers(users)

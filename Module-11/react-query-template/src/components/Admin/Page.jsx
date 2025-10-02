@@ -9,7 +9,7 @@ const Page = () => {
 
     return (
         <>
-            <h2>Pagination Page</h2>
+            <h2>Infinite Scroll</h2>
             {isLoading && <Loader />}
             {error && <em>{error.message}</em>}
 

@@ -443,3 +443,54 @@ Instead of fetching everything at once, we use the useInfiniteQuery hook from Re
 This hook useInfiniteQuery helps us fetch the next chunk of data as needed. 
 In short, we’ve implemented infinite scrolling smoothly with React Query.
 */
+
+//?Whole Page.jsx is the part of this code structure of infinite scrolling
+
+
+//!153-Lec-13-useMutation hook in React Query
+
+/*
+In this lecture, we discussed how to handle sending data to the server using React Query.
+We use the useMutation hook for this purpose.
+It allows us to post data to the server and then either update the cached data or invalidate the cache so that the data is refreshed.
+We covered both approaches, so you can choose the best one for your use case.
+*/
+
+//?CODE
+/*
+import React, { useState } from 'react'
+import Loader from '../Common/Loader';
+import apiClient from '../../utils/api-client';
+import useUsers from '../../hooks/useUsers';
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
+
+const Sellers = () => {
+  const { data: users, error, isLoading } = useUsers()
+  const QueryClient = useQueryClient()
+
+  const addUserMutation = useMutation({
+    mutationFn: (newUser) => apiClient.post("/users", newUser).then((res) => (res.data)),
+    onSuccess: (savedUser) => {
+      console.log(savedUser)
+      // 1st cach invalid
+      // QueryClient.invalidQueries({
+      //   queryKey:["users"],
+      // })
+      //?2nd cache to copy in savedUser
+      QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
+    }
+  })
+
+  const [name, setName] = useState();
+
+
+  const addUser = () => {
+    const newUser = {
+      name: name,
+      id: users.length + 1,
+    }
+    addUserMutation.mutate(newUser)
+  }
+
+
+*/
