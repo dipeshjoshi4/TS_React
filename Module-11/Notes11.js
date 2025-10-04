@@ -555,3 +555,44 @@ const deleteUserMutation = useMutation({
 //     }
 //     updateUserMutation.mutate(updateUser)
 // }
+
+//!155-Lec-16-Handling Error in Mutation
+//- When you're using the useMutation hook and an API call fails, you handle the error by using the onError function.
+//- This function basically lets you log or manage the error gracefully whenever the request doesn't succeed.
+
+//?For Error On Backend Privatly for addUserMutation
+
+// const addUserMutation = useMutation({
+//     mutationFn: (newUser) => apiClient.post("/users", newUser).then((res) => (res.data)),
+//     onSuccess: (savedUser) => {
+//       QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
+//     },
+//     onError: (error) => {
+//       console.log(error.message)
+//     }
+// })
+
+//?Privatly for addUserMutation error in frontend side show if had
+// { addUserMutation.error && <em>{addUserMutation.error.message}</em> }
+
+//!156-Lec-17-Showing Progress During Mutations
+//we talked about how to improve user experience if there's any delay.
+//By using the isPending state inside the mutation, we can disable the button and change its text while the data is loading.
+
+/*
+
+<button onClick={addUser} disabled={addUserMutation.isPending}>
+        {addUserMutation.isPending ? 'ADDING USER' : 'ADD USER'}
+</button>
+
+{isLoading && <Loader />}
+{addUserMutation.isPending && <Loader />}  //? Work for onlky addUSER
+*/
+
+//!157-lec-18-Optimistic update in React Query
+
+//In this lecture, we covered the mutate function, which you can use if you want to run something before an API call.
+//We also discussed different use cases, like how to keep your old data intact if the API fails.
+//For that, you can use methods in the query client like getQueryData, and you can access that in the error context.
+//We also talked about onSettle.
+

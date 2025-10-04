@@ -6,7 +6,7 @@ import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 
 const Sellers = () => {
   const { data: users, error, isLoading } = useUsers()
-  const [name, setName] = useState();
+  const [name, setName] = useState("");
   const QueryClient = useQueryClient()
 
 
@@ -16,13 +16,20 @@ const Sellers = () => {
   const addUserMutation = useMutation({
     mutationFn: (newUser) => apiClient.post("/users", newUser).then((res) => (res.data)),
     onSuccess: (savedUser) => {
-      console.log(savedUser)
-      // 1st cach invalid
-      // QueryClient.invalidQueries({
+      console.log(savedUser) //=> what ever latest add will be stored in savedUser
+      //?1st cach invalid
+      // QueryClient.invalidateQueries({
       //   queryKey: ["users"],
       // })
+      // setName("")
       //?2nd cache to copy in savedUser
       QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
+      setName("")
+
+    },
+    //this error on addusemutation on backend in console 
+    onError: (error) => {
+      console.log(error.message)
     }
   })
   //Add User
@@ -55,16 +62,13 @@ const Sellers = () => {
   }
 
   //?-----------------------------Update Functonality---------------------
-
   const updateUserMutation = useMutation({
     mutationFn: (updateUser) => apiClient.patch(`/users/${updateUser.id}`, updateUser).then((res) => res.data),
     onSuccess: (updateUser) => {
       QueryClient.setQueryData(["users"], (users) => users.map((u) => (u.id === updateUser.id ? updateUser : u)))
     },
   })
-
-  //ACTUL PATCH REQUEST TO SERVER
-
+  //?Patch
   const updateUser = (user) => {
     const updateUser = {
       ...user,
@@ -100,13 +104,19 @@ const Sellers = () => {
     <>
       <h3>Admin Sellers Page</h3>
 
-      <input type='text' onChange={(e) => { setName(e.target.value) }} />
+      <input type='text' onChange={(e) => { setName(e.target.value) }} value={name} />
 
-      <button onClick={addUser}>ADD USER</button>
+      <button onClick={addUser} disabled={addUserMutation.isPending}>
+        {addUserMutation.isPending ? 'ADDING USER' : 'ADD USER'}
+      </button>
 
       {isLoading && <Loader />}
+      {addUserMutation.isPending && <Loader />}
 
       {error && <em>{error.message}</em>}
+
+      {/* Privatly for addUserMutation error in frontend side show if had */}
+      {addUserMutation.error && <em>{addUserMutation.error.message}</em>}
 
       <table>
         <tbody>
