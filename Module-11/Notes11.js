@@ -494,3 +494,45 @@ const Sellers = () => {
 
 
 */
+
+
+//?The Main PoinT To Remmeber is ......
+
+//?case-1-Invalidate Queries
+//DB Update - Yes
+//Cache Update - api call and update data from api to cache.
+
+//?Case-2-setQueryData
+//DB Update - Yes
+//Cache Update - direct cahce main data store hota no extra call like above
+
+
+//!153-Lecture-14-Handling Delete Operations with React Query: Using useMutation Hook
+
+// We'll explore how to leverage the useMutation hook to handle deletions efficiently.
+
+
+//?CODE-Sellers.jsx
+/*
+const deleteUserMutation = useMutation({
+    mutationFn: () => {
+      apiClient.delete("/users/${id}").then((res) => res.data)
+    },
+    //APi Responsone on success in  delet user function
+  })
+
+  //Delete
+  const deleteUser = (id) => {
+    deleteUserMutation.mutate(id, {
+      onSuccess: () => {
+        QueryClient.setQueryData(
+          ["users"],
+          (users) => users.filter((u) => u.id != id))
+      }
+    })
+  }
+
+*/
+
+//!154-Lec-15-Update Operations with React Query: Leveraging useMutation for Edits
+//- we focus on how to implement the update functionality using React Query’s useMutation hook.

@@ -6,6 +6,7 @@ import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 
 const Sellers = () => {
   const { data: users, error, isLoading } = useUsers()
+  const [name, setName] = useState();
   const QueryClient = useQueryClient()
 
   const addUserMutation = useMutation({
@@ -14,16 +15,33 @@ const Sellers = () => {
       console.log(savedUser)
       // 1st cach invalid
       // QueryClient.invalidQueries({
-      //   queryKey:["users"],
+      //   queryKey: ["users"],
       // })
       //?2nd cache to copy in savedUser
       QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
     }
   })
 
-  const [name, setName] = useState();
+  const deleteUserMutation = useMutation({
+    mutationFn: () => {
+      apiClient.delete("/users/${id}").then((res) => res.data)
+    },
+    //APi Responsone on success in  delet user function
+  })
+
+  //Delete
+  const deleteUser = (id) => {
+    deleteUserMutation.mutate(id, {
+      onSuccess: () => {
+        QueryClient.setQueryData(
+          ["users"],
+          (users) => users.filter((u) => u.id != id))
+      }
+    })
+  }
 
 
+  //Add User
   const addUser = () => {
     const newUser = {
       name: name,
@@ -32,27 +50,9 @@ const Sellers = () => {
     addUserMutation.mutate(newUser)
   }
 
+
+
   /*
-
-
-    //ACTUL POST REQUEST to server
-
-    apiClient.post("/users", newUser).then((res) => {setUsers([res.data, ...users])
-    }).catch((err) => {
-      setErrors(err.message);
-      setUsers(users)
-    })
-  }
-
-  //ACTUL Delete REQUEST to server
-
-  const deleteUser = (id) => {
-    setUsers(users.filter((u) => u.id !== id))
-    apiClient.delete("/users/${id}").catch((err) => {
-      setErrors(err.message);
-      setUsers(users)
-    })
-  }
 
   //ACTUL PATCH REQUEST TO SERVER
 
