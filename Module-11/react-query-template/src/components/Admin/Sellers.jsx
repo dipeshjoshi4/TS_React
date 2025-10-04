@@ -9,6 +9,10 @@ const Sellers = () => {
   const [name, setName] = useState();
   const QueryClient = useQueryClient()
 
+
+
+  //?-----------------------------ADD Functonality---------------------
+
   const addUserMutation = useMutation({
     mutationFn: (newUser) => apiClient.post("/users", newUser).then((res) => (res.data)),
     onSuccess: (savedUser) => {
@@ -21,7 +25,17 @@ const Sellers = () => {
       QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
     }
   })
+  //Add User
+  const addUser = () => {
+    const newUser = {
+      name: name,
+      id: users.length + 1,
+    }
+    addUserMutation.mutate(newUser)
+  }
 
+
+  //?-----------------------------Delete Functonality---------------------
   const deleteUserMutation = useMutation({
     mutationFn: () => {
       apiClient.delete("/users/${id}").then((res) => res.data)
@@ -40,50 +54,37 @@ const Sellers = () => {
     })
   }
 
+  //?-----------------------------Update Functonality---------------------
 
-  //Add User
-  const addUser = () => {
-    const newUser = {
-      name: name,
-      id: users.length + 1,
+  const updateUserMutation = useMutation({
+    mutationFn: (updateUser) => apiClient.patch(`/users/${updateUser.id}`, updateUser).then((res) => res.data),
+    onSuccess: (updateUser) => {
+      QueryClient.setQueryData(["users"], (users) => users.map((u) => (u.id === updateUser.id ? updateUser : u)))
+    },
+  })
+
+  //ACTUL PATCH REQUEST TO SERVER
+
+  const updateUser = (user) => {
+    const updateUser = {
+      ...user,
+      name: user.name + "   Updated"
     }
-    addUserMutation.mutate(newUser)
+    updateUserMutation.mutate(updateUser)
   }
 
 
 
   /*
-
-  //ACTUL PATCH REQUEST TO SERVER
-
-  const updateUser = (user) => {
-    const UpdateUser = {
-      ...user,
-      name: user.name + "   Updated"
-    }
-    setUsers(users.map((u) => (u.id === user.id ? UpdateUser : u)))
-    console.log(users);
-
-    apiClient
-      .patch("/users/${user.id}", UpdateUser)
-      .catch((err) => {
-        setErrors(err.message)
-        setUsers(users)
-      })
-  }
-
   //ACTUL PUT
-
   const updateUserPut = (user) => {
     const UpdateUserPut = {
       ...user,
       username: user.username + " Updated",
       phone: user.phone.replace("", "567-")
     };
-
     // update locally
     setUsers(users.map((u) => (u.id === user.id ? UpdateUserPut : u)));
-
     // send API call with PUT
     apiClient
       .put(`/users/${user.id}`, UpdateUserPut)
@@ -92,7 +93,6 @@ const Sellers = () => {
         setUsers(users); // rollback on failure
       });
   };
-
 */
 
 
@@ -129,9 +129,9 @@ const Sellers = () => {
                 <button onClick={() => { updateUser(user) }}>Update</button>
               </td>
 
-              <td>
+              {/* <td>
                 <button onClick={() => { updateUserPut(user) }}>UpdatePUT</button>
-              </td>
+              </td> */}
 
             </tr>
           ))}

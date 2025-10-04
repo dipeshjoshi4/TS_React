@@ -536,3 +536,22 @@ const deleteUserMutation = useMutation({
 
 //!154-Lec-15-Update Operations with React Query: Leveraging useMutation for Edits
 //- we focus on how to implement the update functionality using React Query’s useMutation hook.
+
+//?-----------------------------Update Functonality---------------------
+
+// const updateUserMutation = useMutation({
+//     mutationFn: (updateUser) => apiClient.patch(`/users/${updateUser.id}`, updateUser).then((res) => res.data),
+//     onSuccess: (updateUser) => {
+//         QueryClient.setQueryData(["users"], (users) => users.map((u) => (u.id === updateUser.id ? updateUser : u)))
+//     },
+// })
+
+//?ACTUL PATCH REQUEST TO SERVER
+
+// const updateUser = (user) => {
+//     const updateUser = {
+//         ...user,
+//         name: user.name + "   Updated"
+//     }
+//     updateUserMutation.mutate(updateUser)
+// }
