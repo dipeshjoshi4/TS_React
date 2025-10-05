@@ -596,3 +596,83 @@ const deleteUserMutation = useMutation({
 //For that, you can use methods in the query client like getQueryData, and you can access that in the error context.
 //We also talked about onSettle.
 
+//?Mthods-React Query Cheat Sheet
+
+/*
+
+?1. setQueryData
+Definition: Instantly updates the cache without making a server call.
+?Example:
+queryClient.setQueryData(["users"], (old) => [...old, newUser]);
+- Instantly update cache / UI, no server call.
+- total two call you see default and the new cache update
+
+?2. invalidateQueries
+ Definition: Marks cache as ** stale ** and refetches from the server if active.
+?Example:
+queryClient.invalidateQueries({ queryKey: ["users"] });
+- Mark data as outdated and trigger a server call if the query is active.
+- total three call you see default and the new updataion and serve call for new data cache main dalne ke liye 
+
+
+?3. refetchQueries
+ Definition: Forces a server call even if the query is inactive.
+?Example:
+queryClient.refetchQueries({ queryKey: ["users"] });
+- Forcefully fetch fresh data from the server.
+
+*/
+
+
+//?Little Extra -> Erase Input Field Name After Hit Add Button
+/*
+const [name, setName] = useState("");  //?chnage into empty "" so that handle naturally while setName("")
+QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
+setName("")
+return (
+    <>
+        <input type='text' onChange={(e) => { setName(e.target.value) }} value={name} />
+    </>
+)
+*/
+//?Apply setName("") in both cache for remove input after button click
+//? - to get rid of uncolltable input when we setName("")
+
+
+//?Optimistic Approach tell the either data show & error reflect or directly without know of user data added
+
+/*
+
+const addUserMutation = useMutation({
+    mutationFn: (newUser) => apiClient.post("/users", newUser).then((res) => (res.data)),
+    //?Run Before Any API Calls
+    onMutate: (newUser) => {
+      const previousData = QueryClient.getQueryData(["users"])  //?get data of old users which get me in error ki andar context
+      QueryClient.setQueryData(['users'], (user) => [newUser, ...user]) //? to before any api call smooth add
+      return { previousData }
+    },
+    onSuccess: (savedUser, newUser) => {
+      console.log(savedUser, newUser) //=> what ever latest add will be stored in savedUser
+      setName("")
+      //?Sanity Test- cahce main update hai but jo server se ayya hai wo ab cache main add karva diya 
+      QueryClient.setQueryData(["users"], (users) =>
+        users.map((user) => user === newUser ? savedUser : user)
+      )
+    },
+    onError: (error, newUser, context) => {
+      // console.log(error.message) //this error on addusemutation on backend in console 
+      if (!context) {
+        return;
+      }
+      QueryClient.setQueryData(["users"], context.previousData)
+    },
+    //?Run at last After API CALL SUCCES OR FALLS
+    onSettled: () => {
+      QueryClient.invalidateQueries({
+        queryKey: ["users"],
+      })
+      console.log("on last ")
+    }
+  })
+
+*/

@@ -15,21 +15,43 @@ const Sellers = () => {
 
   const addUserMutation = useMutation({
     mutationFn: (newUser) => apiClient.post("/users", newUser).then((res) => (res.data)),
-    onSuccess: (savedUser) => {
-      console.log(savedUser) //=> what ever latest add will be stored in savedUser
+    //?Run Before Any API Calls
+    onMutate: (newUser) => {
+      const previousData = QueryClient.getQueryData(["users"])  //get data of old users which get me in error ki andar context
+      QueryClient.setQueryData(['users'], (user) => [newUser, ...user])// to before any api call smooth add
+      return { previousData }
+    },
+    onSuccess: (savedUser, newUser) => {
+      console.log(savedUser, newUser) //=> what ever latest add will be stored in savedUser
+      setName("")
+
+
+      //?Sanity Test- cahce main update hai but jo server se ayya hai wo ab cache main add karva diya 
+      QueryClient.setQueryData(["users"], (users) =>
+        users.map((user) => user === newUser ? savedUser : user)
+      )
       //?1st cach invalid
       // QueryClient.invalidateQueries({
       //   queryKey: ["users"],
       // })
       // setName("")
       //?2nd cache to copy in savedUser
-      QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
-      setName("")
-
+      // QueryClient.setQueryData(["users"], (user) => [savedUser, ...user])
     },
-    //this error on addusemutation on backend in console 
-    onError: (error) => {
-      console.log(error.message)
+    onError: (error, newUser, context) => {
+      // console.log(error.message) //this error on addusemutation on backend in console 
+      if (!context) {
+        return;
+      }
+      QueryClient.setQueryData(["users"], context.previousData)
+    },
+
+    //?Run at last 
+    onSettled: () => {
+      QueryClient.invalidateQueries({
+        queryKey: ["users"],
+      })
+      console.log("on last ")
     }
   })
   //Add User
