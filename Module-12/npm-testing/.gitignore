@@ -1,2 +1,12 @@
-        node_modules/
-        build/git
+# dependencies
+node_modules/
+
+# environment files
+.env
+
+# build outputs
+dist/
+build/
+
+# misc
+.DS_Store
