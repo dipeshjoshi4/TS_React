@@ -98,3 +98,30 @@ By the end of this session, you'll have a strong grasp of how to use Jest assert
 
 // we have 3 test suits
 // every suits have mutiple test  can happen
+
+//?assertion => which write in callback
+// In JavaScript, an assertion is a way to validate assumptions about your code's state or data at runtime. If an assertion fails, it typically indicates a bug or an unexpected condition that needs to be addressed.
+// - its one kind of function or here we say matchers
+
+//?Extension : jest runner
+
+//?code
+/*
+describe("Will test all the number cases", () => {
+    test("My first test file", () => {
+        expect(2 + 2).toBe(4);
+        expect(2 + 2).toBe(4);
+        expect(2 + 2).toBe(4);
+        expect(2 + 2).toBe(4);
+    })
+    it("My Second test file", () => {
+        expect(3 + 3).toBe(6);
+    })
+})
+*/
+
+// so here describe , it ,test, expect,toBe  => predefine syntax part
+
+// with extension install we can seprate option on above every test case that  run | debug => for seprate runner and debug
+
+// this describe is the one of the method that we have => combined simillar test case in one group .  also when we run we can see what was the test case inside it in console
