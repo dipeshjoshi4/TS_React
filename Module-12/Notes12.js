@@ -131,7 +131,102 @@ describe("Will test all the number cases", () => {
 //-we discussed how to test variables and functions using Jest.We walked through a simple example so you can easily understand the basics.
 
 
+//?Varibles and function can be used
+
+//?second.spec.js
+/*
+let myVal = 3;
+function add(x, y) {
+    return x + y;
+}
+test("My Second test file", () => {
+    expect(myVal).toBe(3)
+    expect(add(2, 3)).toBe(5)
+    expect(add(4, 3)).toBe(7)
+})
+*/
+
+
+//?You Can Write 2 describe too.... in one test file
+
+//?first.test.js
+/*
+describe("Will test all the number cases", () => {
+    test("My first test file", () => {
+        expect(2 + 2).toBe(4);
+        expect(2 + 2).toBe(4);
+        expect(2 + 2).toBe(4);
+        expect(2 + 2).toBe(4);
+    })
+    it("My Second test file", () => {
+        expect(3 + 3).toBe(6);
+    })
+})
+
+describe("Another Describe", () => {
+    let myLate = 3;
+    test("Another Describe example", () => {
+        expect(2 + 4).toBe(6);
+        expect(myLate + myLate).toBe(6);
+
+    })
+})
+
+*/
+
+
 //!164-Lec-5-Using beforeEach and afterEach in Jest
 
-//-we explored how to run code before and after your Jest test cases using beforeEach, afterEach, beforeAll, and afterAll . 
+//-we explored how to run code before and after your Jest test cases using beforeEach, afterEach, beforeAll, and afterAll .
+
+//?Second.spec.js
+/*
+
+let myVal = 3;
+function add(x, y) {
+    return x + y;
+}
+
+//?Before Every Test Case
+beforeEach(() => {
+    console.log("beforeEach");
+    val = 10;
+});
+
+//?After Every Test Case 
+afterEach(() => {
+    console.log("afterEach");
+    val = 10;
+});
+
+//?Before  Every Test Case in file => one time sabse pehle
+beforeAll(() => {
+    console.log("before all");
+})
+
+//?After Every Test Case in file => one time sabse last
+afterAll(() => {
+    console.log("after all");
+})
+
+test("My First test file in second", () => {
+    expect(myVal).toBe(3)
+    expect(val).toBe(10)
+    console.log("First Test");
+})
+
+test("My Second test file", () => {
+    expect(myVal).toBe(3)
+    expect(add(2, 3)).toBe(5)
+    expect(val).toBe(10)
+    console.log("second Test");
+})
+
+
+*/
+
+//!165-Lec-6-Skipping Tests in Jest: Using only and skip
+
+//-In this lecture, we explored how to use beforeAll and beforeEach with a real-life example to set up conditions before tests run. 
+//-We also covered how to use the only and skip keywords to focus on specific test cases or skip them when needed.
 
