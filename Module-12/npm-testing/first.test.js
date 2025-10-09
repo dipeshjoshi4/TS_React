@@ -13,3 +13,15 @@ describe("Will test all the number cases", () => {
     })
 
 })
+
+describe("Another Describe", () => {
+
+    let myLate = 3;
+
+    test("Another Describe example", () => {
+        expect(2 + 4).toBe(6);
+        expect(myLate + myLate).toBe(6);
+
+    })
+
+})

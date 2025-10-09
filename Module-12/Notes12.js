@@ -125,3 +125,13 @@ describe("Will test all the number cases", () => {
 // with extension install we can seprate option on above every test case that  run | debug => for seprate runner and debug
 
 // this describe is the one of the method that we have => combined simillar test case in one group .  also when we run we can see what was the test case inside it in console
+
+//!163-Lec-4-Testing Variables and Functions with Jest: A Simple Start
+
+//-we discussed how to test variables and functions using Jest.We walked through a simple example so you can easily understand the basics.
+
+
+//!164-Lec-5-Using beforeEach and afterEach in Jest
+
+//-we explored how to run code before and after your Jest test cases using beforeEach, afterEach, beforeAll, and afterAll . 
+
