@@ -1,6 +1,7 @@
 
 //!---------------------Module 12: Testing React applications Using Jest------------------
 
+const { fail } = require("assert")
 const { totalmem } = require("os")
 
 //!160-Lec-1-React Testing Simplified: Mastering Jest and Component-Level Testing
@@ -227,6 +228,91 @@ test("My Second test file", () => {
 
 //!165-Lec-6-Skipping Tests in Jest: Using only and skip
 
-//-In this lecture, we explored how to use beforeAll and beforeEach with a real-life example to set up conditions before tests run. 
+//-In this lecture, we explored how to use beforeAll and beforeEach with a real-life example to set up conditions before tests run.
 //-We also covered how to use the only and skip keywords to focus on specific test cases or skip them when needed.
 
+//?Scanrio : beforeEach and beforeAll
+
+//?Code
+/*
+beforeEach(() => {
+    console.log("beforeEach");
+    val = 10;
+})
+test("My First test file in second", () => {
+    expect(myVal).toBe(3)
+    expect(val).toBe(10);
+    val++;
+    console.log("First Test");
+})
+*/
+
+// - then we run the value impact on test case is same because after Every test case run the value back to 0
+// - so i cant modify the value . i get same value after before run the intial value we get
+// on this thing we have real life example of Array
+
+//?CODE
+/*
+beforeEach(() => {
+    console.log("beforeEach");
+    val = 10;
+    users = []
+})
+test("Should add a User", () => {
+    users.push("Ajay")
+    except(users).toContain("Ajay")
+})
+test("should not refrest the user value", () => {
+    execPath(users.length).toBe(0)
+})
+    */
+
+//? - but if you want that users value not be refresh then pass users in beforeAll and pass toBe(1)
+
+//?CODE
+/*
+beforeEach(() => {
+    console.log("beforeEach");
+    val = 10;
+})
+beforeAll(() => {
+    console.log("beforeAll");
+    users = [];
+})
+test("Should add a User", () => {
+    users.push("Ajay")
+    except(users).toContain("Ajay")
+})
+test("should not refrest the user value", () => {
+    execPath(users.length).toBe(1)
+})
+*/
+
+//?NeW Matchers => toContain("Array")
+
+//?CODE -> User.test.js
+/*
+jest.setTimeout(10000);
+describe("User test case with example of only and skip", () => {
+    test("first", () => {
+        expect(2 + 2).toBe(4)
+    }, 5000)
+    test("second", () => {
+        expect(2 + 2).toBe(4)
+    }, 5000)
+    test.skip("third", () => {
+        expect(2 + 2).toBe(4)
+    }, 5000)
+})
+
+*/
+
+//skip => for ant test case you wanna skip
+//only => if you wanna run only that test case to be run
+//- in test syntax we have time also had  . so you can mention time and if the test case not run in that time period it will fail
+//- you can remove specific time for all person time and give genric time to whole describe just like that => jest.setTimeout(10000)
+
+
+//!166-Lec-7-Testing Loops in Jest: Running and Verifying Loops
+
+//- we dove into how to handle loops in our Jest tests.We discussed how to run loops within test cases and verify their behavior, making sure we know how to test repetitive logic effectively.
