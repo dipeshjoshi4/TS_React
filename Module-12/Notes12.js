@@ -384,3 +384,22 @@ test("Object Assignemnt", () => {
 });
 */
 
+//!168-Lec-9-Testing Truthy and Falsy Values in Jest
+
+//- we focused on how to test Boolean values using Jest.
+//- We covered the concepts of truthy and falsy values and how to effectively write tests that check these conditions.
+//- This helps ensure that your functions behave as expected when dealing with different truthy or falsy inputs.
+
+//?falsy value => "" , 0 , false , undefiend , null , Nan
+
+//?Truthy Value => "Ajay" , 1
+
+//?Code - truth.test.js
+
+//!169-Lec-10-Handling Errors with Jest: Using toThrow Matcher
+
+//- we learned how to test if a function throws an error using Jest's toThrow matcher.
+//- This is especially useful for validating error handling scenarios in your code.
+//- By the end of this session, you'll know how to confidently test and ensure your functions handle errors properly.
+
+//?Code- error.test.js
