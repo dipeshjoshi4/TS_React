@@ -312,7 +312,75 @@ describe("User test case with example of only and skip", () => {
 //- in test syntax we have time also had  . so you can mention time and if the test case not run in that time period it will fail
 //- you can remove specific time for all person time and give genric time to whole describe just like that => jest.setTimeout(10000)
 
+//?CODE
+// jest.setTimeout(10000)
+// test("Async Function for timout", async () => {
+//     await new Promise((resolve) => setTimeout(resolve, 2000))
+//     expect(2 + 2).toBe(4)
+// })
+
+//?- if you do like this timeout exceeds and thats how it not work
+
 
 //!166-Lec-7-Testing Loops in Jest: Running and Verifying Loops
 
 //- we dove into how to handle loops in our Jest tests.We discussed how to run loops within test cases and verify their behavior, making sure we know how to test repetitive logic effectively.
+
+//?CODE-THIRD.TEST.JS
+/*
+
+?Loops
+
+let numbers = [1, 2, 3]
+let numbers1 =
+    [
+        [1, 2, 3],
+        [2, 2, 4],
+        [4, 5, 9],
+    ]
+
+function add(x, y) {
+    return x + y;
+}
+
+test.each(numbers)("First Loop - Add 2 to %i", (myNum) => {
+    expect(add(2, myNum)).toBe(2 + myNum)
+})
+
+test.each(numbers1)("2d array in  Loop - Add %i to %i as %total", (a, b, total) => {
+    expect(add(a, b)).toBe(total)
+})
+*/
+
+//!167-Lec-8-Mastering Matchers in Jest
+
+/*
+
+- In this lecture, we've explored the various types of matchers available in Jest.
+- By understanding these matchers, you can write smoother and more effective test cases for your functions.
+- I've also shared a reference link where you can find a full list of matchers to help you out as you practice.
+
+- Link - https://jestjs.io/docs/expect 
+
+?CODE-fourth.test.js
+/*
+
+myVal = 4;
+let name = "Ajay";
+let animals = ["tiger", "Dog"]
+
+test("fourth file", () => {
+    expect(myVal).not.toBe(1)
+    expect(myVal).toBeGreaterThanOrEqual(4);
+    expect(name).toMatch(/ajay/i);
+    expect(animals).toContain("tiger");
+
+});
+
+test("Object Assignemnt", () => {
+    const data = { one: 1 };
+    data["two"] = 2;
+    expect(data).toEqual({ one: 1, two: 2 });
+});
+*/
+

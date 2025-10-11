@@ -1,5 +1,5 @@
 jest.setTimeout(10000);
-describe("User test case with example of only and skip", () => {
+describe("User test case with only and skip", () => {
 
     test("first", () => {
         expect(2 + 2).toBe(4)
@@ -13,5 +13,9 @@ describe("User test case with example of only and skip", () => {
         expect(2 + 2).toBe(4)
     }, 5000)
 
+    test("Async Function for timout", async () => {
+        await new Promise((resolve) => setTimeout(resolve, 2000))
+        expect(2 + 2).toBe(4)
+    })
 
 })
