@@ -403,3 +403,13 @@ test("Object Assignemnt", () => {
 //- By the end of this session, you'll know how to confidently test and ensure your functions handle errors properly.
 
 //?Code- error.test.js
+
+//!170-Lec-11-Testing Your First React Component with React Testing Library
+
+//- we’ve covered in detail how to confidently test a React component using React Testing Library.
+//- You'll learn how to set up the code, follow the step-by-step process, and write your first test.
+//- We also dive into how to use matchers in detail so you can verify your component’s behavior with confidence.
+
+//?For react
+//-Source - https://testing-library.com/docs/react-testing-library/intro
+
