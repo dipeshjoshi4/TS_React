@@ -450,3 +450,52 @@ export default defineConfig({
  npm run test
 
 */
+
+//?CODE-App.test.jsx
+// import { render } from "@testing-library/react"
+// import App from "./App"
+// import { expect, test } from "vitest";
+
+// test("app component should display Hello Dipesh", () => {
+//     const { getByText, debug } = render(<App />)
+//     const HelloText = getByText("Hello Dipesh");
+//     console.log(HelloText)  //? find whole DOM Node
+//     debug(); //?can  get a text and debug
+//     expect(HelloText.tagName).toBe("H1")
+//     expect(HelloText.textContent).toBe("Hello Dipesh")
+// })
+
+//!171-Lec-12-Testing Button Functionality Inside a React Component
+
+//- we covered how to test a button inside our component.
+//- We also discussed a few helper functions like queryBy and getByText from our testing library.
+//- We tried to understand these through practical examples.
+
+//?1-difference between queryby  vs findby vs getby text
+
+//?2-use of DOMnODE like this/........
+// test("app component should display Hello Dipesh", () => {
+//     const { getByText, debug } = render(<App />)
+//     const HelloText = getByText("Hello Dipesh");
+//     expect(HelloText).toBeTruthyValue()
+
+//     expect(HelloText.tagName).toBe("H1")
+//     expect(HelloText.textContent).toBe("Hello Dipesh")
+// })
+
+//?3-as per how u want the test case scenario that way we can chnage this thing
+
+//?4.id
+//?in App.jsx
+// data-testid="heading" // you have to use this attribute data-testid
+//?App.test.jsx
+//const HelloTextId = getByTestId("heading");
+
+//?5.button example
+// getByRole use
+// let btn = getByRole("button");
+// fireEvent.click(btn)
+
+
+//!172-Lec-13-Testing Components with useState Scenarios
+// we focused on scenarios where we use useState inside a component.We tested how those state changes work in practice. 
