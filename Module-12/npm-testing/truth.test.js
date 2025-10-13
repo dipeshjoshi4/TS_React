@@ -8,7 +8,7 @@ let a = "";
 let q = "Dipesh";
 
 test("Should Check Truthy Value-1", () => {
-    expect(a).toBeTruthy();
+    expect(a).not.toBeTruthy();
 })
 
 test("Should Check Truthy Value-2", () => {
