@@ -472,6 +472,9 @@ export default defineConfig({
 //- We tried to understand these through practical examples.
 
 //?1-difference between queryby  vs findby vs getby text
+// queryby - give null if error comes
+// getby - give specific error
+//findby - mostly used in async await function
 
 //?2-use of DOMnODE like this/........
 // test("app component should display Hello Dipesh", () => {
@@ -498,4 +501,40 @@ export default defineConfig({
 
 
 //!172-Lec-13-Testing Components with useState Scenarios
-// we focused on scenarios where we use useState inside a component.We tested how those state changes work in practice. 
+// we focused on scenarios where we use useState inside a component.We tested how those state changes work in practice.
+
+//?in this Lecture state test
+// first our state is empty -> 1st test
+// second we something add in state means update state => 2nd test
+
+//?getByRole("input")
+// - "textbox" we have to used for the input field
+// getByRole("textbox")
+
+//?CODE- App.jsx
+const [name, setName] = useState("");
+<input type='text' value={name} onChange={(e) => { setName(e.target.value) }} />
+
+//?CODE-App.test.jsx
+/*
+import { fireEvent, render } from "@testing-library/react"
+import "@testing-library/jest-dom"; // ✅ important!
+import App from "./App"
+import { expect, test } from "vitest";
+
+
+test("app component should display Hello Dipesh", () => {
+  
+    let myInput = getByRole("textbox")
+    expect(myInput).toHaveValue("");
+    fireEvent.change(myInput, { target: { value: "Ajay" } })
+    expect(myInput).toHaveValue("Ajay");
+
+    ?for case-insensitive check
+     expect(myInput.value).toMatch(/AjaY/i);
+     toHaveValue() is strict — it expects exact primitive(string or number)
+     toMatch() is designed for regex and string pattern checks
+
+})   
+
+*/

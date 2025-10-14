@@ -1,4 +1,5 @@
 import { fireEvent, render } from "@testing-library/react"
+import "@testing-library/jest-dom"; // ✅ important!
 import App from "./App"
 import { expect, test } from "vitest";
 
@@ -21,5 +22,14 @@ test("app component should display Hello Dipesh", () => {
     let btn = getByRole("button");
     fireEvent.click(btn)
 
+    let myInput = getByRole("textbox")
+    expect(myInput).toHaveValue("");
+    fireEvent.change(myInput, { target: { value: "Ajay" } })
+    expect(myInput).toHaveValue("Ajay");
+
+    //?for case-insensitive check
+    // expect(myInput.value).toMatch(/AjaY/i);
+    // toHaveValue() is strict — it expects exact primitive(string or number)
+    // toMatch() is designed for regex and string pattern checks
 
 })   
