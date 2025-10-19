@@ -512,8 +512,8 @@ export default defineConfig({
 // getByRole("textbox")
 
 //?CODE- App.jsx
-const [name, setName] = useState("");
-<input type='text' value={name} onChange={(e) => { setName(e.target.value) }} />
+// const [name, setName] = useState("");
+// <input type='text' value={name} onChange={(e) => { setName(e.target.value) }} />
 
 //?CODE-App.test.jsx
 /*
@@ -538,3 +538,8 @@ test("app component should display Hello Dipesh", () => {
 })   
 
 */
+
+//!173-Lec-14-Project: Test Login Page and UI Elements
+
+//- we dive into end-to-end testing of a login functionality. We’ll use all the helper functions we’ve learned so far, making sure you get a hands-on feel of how to apply them in a real-world scenario.
+
