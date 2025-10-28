@@ -15,7 +15,12 @@ describe("Another Describe", () => {
     test("Another Describe example", () => {
         expect(2 + 4).toBe(6);
         expect(myLate + myLate).toBe(6);
-
     })
-
 })
+
+describe("Another solutions 3", () => {
+    let myVar = 6;
+    expect(6 + 12).toBe(18);
+    expect(myVar + myVar).toBe(12)
+})
+

@@ -304,8 +304,8 @@ describe("User test case with example of only and skip", () => {
         expect(2 + 2).toBe(4)
     }, 5000)
 })
-
 */
+
 
 //skip => for ant test case you wanna skip
 //only => if you wanna run only that test case to be run
