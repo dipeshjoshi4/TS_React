@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+</head>
+<body></body>
+
+<script>
+
+    // ---------- Create Input ----------
+    const input = document.createElement("input");
+    input.id = "todoinput";
+    document.body.appendChild(input);
+
+    // ---------- Create Add Button ----------
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "Add";
+    document.body.appendChild(addBtn);
+
+    // ---------- Create List ----------
+    const ul = document.createElement("ul");
+    ul.id = "todolist";
+    document.body.appendChild(ul);
+
+    // ---------- Add Function ----------
+    addBtn.addEventListener("click", function () {
+
+        const li = document.createElement("li");
+        li.textContent = input.value;
+        input.value = "";
+
+        // Delete button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "delete";
+
+        deleteBtn.onclick = () => ul.removeChild(li);
+
+        li.appendChild(deleteBtn);
+        ul.appendChild(li);
+    });
+
+</script>
+
+</body>
+</html>

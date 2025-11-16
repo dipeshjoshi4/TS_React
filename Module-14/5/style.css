@@ -1,0 +1,32 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: rgb(0, 0, 0);
+    background-color: rgb(166, 134, 229);
+    font-size: 15px;
+
+}
+
+.logo{
+    font-size: 15px;
+    color: black;
+}
+
+.nav_links{
+    display: flex;
+    list-style: none;
+}
+.nav_links li a{
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+
+}
