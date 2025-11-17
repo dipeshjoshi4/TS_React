@@ -1,5 +1,8 @@
 
 //!-------------------Code Spliting with React.lazy and Dynamic Import------------------
+
+//! Code in First Folder 
+
 //- how we as per need load our components and code not unnecessary load on App
 
 //? Code-Splitting (React.lazy + dynamic import)
