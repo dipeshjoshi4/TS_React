@@ -1,0 +1,14 @@
+
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    gap:1rem;
+}
+
+.card{
+    border:1px solid #ddd;
+    border-radius: 5px;
+    padding:1rem;
+    background-color: #fff;
+
+}
