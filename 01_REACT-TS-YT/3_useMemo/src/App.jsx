@@ -7,7 +7,6 @@ function App() {
     <>
       <h4>EP-3-React useMemo</h4>
       <UseMemo />
-
     </>
   )
 }

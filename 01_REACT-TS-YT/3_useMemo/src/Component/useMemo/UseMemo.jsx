@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useMemo } from "react";
 
 const UseMemo = () => {
+
     const [counterOne, setCounterOne] = useState(0)
     const [counterTwo, setCounterTwo] = useState(0)
 
@@ -11,8 +12,6 @@ const UseMemo = () => {
     const incrementTwo = () => {
         setCounterTwo(counterTwo + 1)
     }
-
-
 
     const isEven = useMemo(() => {
         let i = 0;

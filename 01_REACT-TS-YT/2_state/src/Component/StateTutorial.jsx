@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 
 const StateTutorial = () => {
-    const [input, SetInput] = useState("Ajay");
+    const [input, SetInput] = useState("");
     console.log(input)
 
     const onChange = (e) => {
