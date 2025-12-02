@@ -96,4 +96,30 @@
 
 //!8
 
+//Ex-1
+// function foo() {
+//     return;
+//     {
+//         x: 1;
+//     }
+// }
+// console.log(foo()); //? that ";" => undefiend
 
+//?Ex-2
+// function foo() {
+//     return {
+//         x: 1,
+//     }
+// }
+// console.log(foo()); //?  {x:1}
+
+//!9
+// const v = null;
+// console.log(typeof v); //Object
+// console.log(v === null); //true
+// console.log(v == null); //true
+
+//!10
+//unary operator
+// console.log(+true); //?1
+// console.log(+false); //?0
